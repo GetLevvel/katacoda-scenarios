@@ -9,3 +9,6 @@ git clone -q https://github.com/GetLevvel/rhoar-sample-code.git
 cd ${UI_PATH} && cp -R /root/rhoar-sample-code/${PROJECT}/* ./
 clear # To clean up Katacoda terminal noise
 ~/.launch.sh
+
+
+//need to make sure that a configured version of KeyCloak is setup as part of this. Need to have a container that accepts an argument that points to a realm.json so the configuration is complete

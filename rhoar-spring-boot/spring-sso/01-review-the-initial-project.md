@@ -2,7 +2,7 @@
 
 For your convenience, this scenario has been created with a base project using the Java programming language and the Apache Maven build tool.
 
-Initially the project is almost empty and doesn't do anything. Start by reviewing the base project's content by executing a ``tree``{{execute}} in your terminal.
+This project already includes everything you need. Start by reviewing the base project's content by executing a ``tree``{{execute}} in your terminal.
 
 The output should look something like this:
 
@@ -18,6 +18,9 @@ The output should look something like this:
     │   │   └── com
     │   │       └── example
     │   │           └── Application.java
+    |	|			└──service
+    |	|           	└── Fruit.java
+    |	|               └── FruitController.java
     │   └── resources
     │       └── static
     │           └── index.html
@@ -35,20 +38,33 @@ One thing that differs slightly is the ``pom.xml``{{open}} file.
 
 As you review the content, you will notice that there are a couple **TODO** comments. **Do not remove them!** These comments are used as markers for later exercises in this scenario. 
 
-Notice that we are not using the default BOM (Bill of material) that Spring Boot projects typically use. We are using a BOM provided by Red Hat as part of the [Snowdrop](http://snowdrop.me/) project instead. We use this BOM to make sure that we are using only the dependency versions supported by Red Hat.
+Notice that the Keycloak adapter BOM (Bill of materials ) and Keycloak Adapter dependency has already been configured. We use this BOM to make sure we are using the dependency versions supported by Red Hat.
 
 ```xml
-  <dependencyManagement>
-    <dependencies>
+<dependencyManagement>
+	<dependencies>
       <dependency>
-        <groupId>me.snowdrop</groupId>
-        <artifactId>spring-boot-bom</artifactId>
-        <version>${spring-boot.bom.version}</version>
+		<groupId>org.keycloak.bom</groupId> 
+        <artifactId>keycloak-adapter-bom</artifactId> 
+        <version>3.4.3.Final-redhat1</version> 
         <type>pom</type>
         <scope>import</scope>
       </dependency>
     </dependencies>
-  </dependencyManagement>
+</dependencyManagement>
+```
+
+```xml
+  ...
+    <dependencies>
+    ...
+      <dependency>
+        <<groupId>org.keycloak</groupId>
+        <artifactId>keycloak-spring-boot-starter</artifactId> 
+      </dependency>
+      ...
+    </dependencies>
+  ...
 ```
 
 **1. Test the application locally**
