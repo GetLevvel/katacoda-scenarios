@@ -10,26 +10,27 @@ The output should look something like this:
 .
 ├── pom.xml
 └── src
-    ├── main
-    │   ├── fabric8
-    │   │   ├── deployment.yml
-    │   │   └── route.yml
-    │   ├── java
-    │   │   └── com
-    │   │       └── example
-    │   │           └── Application.java
-    │   └── resources
-    │       └── static
-    │           └── index.html
-    └── test
-        └── java
-            └── com
-                └── example
-                    └── ApplicationTests.java
+    └── main
+       ├── fabric8
+       │   ├── deployment.yml
+       │   └── route.yml
+       ├── java
+       │   └── com
+       │       └── example
+       │                ├── Application.java
+       │                └── service
+       │                    └── HomeController.java
+       │           
+       └── resources
+            ├──application-openshift.properties
+            ├──application.properties
+            └── templates
+                └── home.html
+
 ```
 
 
-Except for the `fabric8` directory and the `index.html`, this matches what you would get if you generated an empty project using the [Spring Initializr](https://start.spring.io). For the moment you can ignore the content of the fabric8 folder (we will discuss this later).
+Except for the `fabric8` directory, the `home.html`, and a few config files, this matches what you would get if you generated an empty project using the [Spring Initializr](https://start.spring.io). For the moment you can ignore the content of the fabric8 folder (we will discuss this later).
 
 One thing that differs slightly is the ``pom.xml``{{open}} file.
 
@@ -65,7 +66,11 @@ Run the application by executing the following command:
 
 To begin with click on the **Local Web Browser** tab in the console frame of this browser window which will open another tab or window of your browser pointing to port 8080 on your client. Or use [this](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) link.
 
-You should now see an HTML page with the `Welcome to Spring Boot` welcome message. If you see this then you've successfully set up the application! If not check the logs in the terminal. Spring Boot adds a couple helper layers to catch common errors and print helpful messages to the console so check for those first.
+You should now see an HTML page with a `Success` welcome message that looks like this:
+
+![Success](../../assets/middleware/rhoar-monitoring/success.png)
+
+If you see this then you've successfully set up the application! If not check the logs in the terminal. Spring Boot adds a couple helper layers to catch common errors and print helpful messages to the console so check for those first.
 
 **4. Stop the application**
 
@@ -73,6 +78,4 @@ Before moving on, click in the terminal window and then press **CTRL-C** to stop
 
 ## Congratulations
 
-You have now successfully executed the first step in this scenario. In the next step we will 
-
-TODO
+You have now successfully executed the first step in this scenario. In the next step we will login to OpenShift and create a new project.
