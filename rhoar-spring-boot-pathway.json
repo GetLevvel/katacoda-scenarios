@@ -53,6 +53,10 @@
     {
       "course_id": "spring-sso",
       "title": "Spring Boot Security and JBoss Keycloak"
+    },
+    {
+      "course_id": "creating-applications-for-cloud",
+      "title": "Creating and Building Applications The Way You Want For The Cloud"
     }
   ]
 }

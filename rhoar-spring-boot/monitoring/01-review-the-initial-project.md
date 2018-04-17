@@ -22,8 +22,8 @@ The output should look something like this:
        │                    └── HomeController.java
        │           
        └── resources
-            ├──application-openshift.properties
-            ├──application.properties
+            ├── application-openshift.properties
+            ├── application.properties
             └── templates
                 └── home.html
 
