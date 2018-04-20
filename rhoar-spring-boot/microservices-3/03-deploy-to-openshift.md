@@ -1,4 +1,4 @@
-# Deploy to OpenShift Application Platform
+# Deploy to OpenShift and Test Application
 
 **1. Deploy the application to OpenShift**
 
@@ -12,23 +12,27 @@ The `mvn package` piece of the above command instructs Maven to run the package 
 
 For the deployment to OpenShift we are using the [Fabric8](https://fabric8.io/) tool through the `fabric8-maven-plugin` which is configured in our ``pom.xml``{{open}} (found in the `<profiles/>` section). Configuration files for Fabric8 are contained in the `src/main/fabric8` folder mentioned earlier.
 
-After the Maven build has finished, it will typically take less than 20 sec for the application to be available. To verify that everything is started run the following command and wait for it to report that the replication controller successfully rolled out:
+**2. Connection to the application**
 
-``oc rollout status dc/rhoar-training``{{execute}}
+Now that our application is deployed, navigate to our route in the OpenShift Web View or click [here](http://spring-boot-circuit-breaker-greeting-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/). We should see the following header, meaning everything was successful:
 
-You should see output in the console similar to `replication controller "rhoar-training" successfully rolled out`. If you take another look at your OpenShift web view, you should see that your application now displays on the Overview page.
+![Circuit Breaker page](../../assets/middleware/rhoar-microservices/circuit-mainpage.png)
 
-**2. Connection to the application via the Route**
 
-Now that our application is deployed to OpenShift, how do external users access it? The answer is with a route. By using a route, we are able to expose our services and allow for external connections at a given hostname. Open the OpenShift web view and we can see the route that was created for our application. Navigate to the Overview page and expand our deployment tab. Under the `ROUTES External Traffic` section we should see our provided route.
-![Routes](../../assets/middleware/rhoar-monitoring/overviewRoutes.png)
+**3. Test current functionality**
 
-Either click on the route link through the OpenShift web view, or click this link [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/).
+Although our application has a nice web view, we're going to interact with it through our terminal for testing purposes. The first thing we have to do is call our greeting service.
 
-We should now see the same `Success` page that we saw when we first tested our app locally:
+``curl http://spring-boot-circuit-breaker-greeting-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/api/greeting``{{execute}}
 
-![Success](../../assets/middleware/rhoar-monitoring/success.png)
+ Since we should have no issue and our application is online we should get our normal response, which should look like this:
+ 
+ ```json
+ {"content":"Hello, World!"}
+ ```
+
+This means that everything is working and our circuit is open!
 
 ## Congratulations
 
-You have now learned how to deploy a Spring Boot application to OpenShift Container Platform, as well as access the application via an external route. In our next step, we will navigate through OpenShift's web console in order to view our application and learn about health checks.
+You have now learned how to deploy a Spring Boot application to OpenShift Container Platform and we've tested our current application. In our next step, we will trip the Circuit breaker and see how the functionality changes.
