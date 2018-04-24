@@ -15,7 +15,7 @@ Scale down our `spring-boot-circuit-breaker-name` service from 1 to 0, effective
 
 ![Scale down](../../assets/middleware/rhoar-microservices/scale-down.png)
 
-Now that our Name Service is down, let's see what happens when we repeat our previosu command:
+Now that our Name Service is down, let's see what happens when we repeat our previous command:
 
 ``curl http://spring-boot-circuit-breaker-greeting-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/api/greeting``{{execute}}
 
