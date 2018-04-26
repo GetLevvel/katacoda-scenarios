@@ -21,7 +21,7 @@ step. Click on the terminal and press **CTRL-C** to stop the application and try
 
 For this scenario, let's create a project that you will use to house your applications. 
 
-``oc new-project dev --display-name="Dev - Spring Boot App"``{{execute}}
+``oc new-project amq-demo``{{execute}}
 
 **3. Open the OpenShift Web Console**
 
