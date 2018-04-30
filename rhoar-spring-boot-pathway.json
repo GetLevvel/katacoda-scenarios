@@ -5,58 +5,54 @@
   "courses": [
     {
       "course_id": "getting-started-spring",
-      "title": "Spring Boot on RHOAR"
-    },
-    {
-      "course_id": "spring-boot-s2i",
-      "title": "Packaging Spring Boot Apps for OpenShift"
+      "title": "2: Spring Boot on RHOAR"
     },
     {
       "course_id": "spring-mvc",
-      "title": "Spring Boot MVC"
+      "title": "5: Spring Boot MVC"
     },
     {
       "course_id": "spring-rest-services",
-      "title": "Spring Boot REST APIs"
+      "title": "6: Spring Boot REST APIs"
     },
     {
       "course_id": "spring-db-access",
-      "title": "Spring Data with JPA/Hibernate"
+      "title": "7: Spring Data with JPA/Hibernate"
     },
     {
       "course_id": "spring-messaging",
-      "title": "Spring Boot Messaging and JBoss AMQ"
+      "title": "8: Spring Boot Messaging and JBoss AMQ"
     },
     {
       "course_id": "arquillian-kube",
-      "title": "Testing with Arquillian Kube"
+      "title": "9: Testing with Arquillian Kube"
     },
     {
       "course_id": "microservices-1",
-      "title": "Spring Boot Microservices on RHOAR 1",
+      "title": "10: Spring Boot Microservices on RHOAR 1",
       "description": "Externalized Configuration and Health Checks"
     },
     {
       "course_id": "microservices-2",
-      "title": "Spring Boot Microservices on RHOAR 2",
+      "title": "11: Spring Boot Microservices on RHOAR 2",
       "description": "Service Discovery and Load Balancing"
     },
     {
       "course_id": "microservices-3",
-      "title": "Spring Boot Microservices on RHOAR 3",
+      "title": "12: Spring Boot Microservices on RHOAR 3",
       "description": "Circuit Breaking"
     },
     {
       "course_id": "monitoring",
-      "title": "Monitoring in OpenShift with Spring Boot Actuator"
+      "title": "13: Monitoring in OpenShift with Spring Boot Actuator"
     },
     {
       "course_id": "spring-sso",
-      "title": "Spring Boot Security and JBoss Keycloak"
+      "title": "14: Spring Boot Security and JBoss Keycloak"
     },
     {
       "course_id": "creating-applications-for-cloud",
-      "title": "Creating and Building Applications The Way You Want For The Cloud"
+      "title": "3: Creating and Building Applications The Way You Want For The Cloud"
     }
   ]
 }

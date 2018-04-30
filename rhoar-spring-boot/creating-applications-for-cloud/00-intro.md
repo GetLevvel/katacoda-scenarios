@@ -1,4 +1,4 @@
-In this scenario you will get started developing Spring Boot applications using the [Red Hat OpenShift Application Runtimes](https://developers.redhat.com/products/rhoar) platform. We will be downloading a simple Spring Boot application with the Spring Initalizr and then going through different processes in order to deploy that application to OpenShift.
+In this scenario you will get started developing Spring Boot applications using the [Red Hat OpenShift Application Runtimes](https://developers.redhat.com/products/rhoar) platform. We will be downloading a simple Spring Boot application with the Spring Initializr and then going through different processes in order to deploy that application to OpenShift.
 
 ## How is Spring Boot supported on OpenShift?
 

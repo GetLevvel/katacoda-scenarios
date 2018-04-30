@@ -18,7 +18,7 @@ Service Discovery is functionality built into OpenShift by default through the u
 
 The service acts as an internal load balancer, proxying any requested connections to any of the pods using their internal IP addresses. While pods can be added or removed arbitrarily, the service remains consistently available. This allows anything that depends on the service to use a consistent internal address.
 
-Since it's possible for microservices to go down from time to time, it's important to think of how that situation gets handled within the Service Register. Generally a service register is paired with a load balancer layer (mentioned in the previous section) that will seamlessly fail over upon discoving that the instance no longer exists. So if a service instance was to go down, the service register would not be able to return the required information and the load balancer would kick in to handle it while also caching the service registry lookups.
+Since it's possible for microservices to go down from time to time, it's important to think of how that situation gets handled within the Service Register. Generally a service register is paired with a load balancer layer (mentioned in the previous section) that will seamlessly fail over upon discovering that the instance no longer exists. So if a service instance was to go down, the service register would not be able to return the required information and the load balancer would kick in to handle it while also caching the service registry lookups.
 
 
 ## Congratulations

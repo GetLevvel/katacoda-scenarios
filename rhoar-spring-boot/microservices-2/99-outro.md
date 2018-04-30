@@ -4,7 +4,7 @@ To summarize: Load Balancing and Service Discovery are two core concepts to be a
 
 Load Balancing is the practice of splitting traffic for performance and sometimes functionality reasons, while Service Discovery allows us to find our service instances and use a single address to connect to the multiple deployed services. The combination of both allow us to use a microservice architecture that can handle heavy load and scale easily and effectively.
 
-Spring Boot is a powerful and easy to use framework for developing everything from monolithic applications to microservices, but Spring Boot becomes every better when we package it in a container and use an orchestrated platform like OpenShift. When using OpenShift we can, in a very consistent and fast way, deploy our Spring application to multiple environments without worry of envrionment differences. OpenShift also enables things like Deployment Pipelines and Blue/Green deployments but that was not covered in this scenario.  
+Spring Boot is a powerful and easy to use framework for developing everything from monolithic applications to microservices, but Spring Boot becomes every better when we package it in a container and use an orchestrated platform like OpenShift. When using OpenShift we can, in a very consistent and fast way, deploy our Spring application to multiple environments without worry of environment differences. OpenShift also enables things like Deployment Pipelines and Blue/Green deployments but that was not covered in this scenario.  
 
 ## Additional Resources
 

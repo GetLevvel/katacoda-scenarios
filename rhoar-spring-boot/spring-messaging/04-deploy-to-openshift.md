@@ -23,25 +23,61 @@ In order create our template we have to load a `json` file with all of the confi
 
 ``oc login -u system:admin``{{execute}}
 
-After we're logged in, confirm that we're using the proper project. We should see output that says: `Using project "amq-demo"`. Since we're in the right project, let's go ahead and load up our template:
+After we're logged in, confirm that we're using the proper project. We should see output that says: `Using project "amq-demo"`. Since we're in the right project, let's go ahead and load up our templates:
 
-``oc create -f https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v1.3/xpaas-templates/amq62-ssl.json -n openshift``{{execute}}
+``oc create -n openshift -f https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/jboss-image-streams.json``{{execute}}
 
-We should see `template "amq62-ssl" created` which means we're done creating our template! Log back into our developer user and we can get into the other steps necessary for deploying our JBoss Instance.
+``oc replace -n openshift -f https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/jboss-image-streams.json``{{execute}}
+
+``oc -n openshift import-image jboss-amq-62:1.7``{{execute}}
+
+``oc -n openshift import-image jboss-amq-63:1.3``{{execute}}
+
+<!-- ``oc create -f https://raw.githubusercontent.com/openshift/openshift-ansible/master/roles/openshift_examples/files/examples/v1.3/xpaas-templates/amq62-ssl.json -n openshift``{{execute}} -->
+
+>**NOTE:** It's normal to see a few messages saying that some of the image streams already exist.
+
+After we've loaded up all of the templates, run the following command to update all templates:
+
+``for template in amq62-basic.json \
+ amq62-ssl.json \
+ amq63-persistent-ssl.json \
+ amq62-persistent.json \
+ amq63-basic.json \
+ amq63-ssl.json \
+ amq62-persistent-ssl.json \
+ amq63-persistent.json;
+ do
+ oc create -n openshift -f \
+ https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/amq/${template}
+ oc replace -n openshift -f \
+ https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/amq/${template}
+ done``{{execute}}
+
+Now that we've created and updated all of the required templates, log back into our developer user and we can get into the other steps necessary for deploying our JBoss Instance.
 
 ``oc login -u developer -p developer``{{execute}}
 
-**2.2 Create Service account and SSL Keys**
+**2.2 Create Service account**
 
 Now we need to make our Service Account for the broker. In order to do that we must first create our ServiceAccount, which we're naming `amq-service-account`:
 
 ``oc create serviceaccount amq-service-account``{{execute}}
 
-Now we simply add the view role to our newly created Service Account:
+Then we add the view role to our newly created Service Account:
 
 ``oc policy add-role-to-user view system:serviceaccount:amq-demo:amq-service-account``{{execute}}
 
-Now that our Service Account is created and has the role required, next we need to add SSL keys. When deploying AMQ to OpenShift we are required to provide SSL keys. If you do not have your own enterprise keys (such as for a Dev environment) you can create your own. Execute the following to create the SSL keys:
+Now that our Service Account is created and has the role required, next we need to add the parameters to the spec field and specify the service account we're going to be using:
+
+<pre class="file" data-filename="src/main/fabric8/deployment.yml" data-target="insert" data-marker="# TODO: Add Service Account variables">
+  serviceAccount: amq-service-account
+  serviceAccountName: amq-service-account
+</pre>
+
+**2.3 Configure SSL**
+ 
+ We're goingo to be taking a minimal approach with our SSL configuration for example purposes. When deploying AMQ to OpenShift we are required to provide a broker keyStore, a client keyStore, and a client trustStore. For this we're going to be creating a self-signed certificate for the broker keyStore. If you do not have your own enterprise keys (such as for a Dev environment) you can create your own. Execute the following to create the SSL keys:
 
 ``keytool -genkey -noprompt -trustcacerts -alias broker -keyalg RSA -keystore broker.ks -keypass password -storepass password -dname "cn=Dev, ou=engineering, o=company, c=US"``{{execute}}
 
@@ -61,13 +97,13 @@ Next we will import these certificates into OpenShift as secrets:
 
 And now all of our configuration is complete. Now it's time to create the AMQ instance.
 
-**2.3 Create AMQ Instance**
+**2.4 Create AMQ Instance**
 
 Log into the web view and select our `amq-demo` project. Then select `Add to Project` followed by `Browse Catalog`. We should now see a new template under the `Technologies` section that says `Messaging`:
 
 ![Messaging](../../assets/middleware/rhoar-messaging/messaging.png)
 
-Click on that template option and we'll be presented with all of the amq templates we've created. Select `amq62-ssl` and hit `Select`:
+Click on that template option and we'll be presented with all of the amq templates we've created. Select `JBoss A-MQ 6.2 (With SSL)`:
 
 ![Messaging](../../assets/middleware/rhoar-messaging/amq62-ssl.png)
 
@@ -75,14 +111,22 @@ We should now see a form accepting multiple parameters for generating the templa
 
 ![Application Created](../../assets/middleware/rhoar-messaging/app-created.png)
 
-Go to the overview and our final step is to expose the routes we require. The four we need to create are:
+Go to the overview and our final step is to expose the routes we require. Only SSL routes can be exposed because the OpenShift router requires SNI to send traffic. You can read more about how that works [here](https://access.redhat.com/documentation/en/openshift-enterprise/version-3.2/architecture/#secured-routes) if you're interested.
+
+The four SSL routes we have are:
 
 `amq-amqp-ssl`
 `amq-mqtt-ssl`
 `amq-stomp-ssl`
 `amq-tcp-ssl`
 
-For each of these routes, click the `Create Route` button and then scroll down and click `Create`. After we've created all four, our JBoss AMQ setup is finally complete!
+Click the `Create Route` button for the `amq-amqp-ssl` route. On the next form with Route options, check the `a` checkbox and then select `Create`.
+
+ADD ROUTE TO OPENSHIFT-PROPERTIES
+DONE
+
+
+<!-- For each of these routes, click the `Create Route` button and then scroll down and click `Create`. After we've created all four, our JBoss AMQ setup is finally complete! -->
 
 <!-- 
 

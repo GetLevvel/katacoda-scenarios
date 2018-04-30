@@ -27,7 +27,7 @@ Put in a test value and click the button. Now instead of seeing `Hello <name>...
 
 ![Bonjour Message](../../assets/middleware/rhoar-microservices/bonjour-message-minier.png) -->
 
-This means that we were able to modify our application behavoir through External Configuration of the `application.properties` file using a ConfigMap without having to even take down the application. That's pretty powerful!
+This means that we were able to modify our application behavior through External Configuration of the `application.properties` file using a ConfigMap without having to even take down the application. That's pretty powerful!
 
 ## Congratulations
 

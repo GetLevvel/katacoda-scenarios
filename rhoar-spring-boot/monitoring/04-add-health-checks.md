@@ -40,7 +40,7 @@ Run the following command again to re-deploy the application to OpenShift:
 
 Now that we've added Spring Actuator, we're able to hit their provided `/health` endpoint. We can navigate to it by either adding `/health` to our landing page, or by clicking [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/health) 
 
-We should now see the following response, confimring that our application is up and running properly:
+We should now see the following response, confirming that our application is up and running properly:
 
 ```json 
 {"status":"UP"}
