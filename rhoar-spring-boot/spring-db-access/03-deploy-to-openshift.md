@@ -4,8 +4,17 @@ For running locally the H2 Database has been a good choice, but when we now move
 
 Before we deploy the application to OpenShift and verify that it runs correctly, there are a couple of things we have do. We need to add a driver for the PostgreSQL database that we are going to use, and we also need to add health checks so that OpenShift correctly can detect if our application is working. 
 
+**1. Login to OpenShift Container Platform**
 
-**1. Create the database**
+To login, we will use the `oc` command and then specify username and password like this:
+
+``oc login -u developer -p developer``{{execute}}
+
+Now let's create a new project 
+
+``oc new-project dev --display-name="Dev - Spring Boot App"``{{execute}}
+
+**2. Create the database**
 
 Since this is your own personal project you need to create a database instance that your application can connect to. In a shared environment this would typically be provided for you, that's why we are not deploying this as part of your application. It's however very simple to do that in OpenShift. All you need to do is to execute the below command in the console.
 
@@ -15,7 +24,7 @@ Since this is your own personal project you need to create a database instance t
              openshift/postgresql-92-centos7 \
              --name=my-database``{{execute}}
 
-**2. Review Database configuration**
+**3. Review Database configuration**
 
 Take some time and review the ``src/main/fabric8/deployment.yml``{{open}}.
 
@@ -25,7 +34,7 @@ Now, review the ``src/main/resources/application-openshift.properties``{{open}}
 
 In this file we are using the configuration from the `deployment.yml` to read the username, password, and other connection details. 
 
-**3. Add the PostgreSQL database driver**
+**4. Add the PostgreSQL database driver**
 
 So far our application has only used the H2 embedded Database. We now need to add a dependency for the PostgreSQL driver. We do that by adding a runtime dependency under the `openshift` profile in the ``pom.xml``{{open}} file.
 
@@ -39,7 +48,7 @@ So far our application has only used the H2 embedded Database. We now need to ad
 </pre>
 
 
-**4. Add a health check**
+**5. Add a health check**
 
 We also need a health check so that OpenShift can detect when our application is responding correctly. Spring Boot provides a nice feature for this called Actuator, which exposes health data under the path `/health`. All we need to do is to add the following dependency to ``pom.xml``{{open}} at the **TODO** comment..
 
@@ -50,7 +59,7 @@ We also need a health check so that OpenShift can detect when our application is
     &lt;/dependency&gt;
 </pre>
 
-**5. Deploy the application to OpenShift**
+**6. Deploy the application to OpenShift**
 
 Run the following command to deploy the application to OpenShift
 

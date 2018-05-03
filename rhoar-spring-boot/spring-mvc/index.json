@@ -15,8 +15,7 @@
       { "title": "Step 2", "text": "02-error-pages.md" },
       { "title": "Step 3", "text": "03-create-model-controller.md" },
       { "title": "Step 4", "text": "04-review-view.md" },
-      { "title": "Step 5", "text": "05-login-to-openshift.md" },
-      { "title": "Step 6", "text": "06-deploy-to-openshift.md" }
+      { "title": "Step 5", "text": "05-login-to-openshift.md" }
     ],
     "finish": {
       "text": "99-outro.md"

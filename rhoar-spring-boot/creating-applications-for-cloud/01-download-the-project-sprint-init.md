@@ -4,6 +4,7 @@ When developing a Spring application a great place to start is with the [Spring 
 
 
 **1. Spring Initializr** 
+
 Go ahead and navigate to the [Spring Initializr](https://start.spring.io) tool. The first thing you'll see is a simple tool for generating Spring applications. This tool is very useful for getting a Spring Boot application up and running very quickly, including whatever dependencies you need. To take a look at all of the dependencies, switch your view to the full version by clicking the link: 
 
 ![Full Version](../../assets/middleware/rhoar-creating-applications-for-cloud/full-version.png)

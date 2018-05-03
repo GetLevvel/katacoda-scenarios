@@ -1,23 +1,24 @@
 # Deploy to OpenShift and Test Application
 
-**1. Deploy the application to OpenShift**
+**1. Login and create a Project**
 
-Run the following command to deploy the application to OpenShift
+To login, we will use the `oc` command and then specify a username and password like this:
+
+``oc login -u developer -p developer``{{execute}}
+
+Now we'll create a base project for our application:
+
+``oc new-project dev --display-name="Dev - Spring Boot App"``{{execute}}
+
+All tha'ts left is to run the following command to deploy the application to our newly created project in OpenShift:
 
 ``mvn package fabric8:deploy -Popenshift``{{execute}}
-
-There's a lot that happens here so lets break it down:
-
-The `mvn package` piece of the above command instructs Maven to run the package lifecycle. This builds a Spring Boot JAR file which is a Fat Jar containing all dependencies necessary to run our application.
-
-For the deployment to OpenShift we are using the [Fabric8](https://fabric8.io/) tool through the `fabric8-maven-plugin` which is configured in our ``pom.xml``{{open}} (found in the `<profiles/>` section). Configuration files for Fabric8 are contained in the `src/main/fabric8` folder mentioned earlier.
 
 **2. Connection to the application**
 
 Now that our application is deployed, navigate to our route in the OpenShift Web View or click [here](http://spring-boot-circuit-breaker-greeting-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/). We should see the following header, meaning everything was successful:
 
 ![Circuit Breaker page](../../assets/middleware/rhoar-microservices/circuit-mainpage.png)
-
 
 **3. Test current functionality**
 

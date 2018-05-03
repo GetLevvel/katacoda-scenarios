@@ -17,7 +17,7 @@ To add Spring Data + JPA and Hibernate to our project all we have to do is to ad
     &lt;/dependency&gt;
 </pre>
 
-We also need a Database to actually interact with. When running locally or when running tests an in-memory Database is often used over connection to an external Database because its lifecyle can be managed by Spring and we don't have to worry about outages impacting our local development. H2 is a small in-memory database that is perfect for testing but is not recommended for production environments. To add H2 add the following dependency at the comment `<!-- TODO: Add H2 database dependency here -->` in the local profile.
+We also need a Database to actually interact with. When running locally or when running tests an in-memory Database is often used over connection to an external Database because its lifecycle can be managed by Spring and we don't have to worry about outages impacting our local development. H2 is a small in-memory database that is perfect for testing but is not recommended for production environments. To add H2 add the following dependency at the comment `<!-- TODO: Add H2 database dependency here -->` in the local profile.
 
 <pre class="file" data-filename="pom.xml" data-target="insert" data-marker="<!-- TODO: Add H2 database dependency here -->">
     &lt;dependency&gt;

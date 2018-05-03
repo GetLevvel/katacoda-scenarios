@@ -1,6 +1,16 @@
-# Deploy to OpenShift Application Platform
+# Login and Deploy to OpenShift Application Platform
 
-**1. Additional Configuration**
+**1. Login to the OpenShift Container Platform**
+
+To login, we will use the `oc` command and then specify a username and password like this:
+
+``oc login -u developer -p developer``{{execute}}
+
+Next we create the project that we'll be adding our application to:
+
+``oc new-project dev --display-name="Dev - Spring Boot App"``{{execute}}
+
+**2. Additional Configuration**
 
 Before we deploy the application, we have to make a few changes so our application runs smoothly using External Configurations.
 
@@ -16,7 +26,7 @@ We should see `role "view" added: "default"` as output. The next step is to crea
 
 Now we're ready to deploy!
 
-**2. Deploy the application to OpenShift**
+**3. Deploy the application to OpenShift**
 
 Run the following command to deploy the application to OpenShift
 
@@ -32,7 +42,7 @@ Now that our application is deployed, navigate to our route in the OpenShift Web
 
 ![Greeting Service](../../assets/middleware/rhoar-microservices/greeting-service-mini.png)
 
-**3. Test functionality**
+**4. Test functionality**
 
 As the page suggests, we're going to put in a name and let our greeting service reply with a given greeting. Since our default value is `Hello %s from a ConfigMap!`, that's what we should see after we fill in the textbox and click the button. 
 

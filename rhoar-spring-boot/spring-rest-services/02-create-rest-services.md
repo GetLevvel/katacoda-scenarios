@@ -8,7 +8,7 @@ We have already created the model for our Fruit objects due to it being necessar
 
 **2. Add a Controller**
 
-Next we need to create a Spring Controller to handle HTTP requests to our application. The `@RestController` annottation on a Java class marks the class as a Controller (intented to be of the REST variety) which Spring will register automatically for you on application start. Click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/FruitController.java``{{open}}
+Next we need to create a Spring Controller to handle HTTP requests to our application. The `@RestController` annotation on a Java class marks the class as a Controller (intended to be of the REST variety) which Spring will register automatically for you on application start. Click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/FruitController.java``{{open}}
 
 Then, copy the below content into the file (or use the `Copy to Editor` button):
 

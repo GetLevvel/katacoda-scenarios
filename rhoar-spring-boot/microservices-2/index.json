@@ -11,9 +11,10 @@
       "code": "env-init.sh"
     },
     "steps": [
-      { "title": "Step 1", "text": "01-review-the-initial-project.md" },
-      { "title": "Step 2", "text": "02-load-balancing-overview.md" },
-      { "title": "Step 3", "text": "03-service-discovery-overview.md" }
+      { "title": "Step 1", "text": "01-load-balancing-overview.md" },
+      { "title": "Step 2", "text": "02-service-discovery-overview.md" },
+      { "title": "Step 3", "text": "03-service-discovery-spring-service.md" },
+      { "title": "Step 4", "text": "04-service-discovery-spring-client.md" }
     ],
     "finish": {
       "text": "99-outro.md"
@@ -22,7 +23,7 @@
   "files": [],
   "environment": {
     "showdashboard": true,
-    "dashboards": [{"name":"Local Web Browser","port":8080},{"name":"OpenShift Console","port":8443}],
+    "dashboards": [{"name":"Local Web Browser","port":8761},{"name":"OpenShift Console","port":8443}],
     "uilayout": "editor-terminal",
     "uisettings": "java",
     "hideintro": false,
