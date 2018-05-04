@@ -78,4 +78,4 @@ In addition to the different monitoring endpoints we also have informational end
 
 ## Congratulations
 
-You have now included a health check in your Spring Boot application that's living in the OpenShift Container Platform. Click Summary for more details and suggested next steps.
+You have now included a health check in your Spring Boot application that's living in the OpenShift Container Platform. In the next step, we're going to add some base logging that will help us when debugging our application.
