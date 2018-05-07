@@ -122,10 +122,6 @@ The four SSL routes we have are:
 
 Click the `Create Route` button for the `amq-amqp-ssl` route. On the next form with Route options, check the `a` checkbox and then select `Create`.
 
-ADD ROUTE TO OPENSHIFT-PROPERTIES
-DONE
-
-
 <!-- For each of these routes, click the `Create Route` button and then scroll down and click `Create`. After we've created all four, our JBoss AMQ setup is finally complete! -->
 
 <!-- 
