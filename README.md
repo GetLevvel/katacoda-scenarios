@@ -1,5 +1,5 @@
 # Katacoda Scenario
 
-View our training here:
+View our trainings here:
 
 https://www.katacoda.com/getlevvel/
