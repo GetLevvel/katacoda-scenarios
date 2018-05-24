@@ -14,7 +14,8 @@
     ],
     "intro": {
       "text": "00-intro.md",
-      "code": "env-init.sh"
+      "code": "env-init.sh",
+      "courseData": "background.sh"
     },
     "finish": {
       "text": "99-outro.md"

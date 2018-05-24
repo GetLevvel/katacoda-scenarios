@@ -1,4 +1,4 @@
-# Deploy to OpenShift Application Platform
+# Deploy to OpenShift Application Platform with Launcher
 
 Before we deploy the application to OpenShift we need to add health checks so that OpenShift can correctly detect if our application is working. For this simple application we will simply leverage another Spring Boot project: Spring Actuator.
 

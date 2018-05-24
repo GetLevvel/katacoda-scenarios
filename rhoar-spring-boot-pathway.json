@@ -4,55 +4,59 @@
   "paid": false,
   "courses": [
     {
-      "course_id": "getting-started-spring",
-      "title": "Spring Boot on RHOAR"
+      "course_id": "",
+      "title": "1: (TODO) Intro to Red Hat OpenShift Application Runtimes"
     },
     {
-      "course_id": "spring-boot-s2i",
-      "title": "Packaging Spring Boot Apps for OpenShift"
+      "course_id": "getting-started-spring",
+      "title": "2: Spring Boot on RHOAR"
     },
     {
       "course_id": "spring-mvc",
-      "title": "Spring Boot MVC"
+      "title": "3: Spring MVC"
     },
     {
       "course_id": "spring-rest-services",
-      "title": "Spring Boot REST APIs"
+      "title": "4: Spring REST"
     },
     {
       "course_id": "spring-db-access",
-      "title": "Spring Data with JPA/Hibernate"
+      "title": "5: Spring Data with JPA/Hibernate"
     },
     {
       "course_id": "spring-messaging",
-      "title": "Spring Boot Messaging and JBoss AMQ"
+      "title": "6: Spring Messaging with Red Hat AMQ"
     },
     {
-      "course_id": "arquillian-kube",
-      "title": "Testing with Arquillian Kube"
+      "course_id": "arquilian-kube",
+      "title": "7: Testing Spring Applications with Arquillian Kube"
     },
     {
       "course_id": "microservices-1",
-      "title": "Spring Boot Microservices on RHOAR 1",
+      "title": "8: Externalized Configuration",
       "description": "Externalized Configuration and Health Checks"
     },
     {
       "course_id": "microservices-2",
-      "title": "Spring Boot Microservices on RHOAR 2",
+      "title": "9: Service Discovery and Load Balancing",
       "description": "Service Discovery and Load Balancing"
     },
     {
       "course_id": "microservices-3",
-      "title": "Spring Boot Microservices on RHOAR 3",
+      "title": "10: Fault Tolerance and Resiliency",
       "description": "Circuit Breaking"
     },
     {
       "course_id": "monitoring",
-      "title": "Monitoring in OpenShift with Spring Boot Actuator"
+      "title": "11: Monitoring Spring Applications on OpenShift"
     },
     {
       "course_id": "spring-sso",
-      "title": "Spring Boot Security and JBoss Keycloak"
+      "title": "12: Secured Services with Red Hat SSO"
+    },
+    {
+      "course_id": "creating-applications-for-cloud",
+      "title": "X: Creating and Building Applications The Way You Want For The Cloud"
     }
   ]
 }
