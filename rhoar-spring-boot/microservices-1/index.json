@@ -1,7 +1,7 @@
 {
   "pathwayTitle": "RHOARSpringBoot",
   "icon": "fa-openshift",
-  "title": "Microservices 1",
+  "title": "Externalized Configuration and Health Checks",
   "description": "Externalized Configuration and Health Checks",
   "difficulty": "beginner",
   "time": "15 minutes",
