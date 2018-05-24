@@ -27,7 +27,7 @@ We also need a Database to actually interact with. When running locally or when 
     &lt;/dependency&gt;
 </pre>
 
-If Spring Boot sees a database like H2 on the classpath it will automatically configure an in-memory one for us as well as all the connection Beans necessary to connect to it. We've chosen to override these settings in the ``application-local.properties``{{open}} file to demonstrate that you can interact with Spring Boot's auto-configuration quite easily. 
+If Spring Boot sees a database like H2 on the classpath it will automatically configure an in-memory one for us as well as all the connection Beans necessary to connect to it. We've chosen to override these settings in the ``src/main/resources/application-local.properties``{{open}} file to demonstrate that you can interact with Spring Boot's auto-configuration quite easily. 
 
 **2. Create an Entity class**
 
