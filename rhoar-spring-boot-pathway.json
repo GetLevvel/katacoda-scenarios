@@ -28,7 +28,7 @@
       "title": "6: Spring Messaging with Red Hat AMQ"
     },
     {
-      "course_id": "arquilian-kube",
+      "course_id": "arquilian-cube",
       "title": "7: Testing Spring Applications with Arquillian Kube"
     },
     {
@@ -49,10 +49,6 @@
     {
       "course_id": "monitoring",
       "title": "11: Monitoring Spring Applications on OpenShift"
-    },
-    {
-      "course_id": "arquillian-kube",
-      "title": "12: Testing with Arquillian Cube"
     },
     {
       "course_id": "creating-applications-for-cloud",

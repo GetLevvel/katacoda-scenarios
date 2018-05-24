@@ -1,8 +1,8 @@
 {
   "pathwayTitle": "RHOARSpringBoot",
   "icon": "fa-openshift",
-  "title": "Testing with Arquilian Kube",
-  "description": "TODO",
+  "title": "Testing with Arquilian Cube",
+  "description": "In this scenario you will learn how to perform integration testing with containers on OpenShift using Arquillian Cube",
   "difficulty": "beginner",
   "time": "15 minutes",
   "details": {
