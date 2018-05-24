@@ -1,6 +1,7 @@
 # Trip the Circuit Breaker
 
 **1. Trip the Circuit Breaker**
+
 Now that we know both of our services are online and everything is working let's see what happens when we take down our Name service.
 
 Navigate to the OpenShift Pod view for the application by clicking on the link [here]([[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/) and navigate to the Overview page. We should see both of our services here:
@@ -25,7 +26,7 @@ Instead of seeing the name, our response should now look like this:
  {"content":"Hello, Fallback!"}
  ```
 
-Our Circuit Breaker has been tripped! Since the service went down we are no longer calling our Name service and we are instead returning the hardcoded test value that we created. No matter how many times we call our service, we should always expect that same response.
+Our Circuit Breaker has been tripped! Since the service went down we are no longer calling our Name service and we are instead returning the hardcoded test value that we created. No matter how many times we call our service we should always expect that same response.
 
 **2. Reset the Circuit Breaker**
 
