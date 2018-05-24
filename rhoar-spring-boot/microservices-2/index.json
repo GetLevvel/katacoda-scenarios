@@ -1,7 +1,7 @@
 {
   "pathwayTitle": "RHOARSpringBoot",
   "icon": "fa-openshift",
-  "title": "Microservices 2",
+  "title": "Service Discovery and Load Balancing",
   "description": "Service Discovery and Load Balancing",
   "difficulty": "beginner",
   "time": "15 minutes",

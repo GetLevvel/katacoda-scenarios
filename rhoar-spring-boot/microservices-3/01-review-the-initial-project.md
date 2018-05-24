@@ -4,15 +4,15 @@ For your convenience, this scenario has been created using the OpenShift Launche
 
 **1. Understanding the Application**
 
-The project is a simple Greeting application with two services, a Greeting service and a Name service. When you invoke the Greeting service, it makes a call to our secondary Name service. The name service returns the name of the user, which our greeting service then greets. Simple!
+The project is a simple Greeting application with two services: a Greeting service and a Name service. When you invoke the Greeting service, it makes a call to our secondary Name service. The name service returns the name of the user which our greeting service then greets.
 
-However there's one problem. Our greeting service is dependent on the name service. If the name service were to crash or go offline for some amount of time, our greeting service would be failing for the entire duration. This is an issue that can arise when we have multiple microservices communicating with one another, and the solution is to use something called a `Circuit Breaker` pattern.
+However there is one problem: our greeting service is dependent on the name service. If the name service were to crash or go offline for some amount of time our greeting service would fail for the entire duration Name service is unavailable. This is an issue that can arise when we have multiple microservices communicating with one another and one solution is to use something called a `Circuit Breaker` pattern.
 
-**2. The Circuit Breaker pattern**
+**2. The Circuit Breaker Pattern**
 
-The Circuit Breaker pattern's purpose is to make sure that failing remote calls don't crash a system or cause unwarranted behavior. They do this by wrapping the desired function call into a circuit breaker object that monitors the attempted calls. When there is a failure, or the failures reach some boundary the user created, the circuit will trip (entering the `Closed` state) and **no further calls will be made to our remote service**. Instead we can send back some default value or some response alerting the user what's happened.
+The Circuit Breaker pattern's purpose is to make sure that failing remote calls don't crash a system or cause unwarranted behavior. They do this by wrapping the desired function call into a circuit breaker object that monitors the attempted calls. When there is a failure, or the failures reach some boundary the user created, the circuit will trip (entering the `Open` state) and **no further calls will be made to our remote service**. Instead we can send back some default value or some response alerting the user what's happened.
 
-Once the circuit is tripped no calls can be made to the failing service. However if we were to keep the circuit in this state we could never call the remote service again. Obviously this isn't our desired behavior. In order to work around this issue, we can poll after some defined interval to see if the remote service is responding yet. If it responds, it means that the issue has been fixed and the circuit is again in the `Open` state. If not, we can keep the circuit closed and wait for another interval to try again. Sometimes this in-between state of not knowing if the service is up is called a `Half-Open` state.
+Once the circuit is tripped no calls can be made to the failing service. However if we were to keep the circuit in this state we could never call the remote service again. In order to work around this issue, we can poll after some defined interval to see if the remote service is responding yet. If it responds, it means that the issue has been fixed and the circuit is again in the `Closed` state. If not, we can keep the circuit closed and wait for another interval to try again. Sometimes this in-between state of not knowing if the service is up is called a `Half-Open` state.
 
 You can read more about the Circuit Breaker pattern and see some helpful diagrams [here](https://martinfowler.com/bliki/CircuitBreaker.html).
 
@@ -28,7 +28,7 @@ Our two-service application is currently implementing this pattern. If we take a
     }
 ```
 
-If we take a look at that file ``greeting-service/src/main/java/io/openshift/booster/service/NameService.java``{{open}} We see that we're using something called `Hystrix`. Hystrix is a Java library created by Netflix that's used to handle cascading failures and provide fallback options. We use it here to handle our circuit breaking pattern. If we take a look at the code, we see that we're setting a timeout for the given Hystrix command:
+If we take a look at the NameService class ``greeting-service/src/main/java/io/openshift/booster/service/NameService.java``{{open}} We see that we're using something called `Hystrix`. Hystrix is a Java library created by Netflix that is used to handle cascading failures and provide fallback options. We use it here to handle our circuit breaking pattern. If we take a look at the code, we see that we're setting a timeout for the given Hystrix command:
 
 
 ```java
@@ -44,7 +44,7 @@ We're telling Hystrix to call a given fallback method (`getFallbackName`) if our
         return "Fallback";
     }
 ```
-So if our circuit is open, we expect to see a message similar to `Hello, <name>!`. And if we have a closed circuit, we will see `Hello, Fallback!`.
+So if our circuit is Closed, we expect to see a message similar to `Hello, <name>!`. If we have an Open circuit we will see `Hello, Fallback!`.
 
 ## Congratulations
 

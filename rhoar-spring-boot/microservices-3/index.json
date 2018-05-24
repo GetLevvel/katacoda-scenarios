@@ -1,7 +1,7 @@
 {
   "pathwayTitle": "RHOARSpringBoot",
   "icon": "fa-openshift",
-  "title": "Microservices 3",
+  "title": "Fault Tolerance and Resiliency",
   "description": "Circuit Breakers",
   "difficulty": "beginner",
   "time": "15 minutes",
