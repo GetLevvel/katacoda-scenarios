@@ -51,8 +51,8 @@
       "title": "11: Monitoring Spring Applications on OpenShift"
     },
     {
-      "course_id": "spring-sso",
-      "title": "12: Secured Services with Red Hat SSO"
+      "course_id": "arquillian-kube",
+      "title": "12: Testing with Arquillian Cube"
     },
     {
       "course_id": "creating-applications-for-cloud",

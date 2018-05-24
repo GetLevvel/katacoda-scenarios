@@ -46,7 +46,7 @@ Notice that the Keycloak adapter BOM (Bill of materials ) and Keycloak Adapter d
       <dependency>
 		<groupId>org.keycloak.bom</groupId> 
         <artifactId>keycloak-adapter-bom</artifactId> 
-        <version>3.4.3.Final-redhat1</version> 
+        <version>${version.org.keycloak.bom.keycloak-adapter-bom>}</version> 
         <type>pom</type>
         <scope>import</scope>
       </dependency>
