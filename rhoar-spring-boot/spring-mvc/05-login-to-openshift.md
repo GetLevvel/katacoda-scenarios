@@ -20,7 +20,7 @@ All that's left is to run the following command to deploy the application to Ope
 
 ``mvn package fabric8:deploy -Popenshift``{{execute}}
 
-After it's complete we can pull up the web console and check the route to confirm that our application is still up and working just as it was! The only difference now is that it's deployed on OpenShift.
+After deployment completes either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com). We can confirm that our application is still up and working just as it was before! The only difference now is that it's deployed on OpenShift.
 
 ## Congratulations
 
