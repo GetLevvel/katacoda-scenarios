@@ -116,6 +116,10 @@ Now re-run the application by executing the ``mvn spring-boot:run``{{execute}} c
 
 If you add a Fruit name to the text box and click save it should now appear on the right side list.
 
+**5. Stop the application**
+
+Before moving on, click in the terminal window and then press **CTRL-C** to stop the running application!
+
 ## Congratulations
 
 You have now learned how to how to create simple Spring MVC Controllers and how to connect your Models to the views using a Controller. In the next section we'll review the View we've created for you.
