@@ -24,6 +24,22 @@ Since this is your own personal project you need to create a database instance t
              openshift/postgresql-92-centos7 \
              --name=my-database``{{execute}}
 
+This command creates a new deployable Postgres instance using the OpenShift Postgresql image named `my-database`. We
+can check the status of the deployment by running `oc status`{{execute}} as mentioned in the output of the above command.
+
+When deployed you should see similar output to the following:
+
+```
+$ oc status
+In project Dev - Spring Boot App (dev) on server https://172.17.0.85:8443
+
+svc/my-database - 172.30.167.58:5432
+  dc/my-database deploys istag/my-database:latest
+    deployment #1 deployed about a minute ago - 1 pod
+```
+
+We can see here that 1 pod is deployed with our Database image and it is now ready to consume. 
+
 **3. Review Database configuration**
 
 Take some time and review the ``src/main/fabric8/deployment.yml``{{open}}.
