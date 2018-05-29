@@ -10,31 +10,47 @@ First we need a message object. Spring Boot allows us to code in the context of 
 
 Then, copy the below content into the file (or use the `Copy to Editor` button):
 
-<pre class="file" data-filename="src/main/java/com/example/service/Ping.java" data-target="replace">
+<pre class="file" data-filename="src/main/java/com/example/service/Fruit.java" data-target="replace">
 package com.example.service;
 
-public class Ping {
+import java.util.ArrayList;
+import java.util.Random;
 
-    private String body;
+public class Fruit {
 
-    public Ping() {
+    private String name;
+
+    private static ArrayList<String> fruits = new ArrayList<String>() {{
+        add("Apple");
+        add("Banana");
+        add("Watermelon");
+    }};
+
+    private static String getRandomFruit() {
+      Random rand = new Random();
+      int index = rand.nextInt(fruits.size());
+      return fruits.get(index);
     }
 
-    public Ping(String body) {
-        this.body = body;
+    public Fruit() {
+      this.name = getRandomFruit();
     }
 
-    public String getBody() {
-        return body;
+    public Fruit(String name) {
+        this.name = name;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public String getFruit() {
+        return name;
+    }
+
+    public void setFruit(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Ping{ body='" + body + '\'' + " }";
+        return "Fruit{ Name ='" + name + '\'' + " }";
     }
 }
 </pre>
@@ -63,10 +79,10 @@ public class Receiver {
     }
 
     @JmsListener(destination = "${queue.boot}")
-    public void receiveMessage(Ping ping) {
-        System.out.println("Received: " + ping);
+    public void receiveMessage(Fruit fruit) {
+        System.out.println("Received: " + fruit);
         cache.incr();
-        cache.addMessage(ping);
+        cache.addMessage(fruit);
     }
 
 }
@@ -113,7 +129,7 @@ public class MessageConfig {
 }
 </pre>
 
-This `@Configuration` class does two things for us. With the `@EnableJms` annotation we effectively "turn on" Spring Boot's JMS configuration which registers scanning for components with the `@JmsListener` annotation. This is how we tell Spring to search for these classes (it also sets up a couple infrastructure items to accept JMS messages). 
+This `@Configuration` class does two things for us. With the `@EnableJms` annotation we effectively "turn on" Spring Boot's JMS configuration which registers scanning for components with the `@JmsListener` annotation. This is how we tell Spring to search for these classes (it also sets up a couple infrastructure items to accept JMS messages).
 
 The single Bean in this class is our `MessageConverter`. Spring Boot uses this class to automatically serialize/deserialize JMS messages. Registering this Bean means that Spring Boot will automatically pick it up and use it for our JMS Messages. `MessageConverter` is the base type and `MappingJackson2MessageConverter` is the Jackson implementation of this base class.
 
@@ -123,7 +139,7 @@ Now that we have a listener and a Message model we now need a Message Producer. 
 
 Then, copy the below content into the file (or use the `Copy to Editor` button):
 
-<pre class="file" data-filename="src/main/java/com/example/service/Producer.java" data-target="replace">
+<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="replace">
 package com.example.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -135,7 +151,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class Producer {
+public class FruitController {
 
     private JmsTemplate jmsTemplate;
 
@@ -149,7 +165,7 @@ public class Producer {
 
     @Scheduled(fixedRate = 3000L)
     public void sendTick() {
-        jmsTemplate.convertAndSend(queue, new Ping(LocalDateTime.now().toString()));
+        jmsTemplate.convertAndSend(queue, new Fruit());
     }
 
 }
