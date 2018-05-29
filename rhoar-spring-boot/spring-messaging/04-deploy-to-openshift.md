@@ -85,13 +85,18 @@ Now that our Service Account is created and has the role required, next we need 
 
 ``keytool -genkey -noprompt -trustcacerts -alias client -keyalg RSA -keystore client.ks -keypass password -storepass password -dname "cn=Dev, ou=engineering, o=company, c=US"``{{execute}}
 
+``keytool -export -noprompt -alias client -keystore client.ks -file client_cert -storepass password``{{execute}}
+
 ``keytool -import -noprompt -trustcacerts -alias broker -keystore client.ts -file broker_cert -storepass password``{{execute}}
+
+``keytool -import -alias client -keystore server.ts -file client_cert``{{execute}}
+
 
 If all of the commands were ran successfully, we should see `Certificate was added to keystore` in our terminal.
 
 Next we will import these certificates into OpenShift as secrets:
 
-``oc secrets new amq-app-secret broker.ks``{{execute}}
+``oc secrets new amq-app-secret broker.ks broker.ts``{{execute}}
 
 ``oc secrets add sa/amq-service-account secret/amq-app-secret``{{execute}}
 
