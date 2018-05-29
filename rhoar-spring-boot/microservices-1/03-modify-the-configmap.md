@@ -8,7 +8,7 @@ Let's modify the greeting that our service is returning to the user. Since we se
 
 This will open the file in a vim editor. Let's change the greeting to something like this:
 
-`greeting.message=Bonjour %s from a ConfigMap!`
+`greeting.message=Greetings, you picked %s as your favorite fruit!`
 
 Now in order to reflect those changes, we deploy the new version of the application so the ConfigMap configuration changes are picked up:
 
