@@ -27,8 +27,6 @@ After we're logged in, confirm that we're using the proper project. We should se
 
 ``oc create -n openshift -f https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/jboss-image-streams.json``{{execute}}
 
-``oc replace -n openshift -f https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/jboss-image-streams.json``{{execute}}
-
 ``oc -n openshift import-image jboss-amq-62:1.7``{{execute}}
 
 ``oc -n openshift import-image jboss-amq-63:1.3``{{execute}}
@@ -50,9 +48,11 @@ After we've loaded up all of the templates, run the following command to update 
  do
  oc create -n openshift -f \
  https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/amq/${template}
- oc replace -n openshift -f \
- https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/amq/${template}
  done``{{execute}}
+
+Next we need to create a persistent volume for the AMQ instance to use
+
+``oc create -f pv.yaml``{{execute}}
 
 Now that we've created and updated all of the required templates, log back into our developer user and we can get into the other steps necessary for deploying our JBoss Instance.
 
