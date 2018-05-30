@@ -21,10 +21,10 @@ You can read more about the Circuit Breaker pattern and see some helpful diagram
 Our two-service application is currently implementing this pattern. If we take a look at our ``greeting-service/src/main/java/io/openshift/booster/service/GreetingController.java``{{open}} file, we see that our simple controller is simply calling our `NameService`.
 
 ```java
-    public Greeting getGreeting() throws Exception {
-        String result = String.format("Hello, %s!", nameService.getName());
+    public Fruit getFruit() throws Exception {
+        String result = String.format("You've picked %s!", nameService.getName());
         handler.sendMessage(nameService.getState());
-        return new Greeting(result);
+        return new Fruit(result);
     }
 ```
 

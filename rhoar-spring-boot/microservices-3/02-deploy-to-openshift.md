@@ -40,7 +40,7 @@ Although our application has a nice web view, we're going to interact with it th
  Since we should have no issue and our application is online we should get our normal response, which should look like this:
  
  ```json
- {"content":"Hello, World!"}
+ {"content":"You've picked apple!"}
  ```
 
 This means that everything is working and our circuit is closed!
