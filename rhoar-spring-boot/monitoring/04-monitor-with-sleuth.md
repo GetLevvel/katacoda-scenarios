@@ -23,7 +23,7 @@ Luckily for us Sleuth handles all of these complexities! All we have to do is in
 Now that we have our dependency set up, we're going to add some basic logging. Let's add an info-level log to our main controller:
 ``src/main/java/com/example/service/FruitController.java``{{open}}
 
-<pre class="file" data-filename="src/main/java/com/example/service/HomeController.java" data-target="insert" data-marker="// TODO: Add Sleuth logging here">
+<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="// TODO: Add Sleuth logging here">
 log.info("Entering application");
 logMessage();
 </pre>
@@ -31,7 +31,7 @@ logMessage();
 We're also going to add another function that only contains a logging statement that we're calling in our main controller function:
 ``src/main/java/com/example/service/FruitController.java``{{open}}
 
-<pre class="file" data-filename="src/main/java/com/example/service/HomeController.java" data-target="insert" data-marker="//TODO: Add blank logging function">
+<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="//TODO: Add blank logging function">
 public void logMessage() {
     log.info("Logging from function");
 }
