@@ -20,7 +20,7 @@ Now the last step is to run the following command to deploy the application to O
 Now that our application is deployed to OpenShift, how do external users access it? The answer is with a route. By using a route, we are able to expose our services and allow for external connections at a given hostname. Open the OpenShift web view and we can see the route that was created for our application. Navigate to the Overview page and expand our deployment tab. Under the `ROUTES External Traffic` section we should see our provided route.
 ![Routes](../../assets/middleware/rhoar-monitoring/overviewRoutes.png)
 
-Either click on the route link through the OpenShift web view, or click this link [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/).
+Either click on the route link through the OpenShift web view, or click this link [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/fruits).
 
 We should now see the same `Success` page that we saw when we first tested our app locally:
 
