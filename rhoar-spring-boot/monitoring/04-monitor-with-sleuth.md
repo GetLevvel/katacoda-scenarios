@@ -43,7 +43,7 @@ Now that we have both of our log statements created, let's test it out! We're go
 
 ``mvn spring-boot:run``{{execute}}
 
-Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, take another look at the terminal. We should see two logging statements that look similar to this:
+Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, take another look at the terminal. We should see two logging statements that look similar to this:
 
 `INFO [-,66221df6b307bf1a,66221df6b307bf1a,false] 2588 --- [nio-8080-exec-1] com.example.service.HomeController       : Entering Application`
 
