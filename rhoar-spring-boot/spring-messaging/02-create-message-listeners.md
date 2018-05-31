@@ -20,7 +20,7 @@ public class Fruit {
 
     private String name;
 
-    private static ArrayList<String> fruits = new ArrayList() {{
+    private static ArrayList&lt;String&gt; fruits = new ArrayList() {{
         add("Apple");
         add("Banana");
         add("Watermelon");
