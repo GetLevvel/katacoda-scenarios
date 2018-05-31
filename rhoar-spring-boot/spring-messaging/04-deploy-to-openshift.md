@@ -56,7 +56,7 @@ Next we need to create a persistent volume for the AMQ instance to use
 
 Now that we've created and updated all of the required templates, log back into our developer user and we can get into the other steps necessary for deploying our JBoss Instance.
 
-``oc [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true login -u developer -p developer``{{execute}}
+``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
 **2.2 Create Service account**
 

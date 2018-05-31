@@ -8,7 +8,7 @@ Before we deploy the application to OpenShift and verify that it runs correctly,
 
 To login, we will use the `oc` command and then specify username and password like this:
 
-``oc [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true login -u developer -p developer``{{execute}}
+``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
 Now let's create a new project 
 
