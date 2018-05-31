@@ -4,7 +4,7 @@
 
 To login, we will use the `oc` command and then specify a username and password like this:
 
-``oc login -u developer -p developer``{{execute}}
+``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
 Next we create the project that we'll be adding our application to:
 

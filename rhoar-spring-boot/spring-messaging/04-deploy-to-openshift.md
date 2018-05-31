@@ -21,7 +21,7 @@ The first thing we must do is create a template. This will allow us to generate 
 
 In order create our template we have to load a `json` file with all of the configuration defined. We don't have permissions to create a template with our developer credentials, so we'll quickly log into a different user to create the template.
 
-``oc login -u system:admin``{{execute}}
+``oc  [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true login -u system:admin``{{execute}}
 
 After we're logged in, confirm that we're using the proper project. We should see output that says: `Using project "amq-demo"`. Since we're in the right project, let's go ahead and load up our templates:
 
@@ -56,7 +56,7 @@ Next we need to create a persistent volume for the AMQ instance to use
 
 Now that we've created and updated all of the required templates, log back into our developer user and we can get into the other steps necessary for deploying our JBoss Instance.
 
-``oc login -u developer -p developer``{{execute}}
+``oc [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true login -u developer -p developer``{{execute}}
 
 **2.2 Create Service account**
 
