@@ -18,7 +18,7 @@ You can read more about the Circuit Breaker pattern and see some helpful diagram
 
 **3. Implementation of the Circuit Breaker pattern**
 
-Our two-service application is currently implementing this pattern. If we take a look at our ``greeting-service/src/main/java/io/openshift/booster/service/GreetingController.java``{{open}} file, we see that our simple controller is simply calling our `NameService`.
+Our two-service application is currently implementing this pattern. If we take a look at our ``fruit-service/src/main/java/io/openshift/booster/service/FruitController.java``{{open}} file, we see that our simple controller is simply calling our `NameService`.
 
 ```java
     public Fruit getFruit() throws Exception {
@@ -28,7 +28,7 @@ Our two-service application is currently implementing this pattern. If we take a
     }
 ```
 
-If we take a look at the NameService class ``greeting-service/src/main/java/io/openshift/booster/service/NameService.java``{{open}} We see that we're using something called `Hystrix`. Hystrix is a Java library created by Netflix that is used to handle cascading failures and provide fallback options. We use it here to handle our circuit breaking pattern. If we take a look at the code, we see that we're setting a timeout for the given Hystrix command:
+If we take a look at the NameService class ``fruit-service/src/main/java/io/openshift/booster/service/NameService.java``{{open}} We see that we're using something called `Hystrix`. Hystrix is a Java library created by Netflix that is used to handle cascading failures and provide fallback options. We use it here to handle our circuit breaking pattern. If we take a look at the code, we see that we're setting a timeout for the given Hystrix command:
 
 
 ```java
@@ -44,7 +44,7 @@ We're telling Hystrix to call a given fallback method (`getFallbackName`) if our
         return "Fallback";
     }
 ```
-So if our circuit is Closed, we expect to see a message similar to `Hello, <name>!`. If we have an Open circuit we will see `Hello, Fallback!`.
+So if our circuit is Closed, we expect to see a message similar to `You've picked apple!`. If we have an Open circuit we will see `You've picked banana from fallback!`.
 
 ## Congratulations
 
