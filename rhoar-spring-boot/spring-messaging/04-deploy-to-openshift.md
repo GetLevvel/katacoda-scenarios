@@ -112,7 +112,11 @@ Click on that template option and we'll be presented with all of the amq templat
 
 ![Messaging](../../assets/middleware/rhoar-messaging/amq62-ssl.png)
 
-We should now see a form accepting multiple parameters for generating the template. The only ones we have to change are the `AMQ_TRUSTSTORE_PASSWORD` and the `AMQ_KEYSTORE_PASSWORD`, both of which are required fields. When we created the SSL keys earlier we set both of these values to be `password`, so simply fill in `password` for both of those fields and then scroll down to the bottom and hit `Create`. Our application should now be created and we should be greeted with this screen:
+We should now see a form accepting multiple parameters for generating the template. The only ones we have to change are the `AMQ_TRUSTSTORE_PASSWORD` and the `AMQ_KEYSTORE_PASSWORD`, both of which are required fields.
+
+![Password Fields](../../assets/middleware/rhoar-messaging/keystore.png)
+
+When we created the SSL keys earlier we set both of these values to be `password`, so simply fill in `password` for both of those fields and then scroll down to the bottom and hit `Create`. Our application should now be created and we should be greeted with this screen:
 
 ![Application Created](../../assets/middleware/rhoar-messaging/app-created.png)
 
