@@ -159,7 +159,7 @@ public class FruitController {
     private String queue;
 
     @Autowired
-    public Producer(JmsTemplate jmsTemplate) {
+    public FruitController(JmsTemplate jmsTemplate) {
         this.jmsTemplate = jmsTemplate;
     }
 
