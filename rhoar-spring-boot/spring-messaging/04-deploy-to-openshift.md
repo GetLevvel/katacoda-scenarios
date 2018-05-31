@@ -89,7 +89,7 @@ Now that our Service Account is created and has the role required, next we need 
 
 ``keytool -import -noprompt -trustcacerts -alias broker -keystore client.ts -file broker_cert -storepass password``{{execute}}
 
-``keytool -import -alias client -keystore server.ts -file client_cert``{{execute}}
+``keytool -import -noprompt -trustcacerts -alias client -keystore broker.ts -file client_cert -storepass password``{{execute}}
 
 
 If all of the commands were ran successfully, we should see `Certificate was added to keystore` in our terminal.
