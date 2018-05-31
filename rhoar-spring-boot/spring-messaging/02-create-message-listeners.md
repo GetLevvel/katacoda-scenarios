@@ -6,7 +6,7 @@ Spring Boot offers abstractions for the JMS standard that make it very quick and
 
 **1. Create a Message Listener**
 
-First we need a message object. Spring Boot allows us to code in the context of our own Java models when dealing with messages. For this purpose we will create a simple `Ping` object which contains a String `body`. For this you need to click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/Ping.java``{{open}}
+First we need a message object. Spring Boot allows us to code in the context of our own Java models when dealing with messages. For this purpose we will create a simple `Ping` object which contains a String `body`. For this you need to click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/Fruit.java``{{open}}
 
 Then, copy the below content into the file (or use the `Copy to Editor` button):
 
@@ -20,7 +20,7 @@ public class Fruit {
 
     private String name;
 
-    private static ArrayList<String> fruits = new ArrayList<String>() {{
+    private static ArrayList<String> fruits = new ArrayList() {{
         add("Apple");
         add("Banana");
         add("Watermelon");
@@ -135,7 +135,7 @@ The single Bean in this class is our `MessageConverter`. Spring Boot uses this c
 
 **3. Sending JMS Messages**
 
-Now that we have a listener and a Message model we now need a Message Producer. Normally these would be coming from external systems but for our purposes we are going to send messages to ourselves. To do that we need a Producer class. Click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/Producer.java``{{open}}
+Now that we have a listener and a Message model we now need a Message Producer. Normally these would be coming from external systems but for our purposes we are going to send messages to ourselves. To do that we need a Producer class. Click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/FruitController.java``{{open}}
 
 Then, copy the below content into the file (or use the `Copy to Editor` button):
 
