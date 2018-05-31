@@ -6,9 +6,9 @@ Let's modify the greeting that our service is returning to the user. Since we se
 
 ``oc edit configmap app-config``{{execute}}
 
-This will open the file in a vim editor. Let's change the greeting to something like this:
+This will open the file in a nano editor. Let's change the greeting to something like this:
 
-`greeting.message=Greetings, you picked %s as your favorite fruit!`
+`greeting.message=Bonjour, you picked %s as your favorite fruit!`
 
 Now in order to reflect those changes, we deploy the new version of the application so the ConfigMap configuration changes are picked up:
 
@@ -19,9 +19,9 @@ That's all there is to it!
 **2. Test changes**
 
 Now that we've modified the ConfigMap and deployed our changes, let's test the greeting service and see if it's returning our new value.
-Put in a test value and click the button. Now instead of seeing `Hello <name>...`, we should be seeing: 
+Put in a test value and click the button. Now instead of seeing `Greetings ...`, we should be seeing:
 
-`Bonjour %s from a ConfigMap!`
+`Bonjour, you picked %s as your favorite fruit!`
 
 <!-- `Bonjour <name>...`! 
 
