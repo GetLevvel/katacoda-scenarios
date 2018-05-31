@@ -6,7 +6,7 @@ Spring Boot offers abstractions for the JMS standard that make it very quick and
 
 **1. Create a Message Listener**
 
-First we need a message object. Spring Boot allows us to code in the context of our own Java models when dealing with messages. For this purpose we will create a simple `Ping` object which contains a String `body`. For this you need to click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/Fruit.java``{{open}}
+First we need a message object. Spring Boot allows us to code in the context of our own Java models when dealing with messages. For this purpose we will create a simple `Fruit` object which contains a String `body`. For this you need to click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/Fruit.java``{{open}}
 
 Then, copy the below content into the file (or use the `Copy to Editor` button):
 
@@ -90,7 +90,7 @@ public class Receiver {
 
 We annotate the class with `@Component` to get the class picked up by Spring's Component Scanning. Spring will manage this class' lifecycle and dependencies for us.
 
-The `@JmsListener` annotation is what sets this class up for JMS Message handling. We're essentially creating a binding: whenever a message of type `Ping` is sent to the target Queue (called a `destination` here) this method will be called by Spring for processing. Spring will attempt to deserialize the message to an object and then pass that object to our method here.
+The `@JmsListener` annotation is what sets this class up for JMS Message handling. We're essentially creating a binding: whenever a message of type `Fruit` is sent to the target Queue (called a `destination` here) this method will be called by Spring for processing. Spring will attempt to deserialize the message to an object and then pass that object to our method here.
 
 The `"${queue.fruit}"` String in the destination utilizes the Spring Expression Language to allow parameterization of Queue names. This allows us to place the name of the Queue in our `.properties` files which can change between environments without the need for a code change. You can see the properties for local running by opening the ``src/main/resources/application.properties``{{open}} file.
 
@@ -100,7 +100,7 @@ The actual body of the message is mostly just integration with the included web 
 
 **2. Message Serialization**
 
-Notice that the argument to our `receiveMessage()` method is our domain class: a `Ping`. We're not accepting any custom types or wrapper objects (although Spring does support arguments of their `Message<T>` type). This is because Spring magic, under the hood, can convert the raw messages coming into the Queue into our custom objects if we meet a few criteria. For our purposes we are going to send and receive these messages as JSON strings because Spring Boot makes JSON support a breeze.
+Notice that the argument to our `receiveMessage()` method is our domain class: a `Fruit`. We're not accepting any custom types or wrapper objects (although Spring does support arguments of their `Message<T>` type). This is because Spring magic, under the hood, can convert the raw messages coming into the Queue into our custom objects if we meet a few criteria. For our purposes we are going to send and receive these messages as JSON strings because Spring Boot makes JSON support a breeze.
 
 In the first step of this scenario we included the `jackson-databind` dependency in the `pom.xml`. Jackson is a library that has tight integration with Spring Boot which enables marshalling and unmarshalling JSON to and from our objects respectively. For our JMS messages this means Spring Boot will automatically marshall our objects to JSON when we send them and unmarshal JSON to our objects when we receive them. We need to create a Configuration class to utilize this functionality. Click on the following link which will open an empty file in the editor: ``src/main/java/com/example/MessageConfig.java``{{open}}
 
@@ -171,7 +171,7 @@ public class FruitController {
 }
 </pre>
 
-Spring provides an abstraction called the `JmsTemplate` for sending messages to a JMS Queue. Spring Boot automatically configures this class for us so we need to `@Autowire` one into our `@Component`. Next we need to send the message. There are many variations of sending messages on the `JmsTemplate` class. We use the `.convertAndSend(String, Object)` variant which will marshall our Object to JSON (since we added the MessageConverter above) and then attempt to send to the target queue. We send a new `Ping` message with a current timestamp on it to identify when it was sent.
+Spring provides an abstraction called the `JmsTemplate` for sending messages to a JMS Queue. Spring Boot automatically configures this class for us so we need to `@Autowire` one into our `@Component`. Next we need to send the message. There are many variations of sending messages on the `JmsTemplate` class. We use the `.convertAndSend(String, Object)` variant which will marshall our Object to JSON (since we added the MessageConverter above) and then attempt to send to the target queue. We send a new `Fruit` message with a current timestamp on it to identify when it was sent.
 
 The `@Value` annotation is our way of pulling the Queue name from our properties files. Spring populates those variables for us.
 
