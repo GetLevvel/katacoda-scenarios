@@ -14,7 +14,7 @@ To login, we will use the `oc` command with the developer credentials:
 
 Then we'll create the project:
 
-``oc new-project dev --display-name="Dev - Spring Boot App"``{{execute}}
+``oc new-project fruits --display-name="Dev - Spring Boot App"``{{execute}}
 
 All that's left is to run the following command to deploy the application to OpenShift:
 
