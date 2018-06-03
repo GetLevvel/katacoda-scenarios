@@ -1,6 +1,6 @@
 # Review the base structure of the application
 
-For your convenience, this scenario has been created with a base project using the Java programming language and the Apache Maven build tool.
+For your convenience, this scenario has been created with a base project using the Java programming language and the Apache Maven build tool. 
 
 **1. Adding Spring MVC to the application**
 

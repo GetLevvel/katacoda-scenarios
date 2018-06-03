@@ -23,7 +23,7 @@ Now that our Name Service is down, let's see what happens when we repeat our pre
 Instead of seeing the name, our response should now look like this:
 
  ```json
- {"content":"Hello, Fallback!"}
+ {"content":"You've picked banana from fallback!"}
  ```
 
 Our Circuit Breaker has been tripped! Since the service went down we are no longer calling our Name service and we are instead returning the hardcoded test value that we created. No matter how many times we call our service we should always expect that same response.
@@ -43,7 +43,7 @@ After we confirm that our Name service is up and running on a pod, let's call ou
 This time we should see our initial response again:
 
  ```json
- {"content":"Hello, World!"}
+ {"content":"You've picked apple!"}
  ```
 
  Because our Circuit Breaker saw that the Name service was online again, it was able to change the circuit breaker's state back to `Closed`. This means that we're able to get the proper response from the service again.

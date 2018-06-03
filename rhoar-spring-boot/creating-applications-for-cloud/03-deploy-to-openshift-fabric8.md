@@ -8,7 +8,7 @@ We're going to be using the OpenShift Container Application Platform that Kataco
 
 Since we have our application set up locally, the next step is to log in to the OpenShift platform so we can deploy it there. To do that we will use the `oc` command and then specify a username and password like this:
 
-``oc login -u developer -p developer``{{execute}}
+``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
 Next we create a project to house our application:
 

@@ -27,8 +27,6 @@ After we're logged in, confirm that we're using the proper project. We should se
 
 ``oc create -n openshift -f https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/jboss-image-streams.json``{{execute}}
 
-``oc replace -n openshift -f https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/jboss-image-streams.json``{{execute}}
-
 ``oc -n openshift import-image jboss-amq-62:1.7``{{execute}}
 
 ``oc -n openshift import-image jboss-amq-63:1.3``{{execute}}
@@ -50,13 +48,15 @@ After we've loaded up all of the templates, run the following command to update 
  do
  oc create -n openshift -f \
  https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/amq/${template}
- oc replace -n openshift -f \
- https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.8/amq/${template}
  done``{{execute}}
+
+Next we need to create a persistent volume for the AMQ instance to use
+
+``oc create -f pv.yaml``{{execute}}
 
 Now that we've created and updated all of the required templates, log back into our developer user and we can get into the other steps necessary for deploying our JBoss Instance.
 
-``oc login -u developer -p developer``{{execute}}
+``oc login u developer -p developer``{{execute}}
 
 **2.2 Create Service account**
 
@@ -85,13 +85,18 @@ Now that our Service Account is created and has the role required, next we need 
 
 ``keytool -genkey -noprompt -trustcacerts -alias client -keyalg RSA -keystore client.ks -keypass password -storepass password -dname "cn=Dev, ou=engineering, o=company, c=US"``{{execute}}
 
+``keytool -export -noprompt -alias client -keystore client.ks -file client_cert -storepass password``{{execute}}
+
 ``keytool -import -noprompt -trustcacerts -alias broker -keystore client.ts -file broker_cert -storepass password``{{execute}}
+
+``keytool -import -noprompt -trustcacerts -alias client -keystore broker.ts -file client_cert -storepass password``{{execute}}
+
 
 If all of the commands were ran successfully, we should see `Certificate was added to keystore` in our terminal.
 
 Next we will import these certificates into OpenShift as secrets:
 
-``oc secrets new amq-app-secret broker.ks``{{execute}}
+``oc secrets new amq-app-secret broker.ks broker.ts``{{execute}}
 
 ``oc secrets add sa/amq-service-account secret/amq-app-secret``{{execute}}
 
@@ -107,7 +112,11 @@ Click on that template option and we'll be presented with all of the amq templat
 
 ![Messaging](../../assets/middleware/rhoar-messaging/amq62-ssl.png)
 
-We should now see a form accepting multiple parameters for generating the template. The only ones we have to change are the `AMQ_TRUSTSTORE_PASSWORD` and the `AMQ_KEYSTORE_PASSWORD`, both of which are required fields. When we created the SSL keys earlier we set both of these values to be `password`, so simply fill in `password` for both of those fields and then scroll down to the bottom and hit `Create`. Our application should now be created and we should be greeted with this screen:
+We should now see a form accepting multiple parameters for generating the template. The only ones we have to change are the `AMQ_TRUSTSTORE_PASSWORD` and the `AMQ_KEYSTORE_PASSWORD`, both of which are required fields.
+
+![Password Fields](../../assets/middleware/rhoar-messaging/keystore.png)
+
+When we created the SSL keys earlier we set both of these values to be `password`, so simply fill in `password` for both of those fields and then scroll down to the bottom and hit `Create`. Our application should now be created and we should be greeted with this screen:
 
 ![Application Created](../../assets/middleware/rhoar-messaging/app-created.png)
 

@@ -4,7 +4,7 @@
 
 To login, we will use the `oc` command and then specify a username and password like this:
 
-``oc login -u developer -p developer``{{execute}}
+``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
 Now we'll create a base project for our application:
 
@@ -40,7 +40,7 @@ Although our application has a nice web view, we're going to interact with it th
  Since we should have no issue and our application is online we should get our normal response, which should look like this:
  
  ```json
- {"content":"Hello, World!"}
+ {"content":"You've picked apple!"}
  ```
 
 This means that everything is working and our circuit is closed!

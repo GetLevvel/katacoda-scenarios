@@ -8,7 +8,7 @@ OpenShift also ships with a feature rich web console as well as command line too
 
 To login, we will use the `oc` command with the developer credentials:
 
-``oc login -u developer -p developer``{{execute}}
+``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
 >**IMPORTANT:** If the above `oc login` command doesn't seem to do anything, you may have forgotten to stop the application from the previous step. Click on the terminal and press **CTRL-C** to stop the application and try the above `oc login` command again!
 
@@ -20,10 +20,9 @@ All that's left is to run the following command to deploy the application to Ope
 
 ``mvn package fabric8:deploy -Popenshift``{{execute}}
 
-After deployment completes either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com). We can confirm that our application is still up and working just as it was before! The only difference now is that it's deployed on OpenShift.
+After deployment completes either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/fruits). We can confirm that our application is still up and working just as it was before! The only difference now is that it's deployed on OpenShift.
 
 ## Congratulations
 
-You have now learned how to deploy a Spring Boot MVC application to OpenShift Container Platform. 
+You have now learned how to deploy a Spring Boot MVC application to OpenShift Container Platform. In the next step we will alter the application and re-deploy.
 
-Click Summary for more details and suggested next steps.

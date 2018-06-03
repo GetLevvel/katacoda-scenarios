@@ -12,7 +12,7 @@ Run the application by executing the following command:
 
 ``mvn spring-boot:run``{{execute}}
 
-Once that's completed, click on the **Local Web Browser** tab in the console frame of this browser window which will open another tab or window of your browser pointing to port 8080 on your client. Or use [this](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) link.
+Once that's completed, click on the **Local Web Browser** tab in the console frame of this browser window which will open another tab or window of your browser pointing to port 8080 on your client. Or use [this](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) link.
 
 You should now see an HTML page with a `Success` welcome message that looks like this:
 

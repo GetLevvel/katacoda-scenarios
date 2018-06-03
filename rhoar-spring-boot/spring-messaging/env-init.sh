@@ -7,5 +7,9 @@ UI_PATH=/root/code
 
 git clone -q https://github.com/GetLevvel/rhoar-sample-code.git
 cd ${UI_PATH} && cp -R /root/rhoar-sample-code/${PROJECT}/* ./
+
+mkdir ${UI_PATH}/amq
+chmod 777 ${UI_PATH}/amq  //directory needed for AMQ pod
+
 clear # To clean up Katacoda terminal noise
 ~/.launch.sh

@@ -5,13 +5,13 @@ For your convenience, this scenario has been created using the OpenShift Launche
 
 **1. Understanding the Application**
 
-The project is a simple Greeting application, where a user inputs a name and is greeted by our service. Opening up our ``greeting-service/src/main/java/io/openshift/booster/service/GreetingController.java``{{open}} file we can see the logic used to greet our user. The interesting part of this logic is right here, where we retrieve the message:
+The project is a simple Greeting application, where a user inputs a fruit and is greeted by our service. Opening up our ``greeting-service/src/main/java/io/openshift/booster/service/FruitController.java``{{open}} file we can see the logic used to respond to our user. The interesting part of this logic is right here, where we retrieve the message:
 
 ```java
 String message = String.format(properties.getMessage(), name);
 ```
 
-If we take a closer look at this `properties` object, we see that it's of type `GreetingProperties`. When we look at that file ``greeting-service/src/main/java/io/openshift/booster/service/GreetingProperties.java``{{open}} we see an annotation linking to a configuration file, `@ConfigurationProperties("greeting")`, which is pointing to our ``greeting-service/src/main/etc/application.properties``{{open}} file.
+If we take a closer look at this `properties` object, we see that it's of type `MessageProperties`. When we look at that file ``greeting-service/src/main/java/io/openshift/booster/service/MessageProperties.java``{{open}} we see an annotation linking to a configuration file, `@ConfigurationProperties("greeting")`, which is pointing to our ``greeting-service/src/main/etc/application.properties``{{open}} file.
 
 Our `application.properties` file contains only one property, `greeting.message`. This is the message that we return and display to the user. In order to get an understanding of the flow, in the next step we're going to be deploying the project and testing it our for ourselves, as well as modifying this greeting through External Configuration.
 
