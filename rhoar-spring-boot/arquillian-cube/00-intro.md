@@ -3,7 +3,7 @@ This scenario focuses on creating integration tests using [Arquillian Cube](http
 
 ## What will you do in this scenario?
 
-In this scenario you will create a working integration test using Arquilian Cube. The integration test will test a simple web service. You will walk through the following steps:
+In this scenario you will create a working integration test using Arquillian Cube. The integration test will test a simple web service. You will walk through the following steps:
 
 1. Configure a sample project to use Arquillian Cube
 2. Configure Arquillian Cube to run the test locally
