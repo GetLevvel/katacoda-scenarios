@@ -16,6 +16,10 @@ Then we'll create the project:
 
 ``oc new-project dev --display-name="Dev - Spring Boot App"``{{execute}}
 
+Now create a database:
+
+``oc new-app -e POSTGRESQL_USER=dev -e POSTGRESQL_PASSWORD=secret -e POSTGRESQL_DATABASE=my_data openshift/postgresql-92-centos7 --name=my-database``{{execute}}
+
 All that's left is to run the following command to deploy the application to OpenShift:
 
 ``mvn package fabric8:deploy -Popenshift``{{execute}}
