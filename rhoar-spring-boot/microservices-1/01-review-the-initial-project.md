@@ -15,11 +15,12 @@ If we take a closer look at this `properties` object, we see that it's of type `
 
 Our `application-local.properties` file contains only one property, `greeting.message`. This is the message that we return and display to the user. In order to get an understanding of the flow, let's run the application locally. First cd into the project directory and build the project:  
 ``cd greeting-service``{{execute}}  
+  
 ``mvn spring-boot:run``{{execute}}
 
 When the application finishes building click the **local web browser** or click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/). You should see the same message that is in the `application-local.properties` file.
 
-Be sure to `cd` back into the main directory before we continue.
+Be sure to stop the application with `ctrl-c` and `cd` back into the main directory before we continue.
 ``cd ../``{{execute}}
 
 ## Congratulations
