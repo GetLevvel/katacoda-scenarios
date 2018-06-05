@@ -19,7 +19,7 @@ That's all there is to it!
 **2. Test changes**
 
 Now that we've modified the ConfigMap and deployed our changes, let's test the greeting service and see if it's returning our new value.
-Put in a test value and click the button. Now instead of seeing `Greetings ...`, we should be seeing:
+Click [here](http://spring-boot-configmap-greeting-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/) and put in a test value and click the button. Now instead of seeing `Greetings ...`, we should be seeing:
 
 `Bonjour, you picked %s as your favorite fruit!`
 
