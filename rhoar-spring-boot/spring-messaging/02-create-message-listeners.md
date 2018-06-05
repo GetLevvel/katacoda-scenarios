@@ -113,11 +113,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.support.converter.*;
+import org.apache.activemq.ActiveMQConnectionFactory;
 
 @Configuration
 @EnableJms
 public class MessageConfig {
 
+  //TODO Add JBoss AMQ integration
+  
     @Bean
     public MessageConverter jacksonJmsMessageConverter() {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
@@ -127,6 +130,7 @@ public class MessageConfig {
     }
 
 }
+
 </pre>
 
 This `@Configuration` class does two things for us. With the `@EnableJms` annotation we effectively "turn on" Spring Boot's JMS configuration which registers scanning for components with the `@JmsListener` annotation. This is how we tell Spring to search for these classes (it also sets up a couple infrastructure items to accept JMS messages).
