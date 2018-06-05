@@ -92,7 +92,7 @@ Enter the username as `user` and the password as `pass`. These values should cor
   
 ![Messaging](../../assets/middleware/rhoar-messaging/credentials.png)
 
-When we created the SSL keys earlier we set both of these values to be `password`, so simply fill in `password` for both of those fields and then scroll down to the bottom and hit `Create`. Our application should now be created and we should be greeted with this screen:
+Our application should now be created and we should be greeted with this screen:
 
 ![Application Created](../../assets/middleware/rhoar-messaging/app-created.png)
 
