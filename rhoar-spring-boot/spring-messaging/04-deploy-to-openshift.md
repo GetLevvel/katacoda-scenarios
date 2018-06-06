@@ -97,9 +97,9 @@ Our application should now be created and we should be greeted with this screen:
 ![Application Created](../../assets/middleware/rhoar-messaging/app-created.png)
 
 
-**3. Deploy the application to OpenShift**
+**3. Add Jboss Active-MQ**
 
-The final step is to inlcude the activeMQ broker in ```src/main/java/com/example/MessageConfig.java```{{open}}. Notice how we set the username and password to the same values we set above.
+Now we need to inlcude the activeMQ broker in ```src/main/java/com/example/MessageConfig.java```{{open}}. Notice how we set the username and password to the same values we set above.
 <pre class="file" data-filename="src/main/java/com/example/MessageConfig.java" data-target="insert" data-marker="//TODO Add JBoss AMQ integration">
   private String brokerUrl = "tcp://broker-amq-tcp:61616";
 
@@ -114,6 +114,7 @@ The final step is to inlcude the activeMQ broker in ```src/main/java/com/example
   }
 </pre>
 
+**4. Deploy the application to OpenShift**
 
 Run the following command to deploy the application to OpenShift
 
