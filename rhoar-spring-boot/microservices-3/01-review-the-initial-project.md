@@ -20,30 +20,35 @@ You can read more about the Circuit Breaker pattern and see some helpful diagram
 
 Our two-service application is currently implementing this pattern. If we take a look at our ``fruit-service/src/main/java/io/openshift/booster/service/FruitController.java``{{open}} file, we see that our simple controller is simply calling our `NameService`.
 
-```java
+
+<pre class="file" data-filename="fruit-service/src/main/java/io/openshift/booster/service/FruitController.java" data-target="insert" data-marker="// TODO Call name service here">
+    @RequestMapping("/api/greeting")
     public Fruit getFruit() throws Exception {
         String result = String.format("You've picked %s!", nameService.getName());
         handler.sendMessage(nameService.getState());
         return new Fruit(result);
     }
-```
+</pre>
 
 If we take a look at the NameService class ``fruit-service/src/main/java/io/openshift/booster/service/NameService.java``{{open}} We see that we're using something called `Hystrix`. Hystrix is a Java library created by Netflix that is used to handle cascading failures and provide fallback options. We use it here to handle our circuit breaking pattern. If we take a look at the code, we see that we're setting a timeout for the given Hystrix command:
 
 
-```java
+
+<pre class="file" data-filename="fruit-service/src/main/java/io/openshift/booster/service/NameService.java" data-target="insert" data-marker="// TODO Add Hystrix command here">
     @HystrixCommand(commandKey = "NameService", fallbackMethod = "getFallbackName", commandProperties = {
             @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")
     })
-```
+</pre>
 
 We're telling Hystrix to call a given fallback method (`getFallbackName`) if our execution takes longer than the given timeout allotment and return that value instead. This means that on a timeout, we will be returning the value `Fallback` instead of the given name. We can see that function below:
 
-```java
+
+<pre class="file" data-filename="fruit-service/src/main/java/io/openshift/booster/service/NameService.java" data-target="insert" data-marker="// TODO Add fallback method here">
     private String getFallbackName() {
-        return "Fallback";
+        return "banana from fallback";
     }
-```
+</pre>
+
 So if our circuit is Closed, we expect to see a message similar to `You've picked apple!`. If we have an Open circuit we will see `You've picked banana from fallback!`.
 
 ## Congratulations

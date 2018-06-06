@@ -2,7 +2,7 @@
 
 For your convenience, this scenario has been created with a base project using the Java programming language and the Apache Maven build tool.
 
-As you review the content, you will notice that there are a couple **TODO** comments. **Do not remove them!** These comments are used as markers for later exercises in this scenario. 
+As you review the content, you will notice that there are a couple **TODO** comments. **Do not remove them!** These comments are used as markers for later exercises in this scenario. Open ``src/main/java/com/example/service/FruitController.java``{{open}}. This is our rest controller. We will be adding our logging commands here later in this module.
 
 **1. Test the application locally**
 

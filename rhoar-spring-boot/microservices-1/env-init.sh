@@ -5,7 +5,8 @@
 PROJECT=microservices-externalized-config  # The name of the folder within the code samples repo to copy
 UI_PATH=/root/code 			  # This should match your index.json key
 
-export EDITOR=nano            #Change default editor for oc edit command
+export EDITOR=vim            # Change default editor for oc edit command
+                             # Nano does not work on their site
 
 git clone -q https://github.com/GetLevvel/rhoar-sample-code.git
 cd ${UI_PATH} && cp -R /root/rhoar-sample-code/${PROJECT}/* ./

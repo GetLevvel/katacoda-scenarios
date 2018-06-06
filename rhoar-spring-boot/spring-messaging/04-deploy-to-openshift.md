@@ -21,7 +21,7 @@ The first thing we must do is create a template. This will allow us to generate 
 
 In order create our template we have to load a `json` file with all of the configuration defined. We don't have permissions to create a template with our developer credentials, so we'll quickly log into a different user to create the template.
 
-``oc login -u system:admin``{{execute}}
+``oc login $(cat /openshift.local.config/master/admin.kubeconfig | grep admin | cut -d '/' -f2 | sort | uniq | sed -e 's/-/\./g') -u system:admin``{{execute}}
 
 After we're logged in, confirm that we're using the proper project. We should see output that says: `Using project "amq-demo"`. Since we're in the right project, let's go ahead and load up our templates:
 
@@ -56,7 +56,7 @@ Next we need to create a persistent volume for the AMQ instance to use
 
 Now that we've created and updated all of the required templates, log back into our developer user and we can get into the other steps necessary for deploying our JBoss Instance.
 
-``oc login u developer -p developer``{{execute}}
+``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
 **2.2 Create Service account**
 
@@ -75,80 +75,46 @@ Now that our Service Account is created and has the role required, next we need 
   serviceAccountName: amq-service-account
 </pre>
 
-**2.3 Configure SSL**
- 
- We're goingo to be taking a minimal approach with our SSL configuration for example purposes. When deploying AMQ to OpenShift we are required to provide a broker keyStore, a client keyStore, and a client trustStore. For this we're going to be creating a self-signed certificate for the broker keyStore. If you do not have your own enterprise keys (such as for a Dev environment) you can create your own. Execute the following to create the SSL keys:
 
-``keytool -genkey -noprompt -trustcacerts -alias broker -keyalg RSA -keystore broker.ks -keypass password -storepass password -dname "cn=Dev, ou=engineering, o=company, c=US"``{{execute}}
+**2.3 Create AMQ Instance**
 
-``keytool -export -noprompt -alias broker -keystore broker.ks -file broker_cert -storepass password``{{execute}}
-
-``keytool -genkey -noprompt -trustcacerts -alias client -keyalg RSA -keystore client.ks -keypass password -storepass password -dname "cn=Dev, ou=engineering, o=company, c=US"``{{execute}}
-
-``keytool -export -noprompt -alias client -keystore client.ks -file client_cert -storepass password``{{execute}}
-
-``keytool -import -noprompt -trustcacerts -alias broker -keystore client.ts -file broker_cert -storepass password``{{execute}}
-
-``keytool -import -noprompt -trustcacerts -alias client -keystore broker.ts -file client_cert -storepass password``{{execute}}
-
-
-If all of the commands were ran successfully, we should see `Certificate was added to keystore` in our terminal.
-
-Next we will import these certificates into OpenShift as secrets:
-
-``oc secrets new amq-app-secret broker.ks broker.ts``{{execute}}
-
-``oc secrets add sa/amq-service-account secret/amq-app-secret``{{execute}}
-
-And now all of our configuration is complete. Now it's time to create the AMQ instance.
-
-**2.4 Create AMQ Instance**
-
-Log into the web view and select our `amq-demo` project. Then select `Add to Project` followed by `Browse Catalog`. We should now see a new template under the `Technologies` section that says `Messaging`:
-
-![Messaging](../../assets/middleware/rhoar-messaging/messaging.png)
-
-Click on that template option and we'll be presented with all of the amq templates we've created. Select `JBoss A-MQ 6.2 (With SSL)`:
+Log into the web view and select our `amq-demo` project. Then select `Add to Project` followed by `Browse Catalog`. Select `JBoss A-MQ-6.3 (no SSL)`: 
 
 ![Messaging](../../assets/middleware/rhoar-messaging/amq62-ssl.png)
 
-We should now see a form accepting multiple parameters for generating the template. The only ones we have to change are the `AMQ_TRUSTSTORE_PASSWORD` and the `AMQ_KEYSTORE_PASSWORD`, both of which are required fields.
+We should now see a form accepting multiple parameters for generating the template. The only ones we have to change are the `Queues`, `A-MQ Username`, and `A-MQ Password`.
 
-![Password Fields](../../assets/middleware/rhoar-messaging/keystore.png)
+Enter `boot.q` in the `Queue` field
 
-When we created the SSL keys earlier we set both of these values to be `password`, so simply fill in `password` for both of those fields and then scroll down to the bottom and hit `Create`. Our application should now be created and we should be greeted with this screen:
+![Messaging](../../assets/middleware/rhoar-messaging/queues.png)
+
+Enter the username as `user` and the password as `pass`. These values should correspond to the values in our code sample below
+  
+![Messaging](../../assets/middleware/rhoar-messaging/credentials.png)
+
+Our application should now be created and we should be greeted with this screen:
 
 ![Application Created](../../assets/middleware/rhoar-messaging/app-created.png)
 
-Go to the overview and our final step is to expose the routes we require. Only SSL routes can be exposed because the OpenShift router requires SNI to send traffic. You can read more about how that works [here](https://access.redhat.com/documentation/en/openshift-enterprise/version-3.2/architecture/#secured-routes) if you're interested.
 
-The four SSL routes we have are:
+**3. Add Jboss Active-MQ**
 
-`amq-amqp-ssl`
-`amq-mqtt-ssl`
-`amq-stomp-ssl`
-`amq-tcp-ssl`
+Now we need to inlcude the activeMQ broker in ```src/main/java/com/example/MessageConfig.java```{{open}}. Notice how we set the username and password to the same values we set above.
+<pre class="file" data-filename="src/main/java/com/example/MessageConfig.java" data-target="insert" data-marker="//TODO Add JBoss AMQ integration">
+  private String brokerUrl = "tcp://broker-amq-tcp:61616";
 
-Click the `Create Route` button for the `amq-amqp-ssl` route. On the next form with Route options, check the `a` checkbox and then select `Create`.
+  @Bean
+  public ActiveMQConnectionFactory activeMQConnectionFactory() {
+    ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
+    activeMQConnectionFactory.setBrokerURL(brokerUrl);
+    activeMQConnectionFactory.setUserName("user");
+    activeMQConnectionFactory.setPassword("pass");
 
-<!-- For each of these routes, click the `Create Route` button and then scroll down and click `Create`. After we've created all four, our JBoss AMQ setup is finally complete! -->
+    return activeMQConnectionFactory;
+  }
+</pre>
 
-<!-- 
-
-amq-tcp-ssl
-
-show options for secure routes
-passthrough tls termination
-
-brokerURL” value=“failover://ssl://frtib-broker-frtib-broker.rhel-cdk.10.1.2.2.xip.io:443” />
-
-
-https://github.com/welshstew/activemq-openshift-broker-projects
-https://github.com/fabric8-quickstarts/spring-boot-camel-amq/blob/master/src/main/java/io/fabric8/quickstarts/camel/amq/Application.java
-
--->
-
-**3. Deploy the application to OpenShift**
+**4. Deploy the application to OpenShift**
 
 Run the following command to deploy the application to OpenShift
 
