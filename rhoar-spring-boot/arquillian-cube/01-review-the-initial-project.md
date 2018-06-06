@@ -54,9 +54,9 @@ To leverage Arquillian Cube the project uses the Arquillian Cube BOM provided by
   </dependencyManagement>
 ```
 
-**1. Test the application locally**
+**1. Test the application**
 
-As we develop the application we want to be able to test and verify our change at different stages. One way we can do that locally is by using the `spring-boot` maven plugin.
+As an application is developed and the individual units are tested (e.g. unit testing) the application will require integration tests to be written. To start, this application already has a basic integration test. To understand how to run an integration test, run the following commands to 
 
 Run the application by executing the following command:
 
@@ -78,4 +78,4 @@ Before moving on, click in the terminal window and then press **CTRL-C** to stop
 
 You have now successfully executed the first step in this scenario. In the next step we will 
 
-TODO
+
