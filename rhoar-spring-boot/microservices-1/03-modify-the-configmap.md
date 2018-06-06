@@ -16,8 +16,6 @@ Now in order to reflect those changes, we deploy the new version of the applicat
 
 That's all there is to it!
 
-oc volume dc/spring-boot-configmap-greeting --add -t configmap  -m /opt/app-root/src --name=app-config --configmap-name=app-config
-
 **2. Test changes**
 
 Now that we've modified the ConfigMap and deployed our changes, let's test the greeting service and see if it's returning our new value.
