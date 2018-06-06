@@ -9,7 +9,6 @@
     "intro": {
       "text": "00-intro.md",
       "code": "env-init.sh",
-      "courseData": "background.sh"
     },
     "steps": [
       { "title": "Step 1", "text": "01-review-the-initial-project.md" },
