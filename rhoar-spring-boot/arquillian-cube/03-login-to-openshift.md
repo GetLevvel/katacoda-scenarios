@@ -22,7 +22,7 @@ Now create a database:
 
 All that's left is to run the following command to deploy the application to OpenShift:
 
-``mvn package fabric8:deploy -Popenshift -DenableImageStreamDetection=true``{{execute}}
+``mvn verify -Popenshift,openshift-it -Denv.init.enabled=true -DenableImageStreamDetection=true``{{execute}}
 
 After it's complete we can either go to the OpenShift web console and click on the route or click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/api/fruits). You should see the same JSON output as the previous step:
 
@@ -36,3 +36,7 @@ And if you open the [web application](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA
 You have now learned how to perform an integration test using Arquillian on OpenShift Container Platform. 
 
 Click Summary for more details and suggested next steps.
+
+
+
+-Dnamespace.use.existing=myproject -Denv.init.enabled=true works
