@@ -70,7 +70,7 @@ Now that we have both of our log statements created, let's test it out! We're go
 
 ``mvn spring-boot:run -Dspring.profiles.active=local``{{execute}}
 
-Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, open [Jaeger](https://jaeger-query-dev..[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/) to see the trace that you just generated. You should see a screen similar to the following
+Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, open [Jaeger](https://jaeger-query-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/) to see the trace that you just generated. You should see a screen similar to the following
 
 ![Jaeger](../../assets/middleware/rhoar-monitoring/Jaeger.png)
 
