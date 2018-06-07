@@ -38,8 +38,8 @@ tracer.buildSpan("Calling home page");
 </pre>
 
 The last thing we need to do is configure our tracer to use our jaeger instance.
-``src/main/resource/application.yml``{{open}}
-<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="//TODO: Add more tracing here">
+``src/main/resources/application.yml``{{open}}
+<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="//TODO: Add jaeger config here">
 opentracing:
   jaeger:
     log-spans: true
@@ -51,14 +51,14 @@ spring:
 opentracing:
   jaeger:
     http-sender:
-      url: http://jaeger-collector-dev.[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/api/traces
+      url: http://jaeger-collector-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/api/traces
 </pre>
 
 **4. Build locally**
 
 Now that we have both of our log statements created, let's test it out! We're going to build our application locally so we can easily take a look at the logs:
 
-``mvn spring-boot:run``{{execute}}
+``mvn spring-boot:run -Dspring.profiles.active=local``{{execute}}
 
 Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, take another look at the terminal. We should see two logging statements that look similar to this:
 
