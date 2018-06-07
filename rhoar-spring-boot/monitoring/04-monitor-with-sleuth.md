@@ -39,7 +39,7 @@ tracer.buildSpan("Calling home page");
 
 The last thing we need to do is configure our tracer to use our jaeger instance.
 ``src/main/resources/application.yml``{{open}}
-<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="#TODO: Add jaeger config here">
+<pre class="file" data-filename="src/main/resources/application.yml" data-target="insert" data-marker="#TODO: Add jaeger config here">
 opentracing:
   jaeger:
     log-spans: true
