@@ -60,19 +60,18 @@ Now that we have both of our log statements created, let's test it out! We're go
 
 ``mvn spring-boot:run -Dspring.profiles.active=local``{{execute}}
 
-Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, take another look at the terminal. We should see two logging statements that look similar to this:
+Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, take another look at the terminal. We should see a logging statement that looks similar to this:
 
-`INFO [-,66221df6b307bf1a,66221df6b307bf1a,false] 2588 --- [nio-8080-exec-1] com.example.service.HomeController       : Entering Application`
+`INFO 3999 --- [nio-8080-exec-1] c.uber.jaeger.reporters.LoggingReporter  : Span reported: eaaa414bc66b0c2b:eaaa414bc66b0c2b:0:1 - home`
 
-`INFO [-,66221df6b307bf1a,66221df6b307bf1a,false] 2588 --- [nio-8080-exec-1] com.example.service.HomeController       : Logging from function`
 
 Not only do we see the log message that we created, we also see a lot of additional info. Let's break it down.
 
-The first number that we see is the `traceID`. That's the ID that's used throughout the entire request and is unique to this specific trace. The second number is the `spanID`, which tells us which span we're currently in on the full trace. So our logging messages follow this format:
+The first number that we see is the `spanID`. That's the ID that's used throughout the entire request and is unique to this specific trace. The second number is the `traceID`, which tells us which span we're currently in on the full trace. The third number is the `parentSpanID`, which allows us to group related requests together. A value of `0` means there is no parent ID. The final number is the `flags`, which tells us various debug information. So our logging messages follow this format:
 
-`<LOG_TYPE> [<TRACE_ID>, <SPAN_ID>] <CLASS>: <MESSAGE>`
+`<LOG_TYPE> [THREAD] <CLASS>: Span reported: <SPAN_ID>:<TRACE_ID>:<PARENT_SPAN_ID>:<FLAGS>`
 
-For us both of our values are the same, but if we were to create additional spans manually we would see different `spanID`s while keeping the same `traceID`. We can also see that both of our log messages have the same value since they were both called within the same trace and span. If we refresh our main page, we will see the same two messages but both with different trace and span ids.
+For us both of our spanID and traceID are the same, but if we were to create additional spans manually we would see different `spanID`s while keeping the same `traceID`. We can also see that both of our log messages have the same value since they were both called within the same trace and span. If we refresh our main page, we will see the same two messages but both with different trace and span ids. For more information look [here](https://www.jaegertracing.io/docs/client-libraries/).
 
 ## Congratulations
 
