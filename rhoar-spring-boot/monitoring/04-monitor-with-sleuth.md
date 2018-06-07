@@ -69,7 +69,7 @@ Not only do we see the log message that we created, we also see a lot of additio
 
 The first number that we see is the `spanID`. That's the ID that's used throughout the entire request and is unique to this specific trace. The second number is the `traceID`, which tells us which span we're currently in on the full trace. The third number is the `parentSpanID`, which allows us to group related requests together. A value of `0` means there is no parent ID. The final number is the `flags`, which tells us various debug information. So our logging messages follow this format:
 
-`<LOG_TYPE> [THREAD] <CLASS>: Span reported: <SPAN_ID>:<TRACE_ID>:<PARENT_SPAN_ID>:<FLAGS>`
+`<LOG_TYPE> [THREAD] <CLASS>: Span reported: <SPAN_ID>:<TRACE_ID>:<PARENT_SPAN_ID>:<FLAGS> - <Function Name>`
 
 For us both of our spanID and traceID are the same, but if we were to create additional spans manually we would see different `spanID`s while keeping the same `traceID`. We can also see that both of our log messages have the same value since they were both called within the same trace and span. If we refresh our main page, we will see the same two messages but both with different trace and span ids. For more information look [here](https://www.jaegertracing.io/docs/client-libraries/).
 
