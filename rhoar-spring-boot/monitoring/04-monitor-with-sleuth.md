@@ -30,9 +30,19 @@ Luckily for us Jaeger handles all of these complexities! All we have to do is in
     &lt;/dependency&gt;
 </pre>
 
-Now that we have our dependency set up, we're going to add some basic logging. Let's add an info-level log to our main controller:
+Now that we have our dependency set up, we're going to add some basic logging. First we need to add the dependency to our class.
 ``src/main/java/com/example/service/FruitController.java``{{open}}
+<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="// Add trace dependecny here">
+import io.opentracing.Tracer;
+</pre>
 
+Next we'll add the Tracer object
+<pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="// Add tracer here">
+@Autowired
+    private Tracer tracer;
+</pre>
+
+Finally, we will add the tracer call
 <pre class="file" data-filename="src/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="// TODO: Add tracing here">
 tracer.buildSpan("Calling home page");
 </pre>
