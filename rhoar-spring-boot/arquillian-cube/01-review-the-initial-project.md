@@ -2,7 +2,7 @@
 
 For your convenience, this scenario has been created with a base project using the Java programming language and the Apache Maven build tool.
 
-Initially the project is almost empty and doesn't do anything. Start by reviewing the base project's content by executing a ``tree``{{execute}} in your terminal.
+The base project contains code for a simple Spring Boot application that exposes web services to retrieve data. Also, the project contains a simple integration test. Start by reviewing the  project's content by executing a ``tree``{{execute}} in your terminal.
 
 The output should look something like this:
 
@@ -18,6 +18,10 @@ The output should look something like this:
     │   │   └── com
     │   │       └── example
     │   │           └── Application.java
+    │   │           └── service
+    │   │           	└── Fruit.java
+    │   │           	└── FruitController.java
+    │   │           	└── FruitRepository.java
     │   └── resources
     │       └── static
     │           └── index.html
@@ -25,7 +29,7 @@ The output should look something like this:
         └── java
             └── com
                 └── example
-                    └── ApplicationTests.java
+                    └── FruitControllerIntTests.java
 ```
 
 
@@ -33,17 +37,16 @@ Except for the `fabric8` directory and the `index.html`, this matches what you w
 
 One thing that differs slightly is the ``pom.xml``{{open}} file.
 
-As you review the content, you will notice that there are a couple **TODO** comments. **Do not remove them!** These comments are used as markers for later exercises in this scenario. 
-
-Notice that we are not using the default BOM (Bill of material) that Spring Boot projects typically use. We are using a BOM provided by Red Hat as part of the [Snowdrop](http://snowdrop.me/) project instead. We use this BOM to make sure that we are using only the dependency versions supported by Red Hat.
+ 
+To leverage Arquillian Cube the project uses the Arquillian Cube BOM provided by the Arquillian Project. Using this BOM ensure access to all of the  dependencies needed to use Arquillian Cube.
 
 ```xml
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>me.snowdrop</groupId>
-        <artifactId>spring-boot-bom</artifactId>
-        <version>${spring-boot.bom.version}</version>
+        <groupId>org.arquillian.cube</groupId>
+        <artifactId>arquillian-cube-bom</artifactId>
+        <version>${version.arquillian-cube.bom}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -51,9 +54,9 @@ Notice that we are not using the default BOM (Bill of material) that Spring Boot
   </dependencyManagement>
 ```
 
-**1. Test the application locally**
+**1. Test the application**
 
-As we develop the application we want to be able to test and verify our change at different stages. One way we can do that locally is by using the `spring-boot` maven plugin.
+As an application is developed and the individual units are tested (e.g. unit testing) the application will require integration tests to be written. To start, this application already has a basic integration test. To understand how to run an integration test, run the following commands to 
 
 Run the application by executing the following command:
 
@@ -75,4 +78,4 @@ Before moving on, click in the terminal window and then press **CTRL-C** to stop
 
 You have now successfully executed the first step in this scenario. In the next step we will 
 
-TODO
+
