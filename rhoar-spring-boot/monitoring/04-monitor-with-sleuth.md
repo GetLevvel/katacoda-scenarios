@@ -70,7 +70,13 @@ Now that we have both of our log statements created, let's test it out! We're go
 
 ``mvn spring-boot:run -Dspring.profiles.active=local``{{execute}}
 
-Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, take another look at the terminal. We should see a logging statement that looks similar to this:
+Now we can click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits) or on the `Local Web Browser` tab to pull up the local project. After we hit the main page and see the success screen, open [Jaeger](https://jaeger-query-dev..[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/) to see the trace that you just generated. You should see a screen similar to the following
+
+![Jaeger](../../assets/middleware/rhoar-monitoring/Jaeger.png)
+
+Select `spring-monitoring` under services and hit Search. This should bring up the last 20 traces that you have generated this hour.
+
+After closing Jaeger, Take another look at the terminal. We should see a logging statement that looks similar to this:
 
 `INFO 3999 --- [nio-8080-exec-1] c.uber.jaeger.reporters.LoggingReporter  : Span reported: eaaa414bc66b0c2b:eaaa414bc66b0c2b:0:1 - home`
 
