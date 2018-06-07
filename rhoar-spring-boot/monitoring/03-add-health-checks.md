@@ -34,7 +34,7 @@ Spring Actuator is a project which exposes health data under the API path `/heal
     &lt;/dependency&gt;
 </pre>
 
-Notice how the error message from before is no longer present in Applications => Deployment => Your App => Configuration. This is because of the dependency that we just added to ourt `pom.xml`
+Notice how the error message from before is no longer present in Applications => Deployment => Your App => Configuration. This is because of the dependency that we just added to ourt `pom.xml`. Adding this dependency triggers fabric8 to create Readiness/Liveness probes for OpenShift. These probes will periodically query the new health endpoints to make sure the app is still up.
 
 Run the following command again to re-deploy the application to OpenShift:
 
