@@ -15,6 +15,7 @@
       { "title": "Step 2", "text": "02-service-discovery-overview.md" },
       { "title": "Step 3", "text": "03-service-discovery-spring-service.md" },
       { "title": "Step 4", "text": "04-service-discovery-spring-client.md" }
+      { "title": "Step 4", "text": "05-service-discovery-openshift.md" }
     ],
     "finish": {
       "text": "99-outro.md"
