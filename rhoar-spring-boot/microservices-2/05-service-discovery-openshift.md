@@ -35,9 +35,8 @@ In the output you will see that there are currently no endpoints defined for thi
 
 **Deploy Application**
 
-Next we will modify the client applications `pom.xml` to include a label. Notice that the label is the same as the one defined in the selector in the service definition above. 
+Next we will modify the client applications `pom.xml` to include a label. Notice that the label is the same as the one defined in the selector in the service definition above. Open ``eureka-client/pom.xml``{{open}}
 
-open ``eureka-client/pom.xml``{{open}}
 <pre class="file" data-filename="eureka-client/pom.xml" data-target="insert" data-marker="<!-- TODO: Add label here-->">
     &lt;configuration&gt;
         &lt;resources&gt;
@@ -63,7 +62,7 @@ Check that the pod has been added to the service we created earlier.
 
 ``oc describe service discovery-service``{{execute}}
 
-You should now see that an endpoint has been added to the service. Navigate to the project in OpenShift [here](http://discovery-service-fruits.[[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com/console/project/fruits/overview) or by clicking the **OpenShift Console** tab. Increase the number of pods deployed to 2 and run the above command again. You should now see that the service has two endpoints. 
+You should now see that an endpoint has been added to the service. Navigate to the project in OpenShift [here](http://[[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com/console/project/fruits/overview) or by clicking the **OpenShift Console** tab. Increase the number of pods deployed to 2 and run the above command again. You should now see that the service has two endpoints. 
 
 The service will now automatically route to and perform load balancing for these two endpoints.
 
