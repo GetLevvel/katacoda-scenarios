@@ -27,4 +27,4 @@ open ``eureka-client/pom.xml``{{open}}
 
 ``mvn package -Dfabric8.openshift.trimImageInContainerSpec fabric8:deploy -Popenshift``{{execute}}
 
-``discovery-service-fruits.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com``
+[here](discovery-service-fruits.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
