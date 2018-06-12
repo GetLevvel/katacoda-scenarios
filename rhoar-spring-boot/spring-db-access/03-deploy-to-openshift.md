@@ -85,7 +85,7 @@ This step may take some time to do the Maven build and the OpenShift deployment.
 
 ``oc rollout status dc/rhoar-training``{{execute}}
 
-Then either go to the OpenShift web console and click on the route or click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/)
+Then either go to the OpenShift web console and click on the route or click [here](https://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/)
 
 Make sure that you can add and remove fruits using the web application.
 
