@@ -29,7 +29,7 @@ After it's complete we can either go to the OpenShift web console and click on t
 ```json
 [{"name":"Cherry"},{"name":"Apple"},{"name":"Banana"}]
 ```
-And if you open the [web application](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) the same functionality from the previous steps should still work.
+And if you open the [web application](https://rhoar-training-fruits.[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) the same functionality from the previous steps should still work.
 
 ## Congratulations
 
