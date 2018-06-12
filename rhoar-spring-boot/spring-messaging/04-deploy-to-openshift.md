@@ -71,8 +71,8 @@ Then we add the view role to our newly created Service Account:
 Now that our Service Account is created and has the role required, next we need to add the parameters to the spec field and specify the service account we're going to be using. Open ``src/main/fabric8/deployment.yml``{{open}}:
 
 <pre class="file" data-filename="src/main/fabric8/deployment.yml" data-target="insert" data-marker="# TODO: Add Service Account variables">
-  serviceAccount: amq-service-account
-  serviceAccountName: amq-service-account
+serviceAccount: amq-service-account
+      serviceAccountName: amq-service-account
 </pre>
 
 
