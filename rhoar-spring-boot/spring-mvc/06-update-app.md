@@ -22,7 +22,7 @@ The `noneMatch()` combinator returns true only if there are no elements in the S
 
 Next let's update the view to notify the user of the de-duping behavior. Open the Home view `src/main/resources/templates/home.html`{{open}} and copy the following at the `<!-- TODO: View Update -->` Marker (or click the `Copy to Editor` button):
 
-<pre class="file" data-filename="pom.xml" data-target="insert" data-marker="<!-- TODO: View Update -->">
+<pre class="file" data-filename="src/main/resources/templates/home.html" data-target="insert" data-marker="<!-- TODO: View Update -->">
 &lt;p&gt;(Duplicates will be ignored)&lt;/p&gt;
 </pre>
 
