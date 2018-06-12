@@ -2,19 +2,19 @@
 
 **1. Modify the ConfigMap**
 
-Let's modify the greeting that our service is returning to the user. Since we set up the greeting in a properties file, we will not need to make any code change to change the functionality. This means that we won't need to have any downtime for this change, we're able to modify the response through our newly created configmap from the previous step. We can pull up our ConfigMap with this command:
+Let's modify the greeting that our service is returning to the user. Since we set up the greeting in a properties file, we will not need to make any code change to change the functionality. This means that we won't need to have any downtime for this change, we're able to modify the response through our newly created ConfigMap from the previous step. We can edit our config map in the OpenShift Console. Click the **OpenShift Console** tab, select `Resources > Config Maps`. Then Select our ConfigMap `app-config`
 
-``oc edit configmap app-config``{{execute}}
+![Greeting Service](../../assets/middleware/rhoar-microservices/configmap.png)
 
-This will open the file in a nano editor. Let's change the greeting to something like this:
+Now Select `Edit YAML` from the actions menu in the upper right corner of the page. 
 
-`greeting.message=Bonjour, you picked %s as your favorite fruit!`
+![Greeting Service](../../assets/middleware/rhoar-microservices/edityaml.png)
 
-Now in order to reflect those changes, we deploy the new version of the application so the ConfigMap configuration changes are picked up:
+Change the `greeting.message` property to: `greeting.message=Bonjour, you picked %s as your favorite fruit!`
 
-``oc rollout latest dc/spring-boot-configmap-greeting``{{execute}}
+![Greeting Service](../../assets/middleware/rhoar-microservices/editconfigmap.png)
 
-That's all there is to it!
+Hit `Save` and that's all there is to it!
 
 **2. Test changes**
 
