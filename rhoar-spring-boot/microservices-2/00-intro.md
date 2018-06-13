@@ -38,10 +38,6 @@ Load Balancing functionality is built into OpenShift by default. OpenShift provi
 
 You can read more about Load Balancing [here](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/spring_boot_microservices_on_red_hat_openshift_container_platform_3/index#load_balancer).
 
-## Congratulations
-
-Now that we've gone over what Load Balancing is and common use cases, our next step will take a look into another topic that comes up often when discussing microservices, and that's `Service Discovery`.
-
 # Service Discovery
 
 When we're handling a microservice architecture, it's very possible that we have multiple services across multiple servers or even multiple data servers. While the end user might not care much about the location of any of these services, our application is highly concerned with the connection details for each service. This problem is addressed with `Service Discovery`.
