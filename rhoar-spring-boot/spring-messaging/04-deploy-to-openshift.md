@@ -68,11 +68,11 @@ Then we add the view role to our newly created Service Account:
 
 ``oc policy add-role-to-user view system:serviceaccount:amq-demo:amq-service-account``{{execute}}
 
-Now that our Service Account is created and has the role required, next we need to add the parameters to the spec field and specify the service account we're going to be using:
+Now that our Service Account is created and has the role required, next we need to add the parameters to the spec field and specify the service account we're going to be using. Open ``src/main/fabric8/deployment.yml``{{open}}:
 
 <pre class="file" data-filename="src/main/fabric8/deployment.yml" data-target="insert" data-marker="# TODO: Add Service Account variables">
-  serviceAccount: amq-service-account
-  serviceAccountName: amq-service-account
+serviceAccount: amq-service-account
+      serviceAccountName: amq-service-account
 </pre>
 
 
@@ -126,7 +126,7 @@ The `mvn package` piece of the above command instructs Maven to run the package 
 
 For the deployment to OpenShift we are using the [Fabric8](https://fabric8.io/) tool through the `fabric8-maven-plugin` which is configured in our ``pom.xml``{{open}} (found in the `<profiles/>` section). Configuration files for Fabric8 are contained in the ``src/main/fabric8``{{open}} folder mentioned earlier.
 
-After the Maven build as finished, it will typically take less than 20 sec for the application to be available. Then you can either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
+After the Maven build as finished, it will typically take less than 20 sec for the application to be available. Then you can either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-amq-demo.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
 
 You should see the same web application as before. The scheduled Producer will continue to deploy messages so clicking refresh should change the values shown every 3 seconds.
 
