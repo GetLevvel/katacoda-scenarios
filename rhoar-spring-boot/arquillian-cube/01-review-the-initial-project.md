@@ -54,9 +54,72 @@ To leverage Arquillian Cube the project uses the Arquillian Cube BOM provided by
   </dependencyManagement>
 ```
 
-**1. Test the application**
+**1. Review the configuration**
 
-As an application is developed and the individual units are tested (e.g. unit testing) the application will require integration tests to be written. To start, this application already has a basic integration test. To understand how to run an integration test, run the following commands to 
+In addition the `pom.xml`, review the `src/test/resources/arquillian.xml`{{open}} file. This file configures Arquillian. 
+
+```xml
+	<extension qualifier="openshift">
+		<property name="app.name">fruit</property>
+		<property name="namespace.use.existing">fruit</property>
+		<property name="env.init.enabled">true</property>
+		<property name="cube.fmp.build">true</property>
+		<property name="enableImageStreamDetection">false</property>
+	</extension>
+```
+
+As you can see, the OpenShift extension has been configured to interact with OpenShift. The set of properties configure the extension:
+
+* ``app.name``
+* ``namespace.use.existing`` allows you to select an existing namespace. Without this property Arquillian will create a namespace for the tests (e.g., itest-12345)
+* ``env.init.enabled`` allows Arquillian to modify the environment, which is being done here by deploying the application and creating routes, etc.
+* ``cube.fmp.build`` corresponds to using fabric8 with Arquillian
+* ``enableImageStreamDetection`` allows Arquillian to detect an image stream to use.
+
+
+**2. Review the tests**
+
+As an application is developed and the individual units are tested (e.g. unit testing) the application will eventually require integration tests. To start, this application already has a basic integration test implemented in the ``src/test/java/com/example/FruitControllerIntTests.java` class:
+
+```java
+@Test
+	public void shouldGetAllFruits_Test() {
+		when().get().then().statusCode(200).body(containsString(
+				"[{\"id\":1,\"name\":\"Cherry\"},{\"id\":2,\"name\":\"Apple\"},{\"id\":3,\"name\":\"Banana\"}]"));
+	}
+```
+
+As you can see the test is calling a web service by invoking an `HTTP POST` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result.
+
+>**NOTE:** The \ is an escape character
+
+
+In addition to the test method above, the test class also contains the following:
+
+```java
+@AwaitRoute
+	@RouteURL("fruit")
+	private URL baseURL;
+
+	@Before
+	public void setup() throws Exception {
+		RestAssured.baseURI = baseURL.toString();
+	}
+```
+`@AwaitRoute` tells Arquillian to wait until the application has been deployed prior to running the tests
+`@RouteURL("fruit")` tells Arquillian which route to use when constructing the URL used for the web service calls
+
+
+
+## Up Next
+
+Now that you have reviewed the project structure, how to configure Arquillian, and how to write a test, it's time to run the tests. In the next step you will deploy the application to OpenShift and run the tests with Arquillian Cube!
+
+
+
+**2. Run the application**
+
+
 
 Run the application by executing the following command:
 
@@ -74,8 +137,6 @@ You should now see an HTML page with the `Welcome to Spring Boot` welcome messag
 
 Before moving on, click in the terminal window and then press **CTRL-C** to stop the running application!
 
-## Congratulations
 
-You have now successfully executed the first step in this scenario. In the next step we will 
 
 
