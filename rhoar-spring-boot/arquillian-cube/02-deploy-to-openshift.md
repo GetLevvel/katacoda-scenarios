@@ -25,12 +25,7 @@ Run the following command to deploy the application to OpenShift and run the int
 
 ``mvn clean package -Popenshift``{{execute}}
 
-After it's complete we can either go to the OpenShift web console and click on the route or click [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/api/fruits). You should see the same JSON output as the previous step:
-
-```json
-[{"name":"Cherry"},{"name":"Apple"},{"name":"Banana"}]
-```
-And if you open the [web application](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) the same functionality from the previous steps should still work.
+>**NOTE:** The building, deploying, and testing of the application may take a few minutes
 
 
 ## Congratulations

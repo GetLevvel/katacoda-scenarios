@@ -32,7 +32,6 @@ The output should look something like this:
                     └── FruitControllerIntTests.java
 ```
 
-
 Except for the `fabric8` directory and the `index.html`, this matches what you would get if you generated an empty project using the [Spring Initializr](https://start.spring.io). For the moment you can ignore the content of the fabric8 folder (we will discuss this later).
 
 One thing that differs slightly is the ``pom.xml``{{open}} file.
@@ -56,7 +55,7 @@ To leverage Arquillian Cube the project uses the Arquillian Cube BOM provided by
 
 **1. Review the configuration**
 
-In addition the `pom.xml`, review the `src/test/resources/arquillian.xml`{{open}} file. This file configures Arquillian. 
+The `src/test/resources/arquillian.xml`{{open}} file is used to configure Arquillian. 
 
 ```xml
 	<extension qualifier="openshift">
@@ -79,7 +78,7 @@ As you can see, the OpenShift extension has been configured to interact with Ope
 
 **2. Review the tests**
 
-As an application is developed and the individual units are tested (e.g. unit testing) the application will eventually require integration tests. To start, this application already has a basic integration test implemented in the ``src/test/java/com/example/FruitControllerIntTests.java` class:
+As an application is developed and the individual units are tested (e.g. unit testing) the application will eventually require integration tests. To start, this application has a an integration test implemented in the ``src/test/java/com/example/FruitControllerIntTests.java` class:
 
 ```java
 @Test
@@ -91,13 +90,28 @@ As an application is developed and the individual units are tested (e.g. unit te
 
 As you can see the test is calling a web service by invoking an `HTTP POST` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result.
 
+```json
+[{"id":1,"name":"Cherry"},{"id":2,"name":"Apple"},{"id":3, "name":"Banana"}]
+```
+
 >**NOTE:** The \ is an escape character
 
 
 In addition to the test method above, the test class also contains the following:
 
 ```java
-@AwaitRoute
+@Category(RequiresOpenshift.class)
+@RequiresOpenshift
+@RunWith(ArquillianConditionalRunner.class)
+```
+
+`@Category(RequiresOpenshift.class)` marks the category of this test class as requiring OpenShift (junit)
+`@RequiresOpenshift` tells Arquillian that this test can only be run on OpenShift
+`@RunWith(ArquillianConditionalRunner.class)` tells Arquillian which test runner should be used
+
+
+```java
+	@AwaitRoute
 	@RouteURL("fruit")
 	private URL baseURL;
 
@@ -109,34 +123,10 @@ In addition to the test method above, the test class also contains the following
 `@AwaitRoute` tells Arquillian to wait until the application has been deployed prior to running the tests
 `@RouteURL("fruit")` tells Arquillian which route to use when constructing the URL used for the web service calls
 
+The `@Before` denotes that the method will be called prior to running each test
 
+>**NOTE:** The Katacoda terminal window is like your local terminal. Everything that you run here you should be able to execute on your local computer as long as you have `Java SDK 1.8` and `Maven` installed. In later steps, we will also use the `oc` command line tool for OpenShift commands.
 
 ## Up Next
 
 Now that you have reviewed the project structure, how to configure Arquillian, and how to write a test, it's time to run the tests. In the next step you will deploy the application to OpenShift and run the tests with Arquillian Cube!
-
-
-
-**2. Run the application**
-
-
-
-Run the application by executing the following command:
-
-``mvn spring-boot:run``{{execute}}
-
->**NOTE:** The Katacoda terminal window is like your local terminal. Everything that you run here you should be able to execute on your local computer as long as you have `Java SDK 1.8` and `Maven` installed. In later steps, we will also use the `oc` command line tool for OpenShift commands.
-
-**3. Verify the application**
-
-To begin with click on the **Local Web Browser** tab in the console frame of this browser window which will open another tab or window of your browser pointing to port 8080 on your client. Or use [this](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) link.
-
-You should now see an HTML page with the `Welcome to Spring Boot` welcome message. If you see this then you've successfully set up the application! If not check the logs in the terminal. Spring Boot adds a couple helper layers to catch common errors and print helpful messages to the console so check for those first.
-
-**4. Stop the application**
-
-Before moving on, click in the terminal window and then press **CTRL-C** to stop the running application!
-
-
-
-
