@@ -5,10 +5,7 @@ This scenario focuses on creating integration tests using [Arquillian Cube](http
 
 In this scenario you will create a working integration test using Arquillian Cube. The integration test will test a simple web service. You will walk through the following steps:
 
-1. Configure a sample project to use Arquillian Cube
-2. Configure Arquillian Cube to run the test locally
-3. Running the test locally, which will fail
-4. Updating the test
-5. Running the test locally, which will now pass
-6. Run the test in OpenShift
-
+1. Review a sample project configured to use Arquillian Cube
+2. Run an integration test after deploying an application to OpenShift
+3. Add a new integration test scenario
+4. Run new integration test scenario after deploying an application to OpenShift
