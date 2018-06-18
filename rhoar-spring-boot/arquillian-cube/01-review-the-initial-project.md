@@ -120,8 +120,8 @@ In addition to the test method above, the test class also contains the following
 		RestAssured.baseURI = baseURL.toString();
 	}
 ```
-`@AwaitRoute` tells Arquillian to wait until the application has been deployed prior to running the tests
-`@RouteURL("fruit")` tells Arquillian which route to use when constructing the URL used for the web service calls
+* `@AwaitRoute` tells Arquillian to wait until the application has been deployed prior to running the tests
+* `@RouteURL("fruit")` tells Arquillian which route to use when constructing the URL used for the web service calls
 
 The `@Before` denotes that the method will be called prior to running each test
 
