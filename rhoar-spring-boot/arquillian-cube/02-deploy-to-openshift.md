@@ -9,7 +9,6 @@ Login to OpenShift using the `oc` command with the developer credentials:
 
 ``oc login [[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com --insecure-skip-tls-verify=true -u developer -p developer``{{execute}}
 
->**IMPORTANT:** If the above `oc login` command doesn't seem to do anything, you may have forgotten to stop the application from the previous step. Click on the terminal and press **CTRL-C** to stop the application and try the above `oc login` command again!
 
 Then we'll create the project:
 
@@ -21,6 +20,7 @@ Now create a database:
 
 
 **2. Run the integration tests**
+
 Run the following command to deploy the application to OpenShift and run the integration tests:
 
 ``mvn clean package -Popenshift``{{execute}}

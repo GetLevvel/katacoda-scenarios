@@ -10,17 +10,18 @@ Add the following test scenario in the ``src/test/java/com/example/FruitControll
 ```java
 @Test
 	public void shouldGetFruitById_Test() {
-		when().get("1").then().statusCode(200).body(containsString("[{\"id\":1,\"name\":\"Cherry\"}]"));
+		when().get("1").then().statusCode(200).body(containsString("{\"id\":1,\"name\":\"Cherry\"}"));
 	}
 ```
 
 In this test you are testing the the web service to retrieve a fruit by an id is available. The test is calling a web service by invoking an `HTTP GET` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result.
 
 ```json
-[{"id":1,"name":"Cherry"}]
+{"id":1,"name":"Cherry"}
 ```
 
 **2. Run the integration tests**
+
 Run the following command to deploy the application to OpenShift and run the integration tests:
 
 ``mvn clean package -Popenshift``{{execute}}

@@ -88,7 +88,7 @@ As an application is developed and the individual units are tested (e.g. unit te
 	}
 ```
 
-As you can see the test is calling a web service by invoking an `HTTP POST` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result.
+As you can see the test is calling a web service by invoking an `HTTP GET` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result.
 
 ```json
 [{"id":1,"name":"Cherry"},{"id":2,"name":"Apple"},{"id":3, "name":"Banana"}]
@@ -105,9 +105,9 @@ In addition to the test method above, the test class also contains the following
 @RunWith(ArquillianConditionalRunner.class)
 ```
 
-`@Category(RequiresOpenshift.class)` marks the category of this test class as requiring OpenShift (junit)
-`@RequiresOpenshift` tells Arquillian that this test can only be run on OpenShift
-`@RunWith(ArquillianConditionalRunner.class)` tells Arquillian which test runner should be used
+* `@Category(RequiresOpenshift.class)` marks the category of this test class as requiring OpenShift (junit)
+* `@RequiresOpenshift` tells Arquillian that this test can only be run on OpenShift
+* `@RunWith(ArquillianConditionalRunner.class)` tells Arquillian which test runner should be used
 
 
 ```java
