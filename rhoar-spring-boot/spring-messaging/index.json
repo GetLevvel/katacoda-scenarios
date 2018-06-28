@@ -11,6 +11,7 @@
       { "title": "Step 2", "text": "02-create-message-listeners.md" },
       { "title": "Step 3", "text": "03-login-to-openshift.md" },
       { "title": "Step 4", "text": "04-deploy-to-openshift.md" }
+      { "title": "Step 5", "text": "05-verify-amq-instance.md" }
     ],
     "intro": {
       "text": "00-intro.md",

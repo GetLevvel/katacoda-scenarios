@@ -78,7 +78,7 @@ serviceAccount: amq-service-account
 
 **2.3 Create AMQ Instance**
 
-Log into the web view and select our `amq-demo` project. Then select `Add to Project` followed by `Browse Catalog`. Select `JBoss A-MQ-6.3 (no SSL)`: 
+Click the **OpenShift Console** tab and select our `amq-demo` project. Then select `Add to Project` followed by `Browse Catalog`. Select `JBoss A-MQ-6.3 (no SSL)`: 
 
 ![Messaging](../../assets/middleware/rhoar-messaging/amq62-ssl.png)
 
