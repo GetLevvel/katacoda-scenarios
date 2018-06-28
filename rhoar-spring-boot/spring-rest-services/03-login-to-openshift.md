@@ -20,6 +20,14 @@ Now create a database:
 
 ``oc new-app -e POSTGRESQL_USER=dev -e POSTGRESQL_PASSWORD=secret -e POSTGRESQL_DATABASE=my_data openshift/postgresql-92-centos7 --name=my-database``{{execute}}
 
+Our application knows how to interact with the database because we defined the properties in the ``src/main/resources/application-openshift.properties``{{open}} file. You can see below that we have supplied the URL, username, password, and driver for the database.
+```
+spring.datasource.url=jdbc:postgresql://${MY_DATABASE_SERVICE_HOST}:${MY_DATABASE_SERVICE_PORT}/my_data
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.hibernate.ddl-auto=create
+```
 All that's left is to run the following command to deploy the application to OpenShift:
 
 ``mvn package fabric8:deploy -Popenshift``{{execute}}
