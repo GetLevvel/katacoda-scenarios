@@ -53,9 +53,7 @@ logging.level.com.netflix.discovery=OFF
 ```
 Since our application already has Eureka integrated, navigate to our service project location and build the project so that we're able to access it locally:
 
-``cd eureka-service/``{{execute}}
-
-``mvn spring-boot:run``{{execute}}
+``mvn -f eureka-service spring-boot:run``{{execute}}
 
 After that's finished building successfully, click the link [here](https://[[HOST_SUBDOMAIN]]-8761-[[KATACODA_HOST]].environments.katacoda.com/) to look at our web view for our Eureka Discovery Client. Note that it's exposed on the port that we set in our `application.properties` file.
 
