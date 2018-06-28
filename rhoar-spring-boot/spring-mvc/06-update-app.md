@@ -8,13 +8,13 @@ Let's update the Controller to enforce this new requirement and the view to noti
 
 First we will update the Controller. Go ahead and open that file in the editor: 
 
-Currently in the `@PostMapping` method we simply do a `fruits.add(fruit);` action without any checks for deduping. For the sake of simplicity we will simply ignore submissions if the fruit already exists. We can use a little Java 8 Stream to accomplish this. Replace the `fruits.add(fruit);` line with the following:
+Currently in the `@PostMapping` method we simply do a `fruits.add(fruit);` action without any checks for deduping. For the sake of simplicity we will simply ignore submissions if the fruit already exists. We can use a little Java 8 Stream to accomplish this. Open ``src/main/java/com/example/service/FruitController.java``{{open}} and replace the `fruits.add(fruit);` line with the following:
 
-```
+<pre class="file" data-filename="rc/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="fruits.add(fruit);">
 if(fruits.stream().noneMatch(f -> f.getName().equalsIgnoreCase(fruit.getName()))) {
     fruits.add(fruit);
 }
-```
+</pre>
 
 The `noneMatch()` combinator returns true only if there are no elements in the Stream which match the given predicate. In this case it will return true only if there is no Fruit in the list whose name matches (ignoring case) the submitted Fruit's name. Using this - we can add to the `fruits` list only if a Fruit with the same name does not already exist!
 
