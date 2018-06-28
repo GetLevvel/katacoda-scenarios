@@ -1,4 +1,4 @@
-# Load the project into STS
+# Load the project into OpenShift 
 
 **Red Hat OpenShift Container Platform** is the preferred runtime for **Red Hat OpenShift Application Runtimes** like **Spring Boot**, **Vert.x**, etc. The OpenShift Container Platform is based on **Kubernetes** which is a Container Orchestrator that has grown in popularity and adoption over the last couple years. **OpenShift** is currently the only container platform based on Kuberenetes that offers multitenancy. This means that developers can have their own personal, isolated projects to test and verify applications before committing to a shared code repository.
 
@@ -33,7 +33,7 @@ then login:
 
 ![Web Console Login](../../assets/middleware/rhoar-getting-started-spring/login.png)
 
-After you have authenticated to the web console you will be presented with a list of projects that your user has permission to view.
+After you have authenticated to the web console you will be presented with a list of projects that your user has permission to view on the right side of the screen.
 
 ![Web Console Projects](../../assets/middleware/rhoar-getting-started-spring/projects.png)
 
