@@ -50,6 +50,8 @@ Click the `+` sign next to our OpenShift console and select `Open New Terminal`.
 
 Run the following commands to navigate to our client project and build it locally
 
+``cd code``{{execute}}
+
 ``mvn -f eureka-service spring-boot:run``{{execute}}
 
 After the project has successfully built, check our Eureka Server web view again. Under the `Instances Currently Registerd with Eureka` we should now see our client application!
