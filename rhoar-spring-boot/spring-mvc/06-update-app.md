@@ -34,7 +34,7 @@ Before re-deploying we want to verify locally that our changes are correct. Run 
 
 All that's left now is to re-run the `fabric8:deploy` command to re-deploy the application to OpenShift:
 
-``mvn package fabric8:deploy -Popenshift``{{execute}}
+``mvn package fabric8:undeploy fabric8:deploy -Popenshift``{{execute}}
 
 After deployment completes either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/fruits). We can confirm that our application is still up and working just as it was before! The only difference now is that it's deployed on OpenShift.
 
