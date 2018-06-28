@@ -134,7 +134,7 @@ Results :
 Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 ```
 
->**NOTE:** As a reminder: the configuration for database connectivity is found in the application properties files in `src/main/resources/`{{open}} since we chose to override the Spring Boot defaults. For local we use the `application-local.properties` file. On OpenShift we use the `application-openshift.properties` file.
+>**NOTE:** As a reminder: the configuration for database connectivity is found in the application properties files in `src/main/resources/` since we chose to override the Spring Boot defaults. For local we use the `application-local.properties` file. On OpenShift we use the `application-openshift.properties` file.
 
 **6. Review The Controller**
 
