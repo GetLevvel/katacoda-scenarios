@@ -44,7 +44,7 @@ Now that our application is deployed, navigate to our route in the OpenShift Web
 
 **4. Test functionality**
 
-As the page suggests, we're going to put in a name and let our greeting service reply with a given greeting. Since our default value is `Hello %s from a ConfigMap!`, that's what we should see after we fill in the textbox and click the button. 
+As the page suggests, we're going to put in a name and let our greeting service reply with a given greeting. Since our default value is `Greetings, you picked %s as your favorite fruit!`, that's what we should see after we fill in the textbox and click the button. 
 
 <!-- And indeed that's what we see:
 
