@@ -14,4 +14,4 @@ We should now see the same `Success` page that we saw when we first tested our a
 
 ## Congratulations
 
-You have now learned how to deploy a Spring Boot application to OpenShift Container Platform, as well as access the application via an external route. In our next step, we will navigate through OpenShift's web console in order to view our application and learn about health checks.
+You have now learned how to access the application via an external route. In our next step, we will navigate through OpenShift's web console in order to view our application and learn about health checks.
