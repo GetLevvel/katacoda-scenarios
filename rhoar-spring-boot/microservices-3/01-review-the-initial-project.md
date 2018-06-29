@@ -18,7 +18,7 @@ You can read more about the Circuit Breaker pattern and see some helpful diagram
 
 **3. Implementation of the Circuit Breaker pattern**
 
-Our two-service application is currently implementing this pattern. If we take a look at our ``fruit-service/src/main/java/io/openshift/booster/service/FruitController.java``{{open}} file, we see that our simple controller is simply calling our `NameService`.
+Our two-service application is currently implementing this pattern. If we take a look at our ``fruit-service/src/main/java/io/openshift/booster/service/FruitController.java``{{open}} file, we see that our simple controller is simply calling our `NameService`. Below we will add some code to the project. Click the `Copy to Editor` button to do this automatically
 
 
 <pre class="file" data-filename="fruit-service/src/main/java/io/openshift/booster/service/FruitController.java" data-target="insert" data-marker="// TODO Call name service here">
