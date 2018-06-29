@@ -1,6 +1,6 @@
 # Additional Monitoring
 
-Our health check is nice to determine if our application is online and healthy but it would be nice if we had some additional tools for debugging and monitoring our application. For that, we're going to be using a Spring library known as `Spring Cloud Sleuth`, a tracing tool that will assist in our logging.
+Our health check is nice to determine if our application is online and healthy but it would be nice if we had some additional tools for debugging and monitoring our application. For that, we're going to be using a library known as `Jaeger`, a tracing tool that will assist in our logging.
 
 **1. Jaeger and Tracing**
 
@@ -89,6 +89,8 @@ The first number that we see is the `spanID`. That's the ID that's used througho
 
 For us both of our spanID and traceID are the same, but if we were to create additional spans manually we would see different `spanID`s while keeping the same `traceID`. We can also see that both of our log messages have the same value since they were both called within the same trace and span. If we refresh our main page, we will see the same two messages but both with different trace and span ids. For more information look [here](https://www.jaegertracing.io/docs/client-libraries/).
 
+Tracing becomes ever more important as the number of distributed, interdependent microservices increases. Tracing gives us greater insight and troubleshooting abilities for hard to diagnose issues without having to do a full debug of the app.
+
 ## Congratulations
 
-We've now added Sleuth to our application, allowing us to quickly and easily monitor and debug our application by including however much logging we think is reasonable. You can view the Github profile and readme for Sleuth [here](https://github.com/spring-cloud/spring-cloud-sleuth). 
+We've now added Jaeger to our application, allowing us to quickly and easily monitor and debug our application by including however much logging we think is reasonable. You can view the Github profile and readme for Jaeger [here](https://github.com/jaegertracing/jaeger). 
