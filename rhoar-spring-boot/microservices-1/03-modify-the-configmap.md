@@ -1,6 +1,18 @@
 # Making modifications to the Configuration Map
 
-**1. Modify the ConfigMap**
+**1. the ConfigMap**
+
+Configs maps are useful tool for decoupling configuration settings from the code. ConfigMaps can be used to inject configuration data into a container in much the same way that secrets do, though ConfigMaps should not store confidential information. ConfigMaps objects hold key-pair values representing all of your configuration data. 
+
+Notice the following dependency that was added to our `greeting-service/pom.xml`{{open}}. This allows us to use OpenShifts external configuration in our code.
+
+```    <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-kubernetes-config</artifactId>
+     </dependency>
+```
+
+**2. Modify the ConfigMap**
 
 Let's modify the greeting that our service is returning to the user. Since we set up the greeting in a properties file, we will not need to make any code change to change the functionality. This means that we won't need to have any downtime for this change, we're able to modify the response through our newly created ConfigMap from the previous step. We can edit our config map in the OpenShift Console. Click the **OpenShift Console** tab, select `Resources > Config Maps`. Then Select our ConfigMap `app-config`
 
@@ -16,7 +28,7 @@ Change the `greeting.message` property to: `greeting.message=Bonjour, you picked
 
 Hit `Save` and that's all there is to it!
 
-**2. Test changes**
+**3. Test changes**
 
 Now that we've modified the ConfigMap and deployed our changes, let's test the greeting service and see if it's returning our new value.
 Click [here](http://spring-boot-configmap-greeting-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/) and put in a test value and click the button. Now instead of seeing `Greetings ...`, we should be seeing:

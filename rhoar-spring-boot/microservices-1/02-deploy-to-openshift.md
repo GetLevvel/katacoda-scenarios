@@ -22,6 +22,8 @@ We should see `role "view" added: "default"` as output. The next step is to crea
 
 ``oc create configmap app-config --from-file=greeting-service/src/main/etc/application.properties``{{execute}}
 
+We will talk about ConfigMaps in greater detail in the next section.
+
 >**NOTE:** The only two parameters this command needs are the name of the ConfigMap to create and the file location. This command is creating a ConfigMap named `app-config`. We're going to be using that name in future commands. If you decide to manually run the command or give the ConfigMap a different name, make sure you modify the other commands accordingly.
 
 Now we're ready to deploy!
