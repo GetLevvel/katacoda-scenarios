@@ -79,7 +79,7 @@ We will now use the OpenShift service to perform load balancing for us. This can
 
 ``mvn package fabric8:undeploy fabric8:deploy -Popenshift``{{execute}}
 
-We can now hit our new endpoint through the service's route. We can use the command `oc describe route discovery-service | grep "Requested Host"`{{execute}} to find the route for the service and append `/loadBalanceTest` to the URL or you can click [here](http://discovery-service-fruits.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/LoadBalanceTest). This is the external route for the service and will pass the request through to any of the available pods that this service knows about.
+We can now hit our new endpoint through the service's route. We can use the command `oc describe route discovery-service | grep "Requested Host"`{{execute}} to find the route for the service and append `/loadBalanceTest` to the URL or you can click [here](http://discovery-service-fruits.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/loadBalanceTest). This is the external route for the service and will pass the request through to any of the available pods that this service knows about.
 
 ## Congratulations
 
