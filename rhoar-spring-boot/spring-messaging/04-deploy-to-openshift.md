@@ -15,7 +15,7 @@ Spring Boot provides a nice feature for health checks called Actuator. Actuator 
 
 **2. Deploy a JBoss AMQ Instance**
 
-The first thing we must do is create a template. This will allow us to generate a deployment based on some preconfigured settings.  After that we'll create a Service account for the AMQ Broker to run as. We then assign the `view` role to that account FOR SOME REASON and then we need to add SSL keys for the connections. Then we import the certificates into OpenShift as secrets and we're done. Sounds like a lot, but the steps are very simple.
+The first thing we must do is create a template. This will allow us to generate a deployment based on some preconfigured settings.  After that we'll create a Service account for the AMQ Broker to run as. We then assign the `view` role to that account. We have to do this before deploying the application so that it's able to access the OpenShift API and read the secret we provide. Then we import the certificates into OpenShift as secrets and we're done. Sounds like a lot, but the steps are very simple.
 
 **2.1 Create Messaging Templates**
 
