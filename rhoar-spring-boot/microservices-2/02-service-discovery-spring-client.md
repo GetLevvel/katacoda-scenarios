@@ -52,13 +52,26 @@ Run the following commands to navigate to our client project and build it locall
 
 ``cd code``{{execute}}
 
-``mvn -f eureka-service spring-boot:run``{{execute}}
+``mvn -f eureka-client spring-boot:run``{{execute}}
 
 After the project has successfully built, check our Eureka Server web view again. Under the `Instances Currently Registerd with Eureka` we should now see our client application!
 
 ![Open New Terminal](../../assets/middleware/rhoar-microservices/eureka-new-terminal.png)
 
 Stop both applications with **CTRL-C** before continuing.
+
+**3. Test the Application**
+
+Now that we have a client registered to the Eureka-Server instance, we can interrogate the Eureka-Server instance to find out some information about the client. Visit the link [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/service-instances/a-bootiful-client). This link will call the `/service-instance/` endpoint on the Eureka-Client seen below. We will use as `a-bootiful-client`, the name we gave our client, as the ApplicationName parameter.
+
+```
+    @RequestMapping("/service-instances/{applicationName}")
+    public List<ServiceInstance> serviceInstancesByApplicationName( @PathVariable String applicationName) {
+        return this.discoveryClient.getInstances(applicationName);
+    }
+```
+
+This call will return information from the Eureka-Service about the Eureka-Client instance we have registered. 
 
 ## Congratulations
 
