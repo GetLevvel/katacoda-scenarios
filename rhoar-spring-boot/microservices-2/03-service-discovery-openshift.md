@@ -2,7 +2,7 @@
 
 OpenShift provides its own load balancing and service discovery so we do not need to use Eureka when we deploy to OpenShift.  
 
-**Create Service**
+**1. Create Service**
 
 First login in to openshift and create a project.
 
@@ -33,7 +33,7 @@ In the output you will see that there are currently no endpoints defined for thi
 
 `Endpoints:              <none>`
 
-**Deploy Application**
+**2. Deploy Application**
 
 Next we will modify the client applications `pom.xml` to include a label. Notice that the label is the same as the one defined in the selector in the service definition above. Open ``eureka-client/pom.xml``{{open}}
 
@@ -66,5 +66,21 @@ You should now see that an endpoint has been added to the service. Navigate to t
 
 The service will now automatically route to and perform load balancing for these two endpoints.
 
+**3. Test Application**
 
-<!-- [here](http://discovery-service-fruits.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com) -->
+We will now use the OpenShift service to perform load balancing for us. This can be useful because as pods are spun up and down they may not have the same IP address each time. Copy the below code into the `eureka-client/src/main/java/hello/EurekaClientApplication.java`{{open}}.
+
+<pre class="file" data-filename="eureka-client/pom.xml" data-target="insert" data-marker="//TODO: Add load balance endpoit here">
+@RequestMapping("/loadBalanceTest")
+    public String loadBalanceTest() {
+        return "Sucessfully accessed the application through a load balancer!";
+    }
+</pre>
+
+``mvn package fabric8:undeploy fabric8:deploy -Popenshift``{{execute}}
+
+We can now hit our new endpoint through the service's route. We can use the command `oc describe route discovery-service | grep "Requested Host"`{{execute}} to find the route for the service and append `/loadBalanceTest` to the URL or you can click [here](http://discovery-service-fruits.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/LoadBalanceTest). This is the external route for the service and will pass the request through to any of the available pods that this service knows about.
+
+## Congratulations
+
+We have now gone over how to configure your application to use an OpenShift service to automatically perform load balancing and automatic discovery!
