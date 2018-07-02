@@ -1,10 +1,10 @@
 # Making modifications to the Configuration Map
 
-**1. the ConfigMap**
+**1. The ConfigMap**
 
-Configs maps are useful tool for decoupling configuration settings from the code. ConfigMaps can be used to inject configuration data into a container in much the same way that secrets do, though ConfigMaps should not store confidential information. ConfigMaps objects hold key-pair values representing all of your configuration data. 
+Configs maps are a useful tool for decoupling configuration settings from the code. ConfigMaps can be used to inject configuration data into a container in much the same way that secrets do, though ConfigMaps should not store confidential information. ConfigMap objects hold key-pair values representing all of your configuration data. 
 
-Notice the following dependency that was added to our `greeting-service/pom.xml`{{open}}. This allows us to use OpenShifts external configuration in our code.
+Notice the following dependency that was added to our `greeting-service/pom.xml`{{open}}. This allows us to integrate with OpenShift's ConfigMaps.
 
 ```    <dependency>
        <groupId>org.springframework.cloud</groupId>
