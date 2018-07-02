@@ -68,7 +68,7 @@ The service will now automatically route to and perform load balancing for these
 
 **3. Test Application**
 
-We will now use the OpenShift service to perform load balancing for us. This can be useful because as pods are spun up and down they may not have the same IP address each time. Copy the below code into `eureka-client/src/main/java/hello/EurekaClientApplication.java`{{open}}.
+We will now use the OpenShift service to perform load balancing for us. This can be useful because as pods are spun up and down they may not have the same IP address each time. Copy the below code into `eureka-client/src/main/java/hello/EurekaClientApplication.java`{{open}}. This will add a new enpoint for us to hit that simply returns a plaintext message.
 
 <pre class="file" data-filename="eureka-client/src/main/java/hello/EurekaClientApplication.java" data-target="insert" data-marker="//TODO: Add load balance endpoint here">
 @RequestMapping("/loadBalanceTest")
