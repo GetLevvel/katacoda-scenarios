@@ -58,8 +58,6 @@ After the project has successfully built, check our Eureka Server web view again
 
 ![Open New Terminal](../../assets/middleware/rhoar-microservices/eureka-new-terminal.png)
 
-Stop both applications with **CTRL-C** before continuing.
-
 **3. Test the Application**
 
 Now that we have a client registered to the Eureka-Server instance, we can interrogate the Eureka-Server instance to find out some information about the client. Visit the link [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/service-instances/a-bootiful-client). This link will call the `/service-instance/` endpoint on the Eureka-Client seen below. We will use as `a-bootiful-client`, the name we gave our client, as the ApplicationName parameter.
@@ -72,6 +70,8 @@ Now that we have a client registered to the Eureka-Server instance, we can inter
 ```
 
 This call will return information from the Eureka-Service about the Eureka-Client instance we have registered. 
+
+Stop both applications with **CTRL-C** before continuing.
 
 ## Congratulations
 
