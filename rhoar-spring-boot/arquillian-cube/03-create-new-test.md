@@ -10,7 +10,7 @@ Add the following test scenario in the `src/test/java/com/example/FruitControlle
 ```java
 @Test
 	public void shouldGetFruitById_Test() {
-		when().get("1").then().statusCode(200).body(containsString("{\"id\":1,\"name\":\"Cherry\"}"));
+		when().get("1").then().statusCode(200).body("name", hasItems("Cherry"));
 	}
 ```
 
