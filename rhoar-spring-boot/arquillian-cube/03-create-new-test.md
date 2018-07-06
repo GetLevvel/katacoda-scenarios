@@ -5,7 +5,7 @@ Now it's time to get your hands dirty! The following steps will walk you through
 
 **1. Add the test**
 
-Add the following test scenario in the ``src/test/java/com/example/FruitControllerIntTests.java`{{open}} class:
+Add the following test scenario in the `src/test/java/com/example/FruitControllerIntTests.java`{{open}} class:
 
 ```java
 @Test
