@@ -32,7 +32,7 @@ While we are only demonstrating how to create integration tests for a simple pro
 is invaluable. Why? There are a number of reasons, but three major points are:
 
 1. Automated tests help ensure that application components work as expected before being used
-2. When changes are made in one application component, the automated tests will validate the change did not break other components.
+2. When changes are made in one application component, the automated tests will validate the change did not break other components
 3. Automated tests ensures a level of consistent testing because the tests are run every time code is changed
 
 
