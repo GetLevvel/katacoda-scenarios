@@ -78,7 +78,7 @@ As you can see, the OpenShift extension has been configured to interact with Ope
 
 **2. Review the tests**
 
-As an application is developed and the individual units are tested (e.g. unit testing) the application will eventually require integration tests. To start, this application has a an integration test implemented in the ``src/test/java/com/example/FruitControllerIntTests.java`{{open}} class:
+As an application is developed and the individual units are tested (e.g. unit testing) the application will eventually require integration tests. To start, this application has a an integration test implemented in the ``src/test/java/com/example/FruitControllerIntTest.java`{{open}} class:
 
 ```java
 @Test
