@@ -83,12 +83,11 @@ As an application is developed and the individual units are tested (e.g. unit te
 ```java
 @Test
 	public void shouldGetAllFruits_Test() {
-		when().get().then().statusCode(200).body(containsString(
-				"[{\"id\":1,\"name\":\"Cherry\"},{\"id\":2,\"name\":\"Apple\"},{\"id\":3,\"name\":\"Banana\"}]"));
+		when().get().then().statusCode(200).body("name", hasItems("Cherry", "Apple", "Banana"));
 	}
 ```
 
-As you can see the test is calling a web service by invoking an `HTTP GET` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result.
+As you can see the test is calling a web service by invoking an `HTTP GET` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result. While the JSON below is being returned by the web service and compared, the test perform a direct String comparison because doing so is a fragile testing practice. Instead, the test leverages the [REST Assured](http://rest-assured.io) library (it also makes tests more readable and easier to write!).
 
 ```json
 [{"id":1,"name":"Cherry"},{"id":2,"name":"Apple"},{"id":3, "name":"Banana"}]
