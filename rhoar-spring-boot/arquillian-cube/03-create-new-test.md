@@ -8,10 +8,10 @@ Now it's time to get your hands dirty! The following steps will walk you through
 Add the following test scenario in the `src/test/java/com/example/FruitControllerIntTest.java`{{open}} class:
 
 ```java
-@Test
-	public void shouldGetFruitById_Test() {
-		when().get("1").then().statusCode(200).body("name", hasItems("Cherry"));
-	}
+	@Test
+  	public void shouldGetFruitById_Test() {
+      when().get("1").then().statusCode(200).body("name", equalTo("Cherry"));
+  }
 ```
 
 In this test you are testing the the web service to retrieve a fruit by an id is available. The test is calling a web service by invoking an `HTTP GET` using `.get()` and if the invocation is successful, `HTTP Response Code 200`, the body of the response is compared to the expected result.
