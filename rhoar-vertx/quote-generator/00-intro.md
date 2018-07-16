@@ -18,7 +18,7 @@ The Micro-Trader is a fake financial app, where we will be making (virtual) mone
 
 Let’s have a look at the architecture:
 
-![Architecture](../assets/rhoar-vertx/reactive-ms-architecture.png)
+![Architecture](../assets/middleware/rhoar-getting-started-vertx/reactive-ms-architecture.png)
 
 The application uses several types of services:
 
@@ -28,7 +28,7 @@ The application uses several types of services:
 
 The dashboard presents the available services, the value of each company’s quotes, the latest set of operations made by our traders and the current state of our portfolio. It also shows the state of the different circuit breakers.
 
-![Architecture](../assets/rhoar-vertx/dashboard.png)
+![Architecture](./assets/middleware/rhoar-getting-started-vertx/dashboard.png)
 
 #### NOTE
 
@@ -36,13 +36,13 @@ In this first scenario, we will focus on creating the quote generator microservi
 
 ## What is Eclipse Vert.x?
 
-![Local Web Browser Tab](../assets/rhoar-vertx/vertx-logo.png)
+![Local Web Browser Tab](./assets/middleware/rhoar-getting-started-vertx/vertx-logo.png)
 
 If you go on the Vert.x web site, Vert.x is defined as "a toolkit for building reactive applications on the JVM". There are a three important points in this description: `toolkit`, `reactive` and `"on the JVM"`
 
-Firstly, Vert.x is a `toolkit`. Meaning, Vert.x is not an application server, a container nor a framework. It’s not a JavaScript library either. Vert.x is a plain old jar file, so a Vert.x application is an application that uses this jar file. Vert.x does not define a packaging model, all Vert.x components are plain boring jar files. How does this impact you and your application? Let’s imagine you are using a build tool such as Maven or Gradle, to make your application a Vert.x application just add the vertx-core dependency. Wanna use another Vert.x components, just add it as a dependency. It’s simple, burden-less. Starting the application is a simple class with the public static void main(String[] args) entry point. No specific IDE or plugin to install to start using Vert.x.
+Firstly, Vert.x is a ``toolkit``. Meaning, Vert.x is not an application server, a container nor a framework. It’s not a JavaScript library either. Vert.x is a plain old jar file, so a Vert.x application is an application that uses this jar file. Vert.x does not define a packaging model, all Vert.x components are plain boring jar files. How does this impact you and your application? Let’s imagine you are using a build tool such as Maven or Gradle, to make your application a Vert.x application just add the vertx-core dependency. Wanna use another Vert.x components, just add it as a dependency. It’s simple, burden-less. Starting the application is a simple class with the public static void main(String[] args) entry point. No specific IDE or plugin to install to start using Vert.x.
 
-Secondly, Vert.x is `reactive`. It is specifically made to build reactive applications, or more appropriately, systems. Reactive systems [1] has been defined in the Reactive Manifesto. Although, it’s not long document to read, we will further reduce it to these 4 bullet points:
+Secondly, Vert.x is ``reactive``. It is specifically made to build reactive applications, or more appropriately, systems. Reactive systems [1] has been defined in the Reactive Manifesto. Although, it’s not long document to read, we will further reduce it to these 4 bullet points:
 * Responsive: a reactive system needs to handle requests in a reasonable time (I let you define reasonable).
 * Resilient: a reactive system must stay responsive in the face of failures (crash, timeout, 500 errors…​), so it must be designed for failures and deal with them appropriately.
 * Elastic: a reactive system must stay responsive under various loads. As a consequence, it must scale up and down, and be able to handle the load with minimal resources.
