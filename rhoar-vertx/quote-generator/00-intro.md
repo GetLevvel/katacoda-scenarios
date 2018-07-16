@@ -1,7 +1,7 @@
 In this scenario, you will learn more about Reactive Microservices using [Eclipse Vert.x](https://vertx.io), one of the runtimes included in [Red Hat OpenShift Application Runtimes](https://developers.redhat.com/products/rhoar).
 
 ## The Micro-Trader Application
-This scenario is the first one in a list of scenarios that will walk you through building a Reactive application using Vert.x illustrating what Vert.x is. The application is called the ``Micro-Trader`` is composed of multiple microservices as seen below. 
+This scenario is the first one in a list of scenarios that will walk you through building a Reactive application using Vert.x illustrating what Vert.x is. The application is called the ``Micro-Trader`` and is composed of multiple microservices as seen below. 
 
 The first scenario will focus on creating the first service called the quote-generator. In the subsequent scenarios, you will create the other services to give you a complete working application at the end that is:
 
