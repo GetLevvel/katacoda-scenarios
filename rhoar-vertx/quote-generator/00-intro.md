@@ -18,7 +18,7 @@ The Micro-Trader is a fake financial app, where we will be making (virtual) mone
 
 Let’s have a look at the architecture:
 
-![Architecture](../assets/middleware/rhoar-getting-started-vertx/reactive-ms-architecture.png)
+![Architecture](../../assets/middleware/rhoar-getting-started-vertx/reactive-ms-architecture.png)
 
 The application uses several types of services:
 
@@ -28,7 +28,7 @@ The application uses several types of services:
 
 The dashboard presents the available services, the value of each company’s quotes, the latest set of operations made by our traders and the current state of our portfolio. It also shows the state of the different circuit breakers.
 
-![Architecture](./assets/middleware/rhoar-getting-started-vertx/dashboard.png)
+![Architecture](../../assets/middleware/rhoar-getting-started-vertx/dashboard.png)
 
 #### NOTE
 
@@ -36,7 +36,7 @@ In this first scenario, we will focus on creating the quote generator microservi
 
 ## What is Eclipse Vert.x?
 
-![Local Web Browser Tab](./assets/middleware/rhoar-getting-started-vertx/vertx-logo.png)
+![Local Web Browser Tab](../../assets/middleware/rhoar-getting-started-vertx/vertx-logo.png)
 
 If you go on the Vert.x web site, Vert.x is defined as "a toolkit for building reactive applications on the JVM". There are a three important points in this description: `toolkit`, `reactive` and `"on the JVM"`
 

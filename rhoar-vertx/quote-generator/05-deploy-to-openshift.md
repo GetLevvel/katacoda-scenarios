@@ -28,8 +28,6 @@ to access the sample UI.
 
 > You can also access the application through the link on the OpenShift Web Console Overview page.
 
-![Overview link](../assets/rhoar-vertx/routelink.png)
-
 **4. Build and Deploy the dashboard**
 
 `cd /root/code/trader-dashboard`{{execute T1 interrupt}}
