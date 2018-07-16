@@ -38,7 +38,7 @@ In this first scenario, we will focus on creating the quote generator microservi
 
 ![Local Web Browser Tab](../../assets/middleware/rhoar-getting-started-vertx/vertx-logo.png)
 
-If you go on the Vert.x web site, Vert.x is defined as "a toolkit for building reactive applications on the JVM". There are a three important points in this description: `toolkit`, `reactive` and `"on the JVM"`
+If you go on the Vert.x web site, Vert.x is defined as "a toolkit for building reactive applications on the JVM". There are a three important points in this description: ``toolkit``, ``reactive`` and ``"on the JVM"``
 
 Firstly, Vert.x is a ``toolkit``. Meaning, Vert.x is not an application server, a container nor a framework. It’s not a JavaScript library either. Vert.x is a plain old jar file, so a Vert.x application is an application that uses this jar file. Vert.x does not define a packaging model, all Vert.x components are plain boring jar files. How does this impact you and your application? Let’s imagine you are using a build tool such as Maven or Gradle, to make your application a Vert.x application just add the vertx-core dependency. Wanna use another Vert.x components, just add it as a dependency. It’s simple, burden-less. Starting the application is a simple class with the public static void main(String[] args) entry point. No specific IDE or plugin to install to start using Vert.x.
 

@@ -35,7 +35,7 @@ to access the sample UI.
 `mvn fabric8:deploy -Popenshift`{{execute T1 interrupt}}
 
 Click on the
-[route URL](http://quote-generator-vertx-microtrader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
+[route URL](http://trader-dashboard-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
 to access the sample UI.
 
 ## Congratulations!
