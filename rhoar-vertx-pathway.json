@@ -1,0 +1,27 @@
+{
+  "title": "Eclipse Vert.x on Red Hat OpenShift Application Runtime",
+  "description": "",
+  "paid": false,
+  "courses": [
+    {
+      "course_id": "quote-generator",
+      "title": "1: The first microservice - the quote generator"
+    },
+    {
+      "course_id": "portfolio-service",
+      "title": "2: Event bus services - Portfolio service"
+    },
+    {
+      "course_id": "compulsive-traders",
+      "title": "3: The compulsive traders"
+    },
+    {
+      "course_id": "audit-service",
+      "title": "4: The Audit service"
+    },
+    {
+      "course_id": "dashboard",
+      "title": "5: Anatomy of the dashboard"
+    }
+  ]
+}
