@@ -16,3 +16,5 @@ mvn compile vertx:run
 oc login https://[[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com -u developer -p developer --insecure-skip-tls-verify=true
 oc new-project vertx-micro-trader --display-name="Micro-Trader Application
 mvn fabric8:deploy -Popenshift
+
+~/.launch.sh
