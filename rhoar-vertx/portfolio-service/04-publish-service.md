@@ -1,6 +1,8 @@
 Now that the service implementation is complete, let’s publish it ! First we need a verticle that creates the actual service object, registers the service on the event bus and publishes the service in the service discovery infrastructure.
 
-Open the io.vertx.workshop.portfolio.impl.PortfolioVerticle class. In its start method is does what we just say:
+Open the Open the file in the editor: ``portfolio-service/src/main/java/io/vertx/workshop/portfolio/impl/PortfolioVerticle.java``{{open}}
+
+In its start method is does what we just say:
 
 1) Create the service object with:
 

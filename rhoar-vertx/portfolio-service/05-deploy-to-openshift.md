@@ -8,10 +8,14 @@ To build the project launch:
 
 `mvn clean package`{{execute}}
 
-We have already deployed our ``quote-generator`` and ``trader-dashboard`` microservices. In this step we will deploy our new portfolio microservice. We will continue with the same OpenShift project to house this service and other microservices.
+We have already deployed our ``quote-generator`` and ``trader-dashboard`` microservices on OpenShift. In this step we will deploy our new portfolio microservice. We will continue with the same OpenShift project to house this service and other microservices.
 
 As you know, Red Hat OpenShift Application Runtimes include a powerful maven plugin that can take an
 existing Eclipse Vert.x application and generate the necessary Kubernetes configuration.
+
+Switch to the OpenShift project
+
+`oc project vertx-micro-trader`{{execute}}
 
 Build and deploy the project using the following command, which will use the maven plugin to deploy:
 

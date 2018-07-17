@@ -14,25 +14,24 @@ As we have seen above, our async service have Handler<AsyncResult<Portfolio>> pa
 
 In ``io.vertx.workshop.portfolio.impl.PortfolioServiceImpl``, fill the ``getPortfolio`` method. It should call the ``handle`` method of the ``resultHandler`` with a successful async result. This object can be created from the (Vert.x) ``Future`` method.
 
-Copy the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
+Open the file in the editor: ``portfolio-service/src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java``{{open}}
+Then, copy the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: getPortfolio">
 resultHandler.handle(Future.succeededFuture(portfolio));
 </pre>
 
 Let’s dissect it:
-```text
+
 * resultHandler.handle : this is to invoke the Handler. Handler<X> has a single method (handle(X)).
-  
 * Future.succeededFuture : this is how we create an instance of AsyncResult denoting a success. The passed value is the result (portfolio)
-```
+
 
 What is the relationship between AsyncResult and Future ? A Future represents the result of an action that may, or may not, have occurred yet. The result may be null if the Future is used to detect the completion of an operation. The operation behind a Future object may succeed or fail. AsyncResult is a structure describing the success of the failure of an operation. So, Future are AsyncResult. In Vert.x AsyncResult instances are created from the Future class.
 
 AsyncResult describes:
 
 * a success as shown before, it encapsulates the result
-
 * a failure, it encapsulates a Throwable instance
 
 So, how does this work with our async RPC service, let’s look at this sequence diagram:
@@ -70,10 +69,10 @@ vertx.eventBus().publish(EVENT_ADDRESS, new JsonObject()
 
 Let’s have a deeper look:
 
-1. it gets the EventBus instance and call publish on it. The first parameter is the address on which the message is sent
-2. the body is a JsonObject containing the different information on the action (buy or sell, the quote (another json object), the date…​
+* it gets the EventBus instance and call publish on it. The first parameter is the address on which the message is sent
+* the body is a JsonObject containing the different information on the action (buy or sell, the quote (another json object), the date…​
 
-**Task - Coordinating async methods and consuming HTTP endpoints - Portfolio value evaluation**
+**3. Task - Coordinating async methods and consuming HTTP endpoints - Portfolio value evaluation**
 
 The last method to implement is the ``evaluate`` method. This method computes the current value of the portfolio. However, for this it needs to access the "current" value of the stock (so the last quote). It is going to consume the HTTP endpoint we have implemented in the quote generator. For this, we are going to:
 
@@ -101,9 +100,9 @@ HttpEndpoint.getClient(discovery, new JsonObject().put("name", "quotes"),
  });
 </pre>
 
-1. Get the HTTP Client for the requested service.
-2. The client cannot be retrieved (service not found), report the failure
-3. We have the client, let’s continue…​
+* Get the HTTP Client for the requested service.
+* The client cannot be retrieved (service not found), report the failure
+* We have the client, let’s continue…​
 
 Here is how the ``computeEvaluation`` method is implemented:
 
