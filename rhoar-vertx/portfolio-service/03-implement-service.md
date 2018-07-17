@@ -59,7 +59,7 @@ Write the body of the ``sendActionOnTheEventBus`` method in order to publish a m
 
 Copy the following to the matching `TODO` statement
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: return quotes">
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: sendActionOnTheEventBus">
 vertx.eventBus().publish(EVENT_ADDRESS, new JsonObject()
     .put("action", action)
     .put("quote", quote)
@@ -87,7 +87,7 @@ Fill the evaluate method to retrieve the quotes service. You can retrieve Http s
 
 Copy the following to the matching `TODO` statement
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: return quotes">
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: evaluate">
 HttpEndpoint.getClient(discovery, new JsonObject().put("name", "quotes"), 
   client -> {
        if (client.failed()) {                                                     
@@ -133,7 +133,7 @@ When the response arrives, check the status (should be 200) and retrieve the bod
 
 Copy the following to the matching `TODO` statement
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: return quotes">
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: getValueForCompany">
 // Create the future object that will  get the value once the value have been retrieved
   Future<Double> future = Future.future();                                           
 
