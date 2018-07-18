@@ -9,7 +9,6 @@ cd /root/code && cp -R /root/vertx-microservices-workshop/* ./
 mvn clean install -DskipTests
 
 cd quote-generator
-mvn compile vertx:run
 
 oc new-project vertx-micro-trader --display-name="Micro-Trader Application"
 mvn fabric8:deploy -Popenshift
