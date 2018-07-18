@@ -27,4 +27,4 @@ mvn fabric8:deploy -Popenshift
 cd ${UI_PATH}/trader-dashboard
 mvn fabric8:deploy -Popenshift
 
-clear # To clean up Katacoda terminal noise
+#clear # To clean up Katacoda terminal noise
