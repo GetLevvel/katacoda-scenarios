@@ -12,7 +12,12 @@ unalias cp
 cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-generator
 
 # Build parent project
-mvn install -DskipTests
+# mvn install -DskipTests
+
+# Launch OpenShift environment
+~/.launch.sh
+
+oc login https://[[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com -u developer -p developer --insecure-skip-tls-verify=true
 
 oc new-project vertx-micro-trader --display-name="Micro-Trader Application"
 
@@ -23,4 +28,3 @@ cd ${UI_PATH}/  trader-dashboard
 mvn fabric8:deploy -Popenshift
 
 clear # To clean up Katacoda terminal noise
-~/.launch.sh
