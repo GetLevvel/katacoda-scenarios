@@ -11,7 +11,7 @@ cd ${UI_PATH} && cp -R /root/vertx-microservices-workshop/* ./
 cp -R vertx-microservices-workshop/solution/quote-generator/* vertx-microservices-workshop/quote-generator
 
 # Build parent project
-mvn package -DskipTests
+mvn install -DskipTests
 
 oc new-project vertx-micro-trader --display-name="Micro-Trader Application"
 

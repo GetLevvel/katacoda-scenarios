@@ -4,7 +4,7 @@ Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x 
 
 To build the project launch:
 
-`cd portfolio-service`{{execute}}
+`cd /root/code/portfolio-service`{{execute}}
 
 `mvn clean package`{{execute}}
 

@@ -130,7 +130,7 @@ Well, we just need the ``getValueForCompany`` method that call the service. Writ
 
 When the response arrives, check the status (should be 200) and retrieve the body (with bodyHandler). The body can be parsed as a JsonObject using buffer.toJsonObject(). The value you compute is the numberOfShares * the bid price (read from the body). Once the value is computed, complete the future. Don’t forget to report failures to the future too. To simplify, if the company is unknown (meaning the response status code is not 200) we assume the value of the shares to be 0.0.
 
-Copy the following to the matching `TODO` statement
+Copy the following to the matching `TODO` statement in the getValueForCompany method 
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: getValueForCompany">
 // Create the future object that will  get the value once the value have been retrieved
