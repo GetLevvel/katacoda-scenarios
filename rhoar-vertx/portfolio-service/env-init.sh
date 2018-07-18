@@ -8,7 +8,8 @@ git clone -q https://github.com/tarunaz/vertx-microservices-workshop.git
 cd ${UI_PATH} && cp -R /root/vertx-microservices-workshop/* ./
 
 # Copy quote-generator solution from previous scenario into src/
-y | cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-generator
+unalias cp
+cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-generator
 
 # Build parent project
 mvn install -DskipTests
