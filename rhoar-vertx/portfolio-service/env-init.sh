@@ -12,7 +12,7 @@ unalias cp
 cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-generator
 
 # Build parent project
-mvn install -DskipTests
+#mvn install -DskipTests
 
 # Launch OpenShift environment
 ~/.launch.sh
@@ -24,7 +24,7 @@ oc new-project vertx-micro-trader --display-name="Micro-Trader Application"
 cd ${UI_PATH}/quote-generator
 mvn fabric8:deploy -Popenshift
 
-cd ${UI_PATH}/  trader-dashboard
+cd ${UI_PATH}/trader-dashboard
 mvn fabric8:deploy -Popenshift
 
 clear # To clean up Katacoda terminal noise
