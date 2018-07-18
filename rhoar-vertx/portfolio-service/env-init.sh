@@ -12,7 +12,7 @@ unalias cp
 cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-generator
 
 # Build parent project
-#mvn install -DskipTests
+mvn install -DskipTests
 
 # Launch OpenShift environment
 ~/.launch.sh
