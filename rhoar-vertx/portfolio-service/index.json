@@ -7,7 +7,8 @@
   "time": "15 minutes",
   "details": {
     "intro": {
-      "text": "00-intro.md"
+      "text": "00-intro.md",
+      "code": "env-init.sh"
     },
     "steps": [
       {
@@ -22,15 +23,6 @@
     "finish": {
       "text": "99-outro.md"
     },
-    "assets": {
-      "client": [
-        {
-          "file": "~/tmp/*",
-          "target": "/root/code"
-        }
-      ]
-    }
-  },
   "files": [],
   "environment": {
     "showdashboard": true,
