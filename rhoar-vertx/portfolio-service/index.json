@@ -13,7 +13,7 @@
     "steps": [
       {
         "title": "Step 1", "text": "01-async-service-interface.md",
-        "courseData": "run-command-in-background.sh",
+        "courseData": "run-init.sh"
 
       },
       { "title": "Step 2", "text": "02-data-objects.md" },
