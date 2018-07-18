@@ -15,10 +15,10 @@ mvn install -DskipTests
 
 oc new-project vertx-micro-trader --display-name="Micro-Trader Application"
 
-cd quote-generator
+cd ${UI_PATH}/quote-generator
 mvn fabric8:deploy -Popenshift
 
-cd trader-dashboard
+cd ${UI_PATH}/trader-dashboard
 mvn fabric8:deploy -Popenshift
 
 clear # To clean up Katacoda terminal noise
