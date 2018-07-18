@@ -8,16 +8,19 @@
   "details": {
     "intro": {
       "text": "00-intro.md",
-      "courseData": "run-init.sh",
-      "code": "env-init.sh"
+      "courseData": "run-init.sh"
     },
     "steps": [
-      { "title": "Step 1", "text": "01-async-service-interface.md" },
+      {
+        "title": "Step 1", "text": "01-async-service-interface.md",
+        "courseData": "run-command-in-background.sh",
+
+      },
       { "title": "Step 2", "text": "02-data-objects.md" },
       { "title": "Step 3", "text": "03-implement-service.md" },
       { "title": "Create project", "text": "04-publish-service.md" },
       { "title": "Deploy to OpenShift ", "text": "05-deploy-to-openshift.md" }
-    ],
+    ] ,
     "finish": {
       "text": "99-outro.md"
     }
