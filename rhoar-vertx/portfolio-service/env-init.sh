@@ -13,7 +13,7 @@ cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-gener
 cp -rf /root/vertx-microservices-workshop/solution/trader-dashboard/* quote-generator
 
 # Build parent project
-mvn install -DskipTests
+mvn clean install -DskipTests
 
 # Launch OpenShift environment
 ~/.launch.sh
