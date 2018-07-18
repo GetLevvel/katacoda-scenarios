@@ -32,7 +32,7 @@ publishEventBusService("portfolio", ADDRESS, PortfolioService.class, ar -> {
 
 4) The publishEventBusService is implemented as follows:
    
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioVerticle.java" data-target="insert" data-marker="//TODO: implement portfolio service">
+```java
 // Create the service record:
 Record record = EventBusService.createRecord(name, address, serviceClass);
 // Publish it using the service discovery
@@ -44,7 +44,7 @@ discovery.publish(record, ar -> {
     completionHandler.handle(Future.failedFuture(ar.cause()));
   }
 });
-</pre>
+```
 
 Are we done ? No…​. We have a second service to publish. Remember, we are also sending messages on the event bus when we buy or sell shares. This is also a service (a message source service to be exact).
 

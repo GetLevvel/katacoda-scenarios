@@ -27,7 +27,7 @@ end of the build output.
 After the maven build finishes it will take less than a minute for the application to become available.
 To verify that everything is started, run the following command and wait for it complete successfully:
 
-`oc rollout status -w dc/portfolio`{{execute}}
+`oc rollout status -w dc/portfolio-service`{{execute}}
 
 There you go, the portfolio service is started. It discovers the ``quotes`` service and is ready to be used.
 

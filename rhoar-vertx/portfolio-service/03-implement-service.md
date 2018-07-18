@@ -87,17 +87,17 @@ Fill the evaluate method to retrieve the quotes service. You can retrieve Http s
 Copy the following to the matching `TODO` statement
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: evaluate">
-HttpEndpoint.getClient(discovery, new JsonObject().put("name", "quotes"), 
+  HttpEndpoint.getWebClient(discovery, new JsonObject().put("name", "quotes"),
   client -> {
-       if (client.failed()) {                                                     
-         // It failed...
-         resultHandler.handle(Future.failedFuture(client.cause()));
-       } else {
-         // We have the client
-         HttpClient httpClient = client.result();                                 
-         computeEvaluation(httpClient, resultHandler);
-       }
- });
+    if (client.failed()) {
+      // It failed...
+      resultHandler.handle(Future.failedFuture(client.cause()));
+    } else {
+      // We have the client
+      WebClient webClient = client.result();
+      computeEvaluation(webClient, resultHandler);
+    }
+  });
 </pre>
 
 * Get the HTTP Client for the requested service.
@@ -133,23 +133,19 @@ When the response arrives, check the status (should be 200) and retrieve the bod
 Copy the following to the matching `TODO` statement in the getValueForCompany method 
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="//TODO: getValueForCompany">
-// Create the future object that will  get the value once the value have been retrieved
-  Future<Double> future = Future.future();                                           
-
-  client.get("/?name=" + encode(company), response -> {                              
-    response.exceptionHandler(future::fail);                                         
-    if (response.statusCode() == 200) {
-      response.bodyHandler(buffer -> {
-        double v = numberOfShares * buffer.toJsonObject().getDouble("bid");
-        future.complete(v);                                                          
-      });
+  client.get("/?name=" + encode(company))
+      .as(BodyCodec.jsonObject())
+      .send(ar -> {
+    if (ar.succeeded()) {
+      HttpResponse<JsonObject> response = ar.result();
+      if (response.statusCode() == 200) {
+        double v = numberOfShares * response.body().getDouble("bid");
+        future.complete(v);
+      } else {
+        future.complete(0.0);
+      }
     } else {
-      future.complete(0.0);                                                          
+      future.fail(ar.cause());
     }
-  })
-    .exceptionHandler(future::fail)                                                  
-    .end();                                                                          
-
-  return future;
-}
+  });                                                             
 </pre>
