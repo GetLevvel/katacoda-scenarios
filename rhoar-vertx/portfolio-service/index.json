@@ -28,7 +28,7 @@
           "file": "~/tmp/*",
           "target": "/root/code"
         }
-      ],
+      ]
   },
   "files": [],
   "environment": {
