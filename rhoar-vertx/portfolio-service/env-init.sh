@@ -10,7 +10,7 @@ cd ${UI_PATH} && cp -R /root/vertx-microservices-workshop/* ./
 # Copy quote-generator solution from previous scenario into src/
 unalias cp
 cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-generator
-cp -rf /root/vertx-microservices-workshop/solution/trader-dashboard/* quote-generator
+cp -rf /root/vertx-microservices-workshop/solution/trader-dashboard/* trader-dashboard
 
 # Build parent project
 mvn clean install -DskipTests
