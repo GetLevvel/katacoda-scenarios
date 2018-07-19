@@ -1,0 +1,1 @@
+In this scenario, you published an event bus service, also called a RPC service or service proxy. We saw how to send messages on the event bus using the portfolio service. In order to do that, we created a verticle that creates the actual service object, registers the service on the event bus and publishes the service in the service discovery infrastructure. 

@@ -1,6 +1,6 @@
 Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x microservice:
 
-**Build and Deploy**
+**1. Build and Deploy**
 
 Red Hat OpenShift Application Runtimes includes a powerful maven plugin that can take an
 existing Eclipse Vert.x application and generate the necessary Kubernetes configuration.
@@ -20,24 +20,22 @@ To verify that everything is started, run the following command and wait for it 
 
 `oc rollout status -w dc/quote-generator`{{execute}}
 
-**3. Access the application running on OpenShift**
+**2. Access the application running on OpenShift**
 
  Click on the
-[route URL](http://quote-generator-vertx-microtrader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
+[route URL](http://quote-generator-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
 to access the sample UI.
 
 > You can also access the application through the link on the OpenShift Web Console Overview page.
 
-![Overview link](../assets/rhoar-vertx/routelink.png)
-
-**4. Build and Deploy the dashboard**
+**3. Build and Deploy the dashboard**
 
 `cd /root/code/trader-dashboard`{{execute T1 interrupt}}
 
 `mvn fabric8:deploy -Popenshift`{{execute T1 interrupt}}
 
 Click on the
-[route URL](http://quote-generator-vertx-microtrader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
+[route URL](http://trader-dashboard-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
 to access the sample UI.
 
 ## Congratulations!
