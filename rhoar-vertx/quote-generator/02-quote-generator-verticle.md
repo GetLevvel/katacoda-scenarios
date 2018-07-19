@@ -41,15 +41,12 @@ Add the below content to the matching `TODO` statement (or use the `Copy to Edit
 
 The last part of the method is about the service discovery mentioned in the microservice section. This component generates quotes sent on the event bus. But to let other components discover where the messages are sent (where means on which address), it registers it. market-data is the name of the service, ADDRESS (a static final variable defined as market) is the event bus address on which the messages are sent.
 
-Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
-
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="// TODO: ServiceDiscovery">
+```java
 .flatMap(x -> discovery.rxPublish(MessageSource.createRecord("market-data", ADDRESS)))
-</pre>
+```
 
 Finally, when everything is done, we report the status on the given Future object. The failure management can be made at any stage, but generally, it’s done in the subscribe method:
                                                                                    
-
 ```java
 object.rxAsync(param1, param2)
  // ....
