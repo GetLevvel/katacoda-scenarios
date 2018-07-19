@@ -1,9 +1,3 @@
-# Login to OpenShift Container Platform
-
-**Red Hat OpenShift Container Platform** is the preferred runtime for **Red Hat OpenShift Application Runtimes** like **Spring Boot**, **Vert.x**, etc. The OpenShift Container Platform is based on **Kubernetes** which is a Container Orchestrator that has grown in popularity and adoption over the last couple years. **OpenShift** is currently the only container platform based on Kuberenetes that offers multitenancy. This means that developers can have their own personal, isolated projects to test and verify applications before committing to a shared code repository.
-
-OpenShift also ships with a feature rich web console as well as command line tools to provide users with a friendly interface to work with applications deployed to the platform. 
-
 **1. Login to the OpenShift Container Platform**
 
 To login, we will use the `oc` command and then specify a username and password like this:
@@ -12,13 +6,53 @@ To login, we will use the `oc` command and then specify a username and password 
 
 >**IMPORTANT:** If the above `oc login` command doesn't seem to do anything, you may have forgotten to stop the application from the previous step. Click on the terminal and press **CTRL-C** to stop the application and try the above `oc login` command again!
 
-**2. Create a Project**
-
-[Projects](https://docs.openshift.com/container-platform/3.6/architecture/core_concepts/projects_and_users.html#projects) are a top-level concept to help you organize your deployments. An OpenShift project allows a community of users (or a user) to organize and manage their content in isolation from other communities. Each project has its own resources, policies (who can or cannot perform actions), and constraints (quotas and limits on resources, etc.). Projects act as a wrapper around all the application services and endpoints you (or your teams) are using for your work.
-
-For this scenario let's create a project that you will use to house your application. 
+Next we create the project that we'll be adding our application to:
 
 ``oc new-project dev --display-name="Dev - Spring Boot App"``{{execute}}
+
+Next we create a template for PostgeSQL
+``oc create -f ./src/main/fabric8/postgresql.json``{{execute}}
+
+You should see `template "postgresql-for-keycloak" created` as output.
+
+Next we create an application for PostgeSQL
+``oc new-app postgresql-for-keycloak -n dev``{{execute}}
+
+You should see `Deploying template "dev/postgresql-for-keycloak" to project dev
+
+     postgresql-for-keycloak
+     ---------
+     PostgreSQL on OpenShift for Keycloak
+
+--> Creating resources ...
+    service "postgres" created
+    pod "postgres" created
+--> Success` as output.'
+
+
+Next we create a template for Keycloak
+``oc create -f ./src/main/fabric8/keycloak.json``{{execute}}
+
+You should see `template "keycloak-server" created` as output.
+
+Next we create an application for Keycloak
+``oc new-app keycloak-server``{{execute}}
+
+
+You should see `Deploying template "dev/keycloak-server" to project dev
+
+     keycloak-server
+     ---------
+     Keycloak
+
+--> Creating resources ...
+    deploymentconfig "keycloak-server" created
+    service "keycloak" created
+    route "keycloak" created
+--> Success'
+
+
+
 
 **3. Open the OpenShift Web Console**
 
