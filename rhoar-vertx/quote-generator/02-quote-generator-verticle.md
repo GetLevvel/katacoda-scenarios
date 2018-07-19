@@ -6,7 +6,7 @@ Let's open the ``GeneratorConfigVerticle`` class by clicking on the link below a
 
 ``quote-generator/src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java``{{open}}
 
-This method retrieves the configuration, instantiates the verticles (5 verticles are deployed), and publishes the services in the service discovery.
+This method retrieves the configuration, instantiates the verticles and publishes the services in the service discovery.
 
 First, notice the method signature. It receives a Future object indicating that the start is asynchronous. Indeed, all the actions made in this method are asynchronous. So, when the caller thread reaches the end of the method, the actions may have not completed. We use this given Future to indicate when the process has completed (or failed).
 

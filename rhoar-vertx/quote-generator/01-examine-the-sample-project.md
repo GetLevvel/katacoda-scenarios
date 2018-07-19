@@ -13,7 +13,7 @@ Switch to the ``quote-generator`` project
 
 Let’s have a look at the project, as every other project are structured the same way.
 
-```sh
+```
 .
 |-- README.md  <----- A readme containing the description and (build) instructions
 |-- pom.xml  <----- The project build file
@@ -58,6 +58,4 @@ The pom.xml file also contains a set of properties used to configure the applica
 
 **Verticle**
 
-As you may have noticed, the code is structured in 3 verticles. As you may have noticed, the code is structured in 3 verticles, but what are these? Verticles is a way to structure Vert.x application code. It’s not mandatory, but it is quite convenient. A verticle is a chunk of code that is deployed on top of a Vert.x instance. A verticle has access to the instance of vertx on which it’s deployed, and can deploy other verticles.
-
-The `GeneratorConfigVerticle` generates the quotes for 3 fictional companies that are passed in the config `src/kubernetes/config.json`. It deploys a Verticle (`MarketDataVerticle`) per company that publishes the market data on the Vert.x Event Bus at a specific address. It also publishes this service in the service discovery so other components can find it at that addres. The `RestQuoteAPIVerticle` Verticle consumes this market-data and provides an HTTP endpint to access the company quotes.
+As you may have noticed, the code is structured in 3 verticles, but what are these? Verticles is a way to structure Vert.x application code. It’s not mandatory, but it is quite convenient. A verticle is a chunk of code that is deployed on top of a Vert.x instance. A verticle has access to the instance of vertx on which it’s deployed, and can deploy other verticles.
