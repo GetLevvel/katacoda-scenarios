@@ -49,6 +49,10 @@
     {
       "course_id": "monitoring",
       "title": "11: Monitoring Spring Applications on OpenShift"
+    },
+    {
+      "course_id": "spring-sso",
+      "title": "12: Single Sign-on for Applications on OpenShift with Keycloak"
     }
   ]
 }
