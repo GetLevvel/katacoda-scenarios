@@ -9,7 +9,6 @@ In this example we are using streams (Flowable). Streams are an important part o
 
 Let’s do that…​.
 
-
 **1. Task - Implementing a Handler to receive events**
 
 The first action is about observing the stream of market messages. This is done using vertx.eventBus().<JsonObject>consumer(GeneratorConfigVerticle.ADDRESS).toFlowable(). We now have the stream of messages, but we need to extract the JSON body and populate the quotes map. Implement the missing logic that extracts the body of the message (with the body() method), and then puts name → quote in the quotes map.

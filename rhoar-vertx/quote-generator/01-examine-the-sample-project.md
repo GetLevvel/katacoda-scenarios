@@ -1,17 +1,15 @@
 The sample project shows the components of a basic Vert.x project laid out in different
 subdirectories according to Maven best practices.
 
-**1. Build the parent POM.**
-
-``mvn clean install -Ddocker.skip.build=true``{{execute}}
-
-**2. Examine the Quote Generator project structure.**
+**1. Examine the Quote Generator project structure.**
 
 Switch to the ``quote-generator`` project
 
 ``cd quote-generator``{{execute}}
 
 Let’s have a look at the project, as every other project are structured the same way.
+
+``tree``{{execute}}
 
 ```
 .
