@@ -2,65 +2,64 @@
 
 **1. Understanding the Application**
 
-As you may have noticed, the code is structured in 3 `verticles`, but what are these? Verticles is a way to structure Vert.x application code. It’s not mandatory, but it is quite convenient. A verticle is a chunk of code that is deployed on top of a Vert.x instance. A verticle has access to the instance of `vertx` on which it’s deployed, and can deploy other verticles.
+Let's open the ``GeneratorConfigVerticle`` class by clicking on the link below and look at the `start` method
 
-Open the file by clicking on the link below and look at the `start` method
 ``quote-generator/src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java``{{open}}
+
+This method retrieves the configuration, instantiates the verticles (5 verticles are deployed), and publishes the services in the service discovery.
+
+First, notice the method signature. It receives a Future object indicating that the start is asynchronous. Indeed, all the actions made in this method are asynchronous. So, when the caller thread reaches the end of the method, the actions may have not completed. We use this given Future to indicate when the process has completed (or failed).
+
+The start method:
+
+1. retrieves the configuration (giving the "fake" company settings)
+2. deploys one verticle per defined company
+3. deploys the RestQuoteAPIVerticle
+4. exposes the market-data message source
+5. notifies the given Future of the successful completion or failure
 
 As you review the content, you will notice that there are 3 TODO comments. Do not remove them! These comments are used as a marker and without them, you will not be able to finish this scenario.
 
-Verticles can retrieve a configuration using the `config()` method. Here it gets the details about the companies to simulate. The configuration is a `JsonObject`. Vert.x heavily uses JSON, so you are going to see a lot of JSON in this lab. For each company found in the configuration, it deploys the market data verticle with the extracted configuration. 
+To retrieve the configuration the verticle needs a ``ConfigRetriever``. This object allows retrieving configuration chunks from different stores (such as git, files, http, etc.). Here we just load the contents of the ``config.json`` file located in the src/kubernetes directory. The configuration is a JsonObject. Vert.x uses JSON heavily, so you are going to see a lot of JSON in this lab.
+
+After the configuration is retrieved, we extract the companies array from it and deploy one verticle per defined company. The deployment is also asynchronous and done with rxDeployVerticle. These company verticles simulate the value of the stocks. The quotes are sent on the event bus on the market address.
 
 Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
       
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="//TODO: deploy market data verticle">
-vertx.deployVerticle(MarketDataVerticle.class.getName(),
-   new DeploymentOptions().setConfig(company));
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="// TODO: MarketDataVerticle">
+.flatMapSingle(company -> vertx.rxDeployVerticle(MarketDataVerticle.class.getName(),
+    new DeploymentOptions().setConfig(company)))
 </pre>
 
-The next part in the method is about the service discovery mentioned in the microservice section. This component generates quotes sent on the event bus. But to let other components discover where the messages are sent (where means on which address), it registers it. market-data is the name of the service, ADDRESS is the event bus address on which the messages are sent. The last argument is a Handler that is notified when the registration has been completed. The handler receives a structure called AsyncResult.
+When the company verticles are deployed, we deploy another verticle providing an HTTP API to access market data. 
 
 Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="//TODO: publish market data service on event bus">
-publishMessageSource("market-data", ADDRESS, rec -> {
-      if (!rec.succeeded()) {
-        rec.cause().printStackTrace();
-      }
-      System.out.println("Market-Data service published : " + rec.succeeded());
-    });
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="// TODO: RestQuoteAPIVerticle">
+.flatMap(l -> vertx.rxDeployVerticle(RestQuoteAPIVerticle.class.getName()))
 </pre>
 
-Finally, it deploys another verticle providing a very simple HTTP API.
+The last part of the method is about the service discovery mentioned in the microservice section. This component generates quotes sent on the event bus. But to let other components discover where the messages are sent (where means on which address), it registers it. market-data is the name of the service, ADDRESS (a static final variable defined as market) is the event bus address on which the messages are sent.
 
 Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="//TODO: publish http endpoint">
-publishHttpEndpoint("quotes", "localhost", config().getInteger("http.port", 8080), ar -> {
-      if (ar.failed()) {
-        ar.cause().printStackTrace();
-      } else {
-        System.out.println("Quotes (Rest endpoint) service published : " + ar.succeeded());
-      }
-    });
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="// TODO: ServiceDiscovery">
+.flatMap(x -> discovery.rxPublish(MessageSource.createRecord("market-data", ADDRESS)))
 </pre>
 
-Remember, Vert.x is promoting an asynchronous, non-blocking development model. Publishing the service may take time (actually it does as it creates a record, write it to the backend, and notifies everyone), as we cannot block the event loop, the method is asynchronous. Asynchronous methods have a Handler as last parameter that is invoked when the operation has been completed. This Handler is called with the same event loop as the one having called the async method. As the asynchronous operation can fail, the Handler receives as parameter an AsyncResult telling whether or not the operation has succeeded. You will see the following patterns a lot in Vert.x applications:
+Finally, when everything is done, we report the status on the given Future object. The failure management can be made at any stage, but generally, it’s done in the subscribe method:
+                                                                                   
 
 ```java
-// Asynchronous method returning an object of type X
- operation(param1, param2, Handler<AsyncResult<X>>);
-
- // Handler receiving an object of type X
-
- ar -> {
-   if (ar.succeeded()) {
-      X x = ar.result();
-      // Do something with X
-   } else {
-      // it failed
-      Throwable cause = ar.cause();
-   }
- }
+object.rxAsync(param1, param2)
+ // ....
+ .subscribe((rec, err) -> {
+     if (rec != null) {
+         future.complete();
+     } else {
+         future.fail(err);
+     }
+ });
 ```
 
+Note that the HTTP endpoint service is not explicitly published in the service discovery. That’s because Kubernetes is taking care of this part. The Vert.x service discovery interacts with Kubernetes services, so all Kubernetes services can be retrieved by Vert.x.

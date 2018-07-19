@@ -4,15 +4,15 @@
 
 UI_PATH=/root/code 	  # This should match your index.json key
 
-git clone -q https://github.com/tarunaz/vertx-microservices-workshop.git
-cd ${UI_PATH} && cp -R /root/vertx-microservices-workshop/* ./
+git clone -q https://github.com/tarunaz/vertx-kubernetes-workshop.git
+cd ${UI_PATH} && cp -R /root/vertx-kubernetes-workshop/* ./
 
 # Copy quote-generator solution from previous scenario into src/
 unalias cp
-cp -rf /root/vertx-microservices-workshop/solution/quote-generator/* quote-generator
+cp -rf quote-generator/src/main/solution/* quote-generator/src/main/java
 
 # Build parent project
-mvn clean install -DskipTests
+mvn clean install -Ddocker.skip.build=true
 
 # Launch OpenShift environment
 ~/.launch.sh
@@ -24,7 +24,7 @@ oc new-project vertx-micro-trader --display-name="Micro-Trader Application"
 cd ${UI_PATH}/quote-generator
 mvn fabric8:deploy -Popenshift
 
-cd ${UI_PATH}/trader-dashboard
+cd ${UI_PATH}/micro-trader-dashboard
 mvn fabric8:deploy -Popenshift
 
 #clear # To clean up Katacoda terminal noise
