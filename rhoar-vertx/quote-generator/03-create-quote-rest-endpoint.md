@@ -120,7 +120,7 @@ Let’s now launch the dashboard.
 
 **Open another terminal and execute**
 
-``cd /root/code/trader-dashboard``{{execute}}
+``cd /root/code/micro-trader-dashboard``{{execute}}
 
 ``mvn clean compile vertx:run``{{execute}}
 
