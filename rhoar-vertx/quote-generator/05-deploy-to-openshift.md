@@ -4,7 +4,7 @@ Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x 
 
 A config map is a Kubernetes entity storing the configuration of an application. The application configuration is in src/kubernetes/config.json. We are going to create a config map from this file. In a terminal, execute:
 
-``oc create configmap app-config --from-file=src/kubernetes/config.json``{{execute}}
+``oc create configmap app-config --from-file=src/conf/config.json``{{execute}}
 
 To check that the config map has been created correctly, execute:
 
@@ -46,7 +46,7 @@ the deployment characteristics of the app (in this case we mount a config file f
 
 Build and deploy the project using the following command, which will use the maven plugin to deploy:
 
-`mvn fabric8:deploy`{{execute}}
+`mvn fabric8:deploy -DskipTests -Popenshift`{{execute}}
 
 The build and deploy may take a minute or two. Wait for it to complete. You should see a **BUILD SUCCESS** at the
 end of the build output.
@@ -66,9 +66,9 @@ to access the sample UI.
 
 **3. Build and Deploy the dashboard**
 
-`cd /root/code/trader-dashboard`{{execute}}
+`cd /root/code/micro-trader-dashboard`{{execute}}
 
-`mvn fabric8:deploy`{{execute}}
+`mvn fabric8:deploy -DskipTests -Popenshift`{{execute}}
 
 Click on the
 [route URL](http://trader-dashboard-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)

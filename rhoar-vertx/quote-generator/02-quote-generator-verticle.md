@@ -36,8 +36,8 @@ When the company verticles are deployed, we deploy another verticle providing an
 Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java" data-target="insert" data-marker="// TODO: RestQuoteAPIVerticle">
-.flatMap(l -> vertx.rxDeployVerticle(RestQuoteAPIVerticle.class.getName()))
-</pre>
+.flatMap(l -> vertx.rxDeployVerticle(RestQuoteAPIVerticle.class.getName(),
+    new DeploymentOptions().setConfig(new JsonObject().put("HTTP_PORT", HTTP_PORT))))</pre>
 
 The last part of the method is about the service discovery mentioned in the microservice section. This component generates quotes sent on the event bus. But to let other components discover where the messages are sent (where means on which address), it registers it. market-data is the name of the service, ADDRESS (a static final variable defined as market) is the event bus address on which the messages are sent.
 
