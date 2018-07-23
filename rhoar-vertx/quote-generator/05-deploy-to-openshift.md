@@ -4,7 +4,9 @@ Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x 
 
 A config map is a Kubernetes entity storing the configuration of an application. The application configuration is in src/kubernetes/config.json. We are going to create a config map from this file. In a terminal, execute:
 
-``oc create configmap app-config --from-file=/root/code/quote-generator/src/kubernetes/config.json``{{execute}}
+``cd /root/code/quote-generator``{{execute}}
+
+``oc create configmap app-config --from-file=src/kubernetes/config.json``{{execute}}
 
 To check that the config map has been created correctly, execute:
 
