@@ -20,30 +20,26 @@ Now that the config map is created, let’s read it from our application. There 
 * Config mounted as a file
 * Vert.x Config
 
-We are going to use the second approach and mount the configuration as a file in the application container. Indeed, our application has been configured to read its configuration from a config/config.json file:
+We are going to use the second approach and mount the configuration as a file in the application container. Indeed, our application has been configured to read its configuration from a src/kubernetes/config.json file:
 
 ```java
 private ConfigRetrieverOptions getConfigurationOptions() {
-    JsonObject path = new JsonObject().put("path", "config/config.json");
+    JsonObject path = new JsonObject().put("path", "src/kubernetes/config.json");
     return new ConfigRetrieverOptions().addStore(new ConfigStoreOptions().setType("file").setConfig(path));
 }
 ```
+
+For that, we have defined additional config in ``quote-generator/src/main/fabric8/deployment.yml``{{open} that contains the right configuration to:
+1. define a volume with the config map content
+2. mount this volume in the right directory
+
+You can also see that this file contains the JAVA options we pass to the process.
 
 **2. Start the quote generator**
 
 Red Hat OpenShift Application Runtimes includes a powerful maven plugin that can take an
 existing Eclipse Vert.x application and generate the necessary Kubernetes configuration.
 
-We have defined additional config, like ``quote-generator/src/main/fabric8/service.yml``{{open}} and ``quote-generator/src/main/fabric8/deployment.yml``{{open}} which defines
-the deployment characteristics of the app.
-
-The service.yml defines the application port as 35000
-
-The deployment.yaml contains the right configuration to:
-1. define a volume with the config map content
-2. mount this volume in the right directory
-
-You can also see that this file contains the JAVA options we pass to the process.
 Build and deploy the project using the following command, which will use the maven plugin to deploy:
 
 `mvn fabric8:deploy -Popenshift`{{execute}}
