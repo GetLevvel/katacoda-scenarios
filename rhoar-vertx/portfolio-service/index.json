@@ -24,12 +24,8 @@
         "text": "03-implement-service.md"
       },
       {
-        "title": "Create project",
-        "text": "04-publish-service.md"
-      },
-      {
         "title": "Deploy to OpenShift ",
-        "text": "05-deploy-to-openshift.md"
+        "text": "04-deploy-to-openshift.md"
       }
     ],
     "finish": {

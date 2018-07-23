@@ -124,11 +124,16 @@ private void computeEvaluation(HttpClient httpClient, Handler<AsyncResult<Double
 }
 ```
 
-First, we need to get a list of ``Future`` that would receive the different evaluations (one per company) (1). This evaluation is asynchronous (as it involves a HTTP call to get the latest value). We don’t know when these ``Future`` will be all valuated (or assigned). Fortunately, Vert.x provides ``CompositeFuture`` for this very purpose . ``CompositeFuture.all`` calls its assigned handler when all the given Futures are assigned. So when the handler is executed, we knows all the futures has received a value, and so we can compute the sum. Finally, we send this result to the client by calling the ``resultHandler``.
+Now, we just need the ``getValueForCompany`` method that call the service. Write the content of this method. 
 
-Well, we just need the ``getValueForCompany`` method that call the service. Write the content of this method. You would need to create a Future object to report the completion of the operation. This future is the "returned" result of the method. Then, call the HTTP endpoint ``(/?name= + encode(company)).``
+This method returns a Single<Double> emitting the numberOfShares * bid result. Write the content of this method following these steps:
 
-When the response arrives, check the status (should be 200) and retrieve the body (with bodyHandler). The body can be parsed as a JsonObject using buffer.toJsonObject(). The value you compute is the numberOfShares * the bid price (read from the body). Once the value is computed, complete the future. Don’t forget to report failures to the future too. To simplify, if the company is unknown (meaning the response status code is not 200) we assume the value of the shares to be 0.0.
+1. use the client.get("/?name=" + encode(company)) to create a HTTP request
+2. we expect a JSON object as response payload, so use .as(BodyCodec.jsonObject())
+3. use the rxSend method to create a Single containing the result
+4. we now need to extract the "bid" from the returned JSON. Extract the response body and then extract the "bid" entry (json.getDouble("bid")). Both extraction are orchestrated using map.
+5. compute the amount (bid * numberOfShared)
+6. Done!
 
 Copy the following to the matching `TODO` statement in the getValueForCompany method 
 
