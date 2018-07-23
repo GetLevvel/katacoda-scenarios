@@ -55,7 +55,7 @@ To verify that everything is started, run the following command and wait for it 
 **2. Access the application running on OpenShift**
 
  Click on the
-[route URL](http://quote-generator-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
+[route URL](http://quote-generator-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
 to access the sample UI.
 
 > You can also access the application through the link on the OpenShift Web Console Overview page.
@@ -67,7 +67,7 @@ to access the sample UI.
 `mvn fabric8:deploy -Popenshift`{{execute}}
 
 Click on the
-[route URL](http://trader-dashboard-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
+[route URL](http://trader-dashboard-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
 to access the sample UI.
 
 ## Congratulations!
