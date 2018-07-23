@@ -13,7 +13,7 @@ cp -rf quote-generator/src/main/solution/* quote-generator/src/main/java
 
 # Build dependency project
 cd quote-generator
-mvn clean install -Ddocker.skip.build=true
+mvn clean install
 
 # Launch OpenShift environment
 ~/.launch.sh
