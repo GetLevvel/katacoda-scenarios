@@ -4,7 +4,7 @@ Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x 
 
 A config map is a Kubernetes entity storing the configuration of an application. The application configuration is in src/kubernetes/config.json. We are going to create a config map from this file. In a terminal, execute:
 
-``oc create configmap app-config --from-file=src/conf/config.json``{{execute}}
+``oc create configmap app-config --from-file=/root/code/quote-generator/src/kubernetes/config.json``{{execute}}
 
 To check that the config map has been created correctly, execute:
 
@@ -27,26 +27,24 @@ private ConfigRetrieverOptions getConfigurationOptions() {
 }
 ```
 
-Our deployment.yaml located in src/main/fabric8 contains the right configuration to:
-
-define a volume with the config map content
-
-mount this volume in the right directory
-
-You can also see that this file contains the JAVA options we pass to the process.
-
-
 **2. Start the quote generator**
 
 Red Hat OpenShift Application Runtimes includes a powerful maven plugin that can take an
 existing Eclipse Vert.x application and generate the necessary Kubernetes configuration.
 
-We have defined additional config, like ``quote-generator/src/main/fabric8/configmap.yml``{{open}} and ``quote-generator/src/main/fabric8/deployment.yml``{{open}} which defines
-the deployment characteristics of the app (in this case we mount a config file from a ConfigMap), but OpenShift supports a wide range of [Deployment configuration options](https://docs.openshift.org/latest/architecture/core_concepts/deployments.html) for apps).
+We have defined additional config, like ``quote-generator/src/main/fabric8/service.yml``{{open}} and ``quote-generator/src/main/fabric8/deployment.yml``{{open}} which defines
+the deployment characteristics of the app.
 
+The service.yml defines the application port as 35000
+
+The deployment.yaml contains the right configuration to:
+1. define a volume with the config map content
+2. mount this volume in the right directory
+
+You can also see that this file contains the JAVA options we pass to the process.
 Build and deploy the project using the following command, which will use the maven plugin to deploy:
 
-`mvn fabric8:deploy -DskipTests -Popenshift`{{execute}}
+`mvn fabric8:deploy -Popenshift`{{execute}}
 
 The build and deploy may take a minute or two. Wait for it to complete. You should see a **BUILD SUCCESS** at the
 end of the build output.
@@ -68,10 +66,10 @@ to access the sample UI.
 
 `cd /root/code/micro-trader-dashboard`{{execute}}
 
-`mvn fabric8:deploy -DskipTests -Popenshift`{{execute}}
+`mvn fabric8:deploy -Popenshift`{{execute}}
 
 Click on the
-[route URL](http://trader-dashboard-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
+[route URL](http://trader-dashboard-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
 to access the sample UI.
 
 ## Congratulations!

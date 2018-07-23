@@ -18,11 +18,11 @@ The start method:
 4. exposes the market-data message source
 5. notifies the given Future of the successful completion or failure
 
-As you review the content, you will notice that there are 3 TODO comments. Do not remove them! These comments are used as a marker and without them, you will not be able to finish this scenario.
+As you review the content, you will notice that there are 2 TODO comments. Do not remove them! These comments are used as a marker and without them, you will not be able to finish this scenario.
 
 To retrieve the configuration the verticle needs a ``ConfigRetriever``. This object allows retrieving configuration chunks from different stores (such as git, files, http, etc.). Here we just load the contents of the ``config.json`` file located in the src/kubernetes directory. The configuration is a JsonObject. Vert.x uses JSON heavily, so you are going to see a lot of JSON in this lab.
 
-After the configuration is retrieved, we extract the companies array from it and deploy one verticle per defined company. The deployment is also asynchronous and done with rxDeployVerticle. These company verticles simulate the value of the stocks. The quotes are sent on the event bus on the market address.
+Once we have the retriever, we can retrieve the configuration. This is an asynchronous method (rxGetConfig) returning a Single (a stream containing one item). After the configuration is retrieved, we extract the companies array from it and deploy one verticle per defined company. The deployment is also asynchronous and done with rxDeployVerticle. These company verticles simulate the value of the stocks. The quotes are sent on the event bus on the market address.
 
 Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
       
