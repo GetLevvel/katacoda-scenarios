@@ -18,7 +18,12 @@ Projects are a top-level concept to help you organize your deployments. An OpenS
 
 For this scenario, let's create a project that you will use to house your applications.
 
-``oc new-project vertx-micro-trader --display-name="Micro-Trader Application"``{{execute interrupt}}
+``oc new-project vertx-kubernetes-workshop``{{execute}}
+``oc policy add-role-to-user view admin -n vertx-kubernetes-workshop``{{execute}}
+``oc policy add-role-to-user view -n vertx-kubernetes-workshop -z default``{{execute}}
+``oc policy add-role-to-group view system:serviceaccounts -n vertx-kubernetes-workshop``{{execute}}
+
+The first instruction creates the project. The 3 last instructions grant permissions in order to use all the OpenShift capabilities.
 
 **3. Open the OpenShift Web Console**
 
@@ -26,3 +31,4 @@ OpenShift ships with a web-based console that will allow users to perform variou
 
 ![OpenShift Console Tab](../../assets/middleware/rhoar-getting-started-vertx/openshift-console-tab.png)
 
+You should see the newly created project. Click on it. It’s empty, so let’s deploy our first application.
