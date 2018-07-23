@@ -11,7 +11,8 @@ cd ${UI_PATH} && cp -R /root/vertx-kubernetes-workshop/* ./
 unalias cp
 cp -rf quote-generator/src/main/solution/* quote-generator/src/main/java
 
-# Build parent project
+# Build dependency project
+cd quote-generator
 mvn clean install -Ddocker.skip.build=true
 
 # Launch OpenShift environment
@@ -19,7 +20,7 @@ mvn clean install -Ddocker.skip.build=true
 
 oc login https://[[HOST_SUBDOMAIN]]-8443-[[KATACODA_HOST]].environments.katacoda.com -u developer -p developer --insecure-skip-tls-verify=true
 
-oc new-project vertx-micro-trader --display-name="Micro-Trader Application"
+oc new-project vertx-kubernetes-workshop
 
 cd ${UI_PATH}/quote-generator
 mvn fabric8:deploy -Popenshift
