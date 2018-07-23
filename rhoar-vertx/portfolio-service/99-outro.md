@@ -1,1 +1,9 @@
-In this scenario, you published an event bus service, also called a RPC service or service proxy. We saw how to send messages on the event bus using the portfolio service. In order to do that, we created a verticle that creates the actual service object, registers the service on the event bus and publishes the service in the service discovery infrastructure. 
+In this scenario, you covered
+
+* how we can use the event bus to implement asynchronous RPC (RPC done right)
+
+* how to implement a service proxy using callbacks
+
+* how to publish messages on the event bus
+
+* how to use the Vert.x Web Client

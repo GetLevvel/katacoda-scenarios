@@ -4,8 +4,6 @@ Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x 
 
 A config map is a Kubernetes entity storing the configuration of an application. The application configuration is in src/kubernetes/config.json. We are going to create a config map from this file. In a terminal, execute:
 
-``cd /root/code/quote-generator``{{execute}}
-
 ``oc create configmap app-config --from-file=src/kubernetes/config.json``{{execute}}
 
 To check that the config map has been created correctly, execute:
@@ -42,7 +40,7 @@ existing Eclipse Vert.x application and generate the necessary Kubernetes config
 
 Build and deploy the project using the following command, which will use the maven plugin to deploy:
 
-`mvn fabric8:deploy -Popenshift`{{execute}}
+`mvn fabric8:deploy`{{execute}}
 
 The build and deploy may take a minute or two. Wait for it to complete. You should see a **BUILD SUCCESS** at the
 end of the build output.
@@ -58,16 +56,51 @@ To verify that everything is started, run the following command and wait for it 
 [route URL](http://quote-generator-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
 to access the sample UI.
 
-> You can also access the application through the link on the OpenShift Web Console Overview page.
+> You can also access the application through the link on the OpenShift Web Console Overview page. Remember to add /admin at the end of the ROUTE url.
+
+You should now see an HTML page that looks like this:
+
+```json
+
+{
+  "MacroHard" : {
+    "volume" : 100000,
+    "shares" : 51351,
+    "symbol" : "MCH",
+    "name" : "MacroHard",
+    "ask" : 655.0,
+    "bid" : 666.0,
+    "open" : 600.0
+  },
+  "Black Coat" : {
+    "volume" : 90000,
+    "shares" : 45889,
+    "symbol" : "BCT",
+    "name" : "Black Coat",
+    "ask" : 654.0,
+    "bid" : 641.0,
+    "open" : 300.0
+  },
+  "Divinator" : {
+    "volume" : 500000,
+    "shares" : 251415,
+    "symbol" : "DVN",
+    "name" : "Divinator",
+    "ask" : 877.0,
+    "bid" : 868.0,
+    "open" : 800.0
+  }
+}
+```
 
 **3. Build and Deploy the dashboard**
 
 `cd /root/code/micro-trader-dashboard`{{execute}}
 
-`mvn fabric8:deploy -Popenshift`{{execute}}
+`mvn fabric8:deploy`{{execute}}
 
 Click on the
-[route URL](http://trader-dashboard-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
+[route URL](http://micro-trader-dashboard-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
 to access the sample UI.
 
 ## Congratulations!

@@ -12,9 +12,12 @@ It’s nice to have an async interface for our service, but it’s time to imple
 
 As we have seen above, our async service have Handler<AsyncResult<Portfolio>> parameter. So when we implement this service, we would need to call the Handler with an instance of AsyncResult. To see how this works, let’s implement the getPortfolio method:
 
-In ``io.vertx.workshop.portfolio.impl.PortfolioServiceImpl``, fill the ``getPortfolio`` method. It should call the ``handle`` method of the ``resultHandler`` with a successful async result. This object can be created from the (Vert.x) ``Future`` method.
+In ``io.vertx.workshop.portfolio.impl.PortfolioServiceImpl.java``, fill the ``getPortfolio`` method. It should call the ``handle`` method of the ``resultHandler`` with a successful async result. This object can be created from the (Vert.x) ``Future`` method.
 
-Open the file in the editor: ``portfolio-service/src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java``{{open}}
+Open the file in the editor: 
+
+``src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java``{{open}}
+
 Then, copy the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="// TODO: getPortfolio">
@@ -84,20 +87,17 @@ Let’s do it step by step. First, in the evaluate, we need to retrieve the HTTP
 
 Fill the evaluate method to retrieve the quotes service. You can retrieve Http services using HttpEndpoint.getClient. The name of the service is quotes. If you can’t retrieve the service, just passed a failed async result to the handler. Otherwise, call computeEvaluation.
 
-Copy the following to the matching `TODO` statement
+Copy the following to the matching ``//TODO`` in the evaluate method
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="// TODO: evaluate">
-  HttpEndpoint.getWebClient(discovery, new JsonObject().put("name", "quotes"),
-  client -> {
-    if (client.failed()) {
-      // It failed...
-      resultHandler.handle(Future.failedFuture(client.cause()));
-    } else {
-      // We have the client
-      WebClient webClient = client.result();
-      computeEvaluation(webClient, resultHandler);
-    }
-  });
+ Single<WebClient> quotes = HttpEndpoint.rxGetWebClient(discovery, rec -> rec.getName().equals("quote-generator"));
+ quotes.subscribe((client, err) -> {
+     if (err != null) {
+         resultHandler.handle(Future.failedFuture(err));
+     } else {
+         computeEvaluation(client, resultHandler);
+     }
+ });
 </pre>
 
 * Get the HTTP Client for the requested service.
@@ -138,19 +138,10 @@ This method returns a Single<Double> emitting the numberOfShares * bid result. W
 Copy the following to the matching `TODO` statement in the getValueForCompany method 
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="// TODO: getValueForCompany">
-  client.get("/?name=" + encode(company))
-      .as(BodyCodec.jsonObject())
-      .send(ar -> {
-    if (ar.succeeded()) {
-      HttpResponse<JsonObject> response = ar.result();
-      if (response.statusCode() == 200) {
-        double v = numberOfShares * response.body().getDouble("bid");
-        future.complete(v);
-      } else {
-        future.complete(0.0);
-      }
-    } else {
-      future.fail(ar.cause());
-    }
-  });                                                             
+ return client.get("/?name=" + encode(company))
+     .as(BodyCodec.jsonObject())
+     .rxSend()
+     .map(HttpResponse::body)
+     .map(json -> json.getDouble("bid"))
+     .map(val -> val * numberOfShares);                              
 </pre>

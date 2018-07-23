@@ -11,6 +11,7 @@ cd ${UI_PATH} && cp -R /root/vertx-kubernetes-workshop/* ./
 # Copy quote-generator solution from previous scenario into src/
 unalias cp
 cp -rf quote-generator/src/main/solution/* quote-generator/src/main/java
+cp -rf portfolio-service/src/main/solution/* portfolio-service/src/main/java
 
 # Launch OpenShift environment
 ~/.launch.sh
@@ -25,6 +26,10 @@ oc policy add-role-to-group edit system:serviceaccounts -n ${OCP_PROJECT}
 # Deploy quote-generator
 cd ${UI_PATH}/quote-generator
 oc create configmap app-config --from-file=src/kubernetes/config.json
+mvn fabric8:deploy
+
+# Deploy portfolio-service
+cd ${UI_PATH}/portfolio-service
 mvn fabric8:deploy
 
 # Deploy micro-trader-dashboard

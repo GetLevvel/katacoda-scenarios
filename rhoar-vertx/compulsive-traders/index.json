@@ -11,11 +11,18 @@
       "code": "env-init.sh"
     },
     "steps": [
-      { "title": "Step 1", "text": "01-examine-the-sample-project.md" },
-      { "title": "Step 2", "text": "02-quote-generator-verticle.md" },
-      { "title": "Step 3", "text": "03-create-quote-rest-endpoint.md" },
-      { "title": "Step 4", "text": "04-create-openshift-project.md" },
-      { "title": "Step 5", "text": "05-deploy-to-openshift.md" }
+      {
+        "title": "Step 1",
+        "text": "01-callback-based-trader.md"
+      },
+      {
+        "title": "Step 2",
+        "text": "02-rx-java2-trader.md"
+      },
+      {
+        "title": "Step 3",
+        "text": "03-deploy-to-openshift.md"
+      }
     ],
     "finish": {
       "text": "99-outro.md"
