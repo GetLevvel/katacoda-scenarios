@@ -9,7 +9,35 @@ Switch to the ``quote-generator`` project
 
 Let’s have a look at the project, as every other project are structured the same way.
 
-![quote-generator-tree](../../assets/middleware/rhoar-getting-started-vertx/quote-generator-tree.png)
+``tree``{{execute}}
+
+```text
+.
+|-- README.md  <----- A readme containing the description and (build) instructions
+|-- pom.xml  <----- The project build file
+|-- src
+|   |-- kubernetes/config.json <---- The configuration of the application
+|   |-- main
+|   |   |-- fabric8
+|   |   |   `-- deployment.yml  <----- The Kubernetes deployment customization
+|   |   |-- java
+|   |   |   `-- io/vertx/workshop/quote  <----- The source file you need to complete
+|   |   |                   |-- GeneratorConfigVerticle.java
+|   |   |                   |-- MarketDataVerticle.java
+|   |   |                   `-- RestQuoteAPIVerticle.java
+|   |   `-- solution
+|   |       `-- io/vertx/workshop/quote  <----- The complete code (including the answers to the assignments)
+|   |                          |-- GeneratorConfigVerticle.java
+|   |                          |-- MarketDataVerticle.java
+|   |                          `-- RestQuoteAPIVerticle.java
+|   `-- test
+|       |-- java
+|       |   `-- io/vertx/workshop/quote  <----- The test cases
+|       |                         |-- GeneratorConfigVerticleTest.java
+|       |                         `-- MarketDataVerticleTest.java
+|       `-- resources  <----- resources used for tests
+`-- target  <----- output directory
+```
 
 >**NOTE:** To generate a similar project skeleton you can visit the [Vert.x Starter](http://start.vertx.io/) webpage.
 
