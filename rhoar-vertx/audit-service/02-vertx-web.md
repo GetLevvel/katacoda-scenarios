@@ -10,7 +10,7 @@ ome of the method we used in the previous section are not totally functional ;-)
 
 Open the ``io.vertx.workshop.audit.impl.AuditImpl`` class by clicking on the link below and look at the `configureTheHTTPServer` method
 
-``src/main/java/io/vertx/workshop/audit/impl/AuditImpl.java``{{open}}
+``audit-service/src/main/java/io/vertx/workshop/audit/impl/AuditImpl.java``{{open}}
 
 Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
 

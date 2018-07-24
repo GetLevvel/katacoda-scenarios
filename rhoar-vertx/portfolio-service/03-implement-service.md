@@ -16,7 +16,7 @@ In ``io.vertx.workshop.portfolio.impl.PortfolioServiceImpl.java``, fill the ``ge
 
 Open the file in the editor: 
 
-``src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java``{{open}}
+``portfolio-service/src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java``{{open}}
 
 Then, copy the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
 

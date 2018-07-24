@@ -1,14 +1,10 @@
 **Async service interface**
 
-Switch to the portfolio-service project
-
-``cd portfolio-service``{{execute}}
-
 To create an async RPC service, or event bus service, or service proxies, you first need a Java interface declaring the async methods. 
 
 Open the ``io.vertx.workshop.portfolio.PortfolioService`` class
 
-``src/main/java/io/vertx/workshop/portfolio/PortfolioService.java``{{open}}
+``portfolio-service/src/main/java/io/vertx/workshop/portfolio/PortfolioService.java``{{open}}
 
 The class is annotated with:
 

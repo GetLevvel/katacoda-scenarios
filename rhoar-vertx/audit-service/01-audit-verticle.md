@@ -1,12 +1,8 @@
 **3. Task - Composing methods returning Single.**
 
-Switch to the audit-service project
-
-``cd audit-service``{{execute}}
-
 Open the ``io.vertx.workshop.audit.impl.AuditVerticle`` class:
 
-``src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java``{{open}} 
+``audit-service/src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java``{{open}} 
 
 The first important detail of this verticle is its ``start`` method. As the ``start`` method from the traders, the method is asynchronous, and report its completion in the given ``Future`` object.
 

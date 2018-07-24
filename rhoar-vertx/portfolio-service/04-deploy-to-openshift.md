@@ -11,6 +11,8 @@ existing Eclipse Vert.x application and generate the necessary Kubernetes config
 
 Build and deploy the project using the following command, which will use the maven plugin to deploy:
 
+``cd portfolio-service``{{execute}}
+
 `mvn clean compile fabric8:deploy`{{execute}}
 
 The build and deploy may take a minute or two. Wait for it to complete. You should see a **BUILD SUCCESS** at the
