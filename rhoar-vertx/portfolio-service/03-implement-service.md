@@ -90,14 +90,13 @@ Fill the evaluate method to retrieve the quotes service. You can retrieve Http s
 Copy the following to the matching ``//TODO`` in the evaluate method
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/portfolio/impl/PortfolioServiceImpl.java" data-target="insert" data-marker="// TODO: evaluate">
- Single<WebClient> quotes = HttpEndpoint.rxGetWebClient(discovery, rec -> rec.getName().equals("quote-generator"));
- quotes.subscribe((client, err) -> {
-     if (err != null) {
-         resultHandler.handle(Future.failedFuture(err));
-     } else {
-         computeEvaluation(client, resultHandler);
-     }
- });
+quotes.subscribe((client, err) -> {
+ if (err != null) {
+     resultHandler.handle(Future.failedFuture(err));
+ } else {
+     computeEvaluation(client, resultHandler);
+ }
+});
 </pre>
 
 * Get the HTTP Client for the requested service.
