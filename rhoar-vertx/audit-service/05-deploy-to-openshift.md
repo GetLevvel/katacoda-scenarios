@@ -2,7 +2,7 @@ First, we need a database.
 
 Deploy the database in OpenShift using:
 
-``cd audit-service``{{execute}}
+``cd /root/code/audit-service``{{execute}}
 
 ``oc new-app -e POSTGRESQL_USER=admin -ePOSTGRESQL_PASSWORD=secret -ePOSTGRESQL_DATABASE=audit registry.access.redhat.com/rhscl/postgresql-94-rhel7 --name=audit-database``{{execute}}
 

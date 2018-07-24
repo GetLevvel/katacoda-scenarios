@@ -10,9 +10,9 @@ You may ask why we do such kind of composition. Let’s implement a method witho
 
 The step (1) and (2) are asynchronous. (5) is asynchronous too, but we don’t have to wait for the completion. In this code, don’t use composition (that’s the purpose of this exercise). In retrieveOperations, write the required code using Handlers / Callbacks.
 
-Add the below content to the matching ``// TODO`` statement in the ``retrieveOperations`` method of the ``AuditImpl`` class (or use the `Copy to Editor` button):
+Add the below content to the matching ``// TODO`` statement in the ``retrieveOperations`` method of the ``AuditVerticle`` class (or use the `Copy to Editor` button):
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditImpl.java" data-target="insert" data-marker="// TODO: configureTheHTTPServer">
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: retrieveOperations">
  // 1. Get the connection
  jdbc.getConnection(ar -> {
      SQLConnection connection = ar.result();

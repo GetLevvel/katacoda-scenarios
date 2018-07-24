@@ -6,21 +6,25 @@ Open the ``io.vertx.workshop.trader.impl.RXCompulsiveTraderVerticle`` class.
 
 Complete the code following the TODO items. Use the zip operator to combine the two Singles. When both are completed, attach the message handler to the MessageConsumer and execute the trading logic on each received event. Don’t forget the subscription part(s).
 
+Copy the following to ``// TODO 1``
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java" data-target="insert" data-marker="// TODO 1">
 retrieveThePortfolioService.zipWith(retrieveTheMarket, (ps, consumer) -> {
 </pre>
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java" data-target="insert" data-marker="// TODO 1">
+Copy the following to ``// TODO 2``
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java" data-target="insert" data-marker="// TODO 2">
 consumer.handler(message ->
 </pre>
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java" data-target="insert" data-marker="// TODO 1">
+Copy the following to ``// TODO 3``
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java" data-target="insert" data-marker="// TODO 3">
     TraderUtils.dumbTradingLogic(company, numberOfShares, ps, message.body()).subscribe());
     return true;
 })
 </pre>
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java" data-target="insert" data-marker="// TODO 1">
+Copy the following to ``// TODO 4``
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java" data-target="insert" data-marker="// TODO 4">
 .toCompletable()
 .subscribe(CompletableHelper.toObserver(future));
 </pre>

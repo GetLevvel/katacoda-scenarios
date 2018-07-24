@@ -8,13 +8,9 @@ ome of the method we used in the previous section are not totally functional ;-)
 4. Retrieve the port passed in the configuration or 0 if not set (it picks an available port), we can pick a random port as it is exposed in the service record, so consumer are bound to the right port.
 5. Start the server with the ``rxListen`` version of the listen method that returns a single.
 
-Open the ``io.vertx.workshop.audit.impl.AuditImpl`` class by clicking on the link below and look at the `configureTheHTTPServer` method
+In the same ``io.vertx.workshop.audit.impl.AuditVerticle`` class, add the below content to the matching ``// TODO: configureTheHTTPServer`` statement (or use the `Copy to Editor` button):
 
-``audit-service/src/main/java/io/vertx/workshop/audit/impl/AuditImpl.java``{{open}}
-
-Add the below content to the matching `TODO` statement (or use the `Copy to Editor` button):
-
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditImpl.java" data-target="insert" data-marker="// TODO: configureTheHTTPServer">
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: configureTheHTTPServer">
 Router router = Router.router(vertx);
 router.get("/").handler(this::retrieveOperations);
 router.get("/health").handler(rc -> {

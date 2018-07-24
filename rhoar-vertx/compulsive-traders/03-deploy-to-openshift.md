@@ -2,7 +2,7 @@
 
 To test, we can deploy our traders service to OpenShift using
 
-``cd compulsive-traders``{{execute}}
+``cd /root/code/compulsive-traders``{{execute}}
 
 ``mvn fabric8:deploy``{{execute}}
 

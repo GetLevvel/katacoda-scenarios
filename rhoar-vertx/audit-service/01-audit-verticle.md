@@ -16,9 +16,9 @@ Initializing the audit service includes:
 
 So, it’s clearly 3 independent actions, but the audit service is started only when all of them has been completed. So, we need to implement this orchestration.
 
-Replace the ``//TODO`` block with code below
+Replace the matching  ``//TODO: retrieveSingles`` block with code below
 
-<pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditImpl.java" data-target="insert" data-marker="// TODO: createSingles">
+<pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditImpl.java" data-target="insert" data-marker="// TODO: retrieveSingles">
 Single<JDBCClient> databaseReady = jdbc
     .flatMap(client -> initializeDatabase(client, true));
 Single<HttpServer> httpServerReady = configureTheHTTPServer();
