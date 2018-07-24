@@ -19,6 +19,7 @@ Projects are a top-level concept to help you organize your deployments. An OpenS
 For this scenario, let's create a project that you will use to house your applications.
 
 ``oc new-project vertx-kubernetes-workshop``{{execute}}
+
 ``oc policy add-role-to-group edit system:serviceaccounts -n vertx-kubernetes-workshop``{{execute}}
 
 The first instruction creates the project. The 3 last instructions grant permissions in order to use all the OpenShift capabilities.
