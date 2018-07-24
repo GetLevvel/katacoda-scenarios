@@ -2,7 +2,7 @@ In this task, we re-implement the very same logic but using a different programm
 
 Open the ``io.vertx.workshop.trader.impl.RXCompulsiveTraderVerticle`` class. 
 
-``src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java``{{open}}
+``compulsive-traders/src/main/java/io/vertx/workshop/trader/impl/RXCompulsiveTraderVerticle.java``{{open}}
 
 Complete the code following the TODO items. Use the zip operator to combine the two Singles. When both are completed, attach the message handler to the MessageConsumer and execute the trading logic on each received event. Don’t forget the subscription part(s).
 
