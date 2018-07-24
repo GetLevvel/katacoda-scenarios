@@ -11,7 +11,7 @@ Let’s have a look at the project, as every other project are structured the sa
 
 ``tree``{{execute}}
 
-![quote-generator-tree](../../assets/middleware/rhoar-getting-started-vertx/quote-generator.jpeg)
+![quote-generator](../../assets/middleware/rhoar-getting-started-vertx/quote-generator.jpeg)
 
 >**NOTE:** To generate a similar project skeleton you can visit the [Vert.x Starter](http://start.vertx.io/) webpage.
 
