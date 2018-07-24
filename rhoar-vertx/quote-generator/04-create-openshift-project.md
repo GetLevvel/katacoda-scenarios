@@ -22,7 +22,7 @@ For this scenario, let's create a project that you will use to house your applic
 
 ``oc policy add-role-to-group edit system:serviceaccounts -n vertx-kubernetes-workshop``{{execute}}
 
-The first instruction creates the project. The 3 last instructions grant permissions in order to use all the OpenShift capabilities.
+The first instruction creates the project. The second instruction grants permissions in order to use all the OpenShift capabilities.
 
 **3. Open the OpenShift Web Console**
 
