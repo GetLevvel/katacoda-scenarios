@@ -11,18 +11,21 @@ Let’s do that…​.
 
 **1. Task - Implementing a Handler to receive events**
 
-The first action is about observing the stream of market messages. This is done using vertx.eventBus().<JsonObject>consumer(GeneratorConfigVerticle.ADDRESS).toFlowable(). We now have the stream of messages, but we need to extract the JSON body and populate the quotes map. Implement the missing logic that extracts the body of the message (with the body() method), and then puts name → quote in the quotes map.
+The first action is about observing the stream of market messages. This is done using ``vertx.eventBus().<JsonObject>consumer(GeneratorConfigVerticle.ADDRESS).toFlowable()``. We now have the stream of messages, but we need to extract the JSON body and populate the quotes map. Implement the missing logic that extracts the body of the message (with the body() method), and then put name → quote in the quotes map.
 
-Open the file in the editor: ``quote-generator/src/main/java/io/vertx/workshop/quote/RestQuoteAPIVerticle.java``{{open}}
-Then, copy the below content to the matching `TODO` statements(or use the `Copy to Editor` button):
+Open the file in the editor: 
+
+``quote-generator/src/main/java/io/vertx/workshop/quote/RestQuoteAPIVerticle.java``{{open}}
+
+Then, copy the below content to the matching `TODO` statements (or use the `Copy to Editor` button):
       
-Extract the body of the message
+Extract the body of the message:
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/RestQuoteAPIVerticle.java" data-target="insert" data-marker="// TODO: Extract the body of the message">
 .map(Message::body)  
 </pre>
 
-Populate the quotes map
+Populate the quotes map:
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/quote/RestQuoteAPIVerticle.java" data-target="insert" data-marker="// TODO: For each message, populate the quotes map with the received quote.">
 .doOnNext(json -> {

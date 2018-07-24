@@ -8,7 +8,7 @@
   "details": {
     "intro": {
       "text": "00-intro.md",
-      "code": "env-init.sh"
+      "courseData": "run-init.sh"
     },
     "steps": [
       {

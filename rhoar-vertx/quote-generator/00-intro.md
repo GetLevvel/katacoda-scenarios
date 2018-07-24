@@ -17,7 +17,7 @@ What you are going to learn:
 
 And many more…​
 
-This first scenario will focus on creating the quote-generator microservice. In the subsequent scenarios, you will create other services and a whole application at the end that is:
+This first scenario will focus on creating the first service called the quote-generator. In the subsequent scenarios, you will create other services and a whole application at the end that is:
 
 * based on Vert.x
 * distributed

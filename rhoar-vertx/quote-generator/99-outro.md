@@ -4,7 +4,7 @@ In this scenario, you learned a bit more about what Reactive Systems and Reactiv
 
 * how to use the event bus to receive messages
 
-* how to implement HTTP actions
+* how to expose a HTTP endpoint
 
 * how to use RX Java 2 to avoid callbacks
 
