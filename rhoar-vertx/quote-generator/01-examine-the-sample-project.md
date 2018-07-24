@@ -11,7 +11,33 @@ Let’s have a look at the project, as every other project are structured the sa
 
 ``tree``{{execute}}
 
-![quote-generator](../../assets/middleware/rhoar-getting-started-vertx/quote-generator.jpeg)
+```markdown
+.
+|-- README.md 
+|-- pom.xml 
+|-- src
+|   |-- kubernetes/config.json
+|   |-- main
+|   |   |-- fabric8
+|   |   |   `-- deployment.yml 
+|   |   |-- java
+|   |   |   `-- io/vertx/workshop/quote 
+|   |   |                |-- GeneratorConfigVerticle.java
+|   |   |                |-- MarketDataVerticle.java
+|   |   |                `-- RestQuoteAPIVerticle.java
+|   |   `-- solution
+|   |       `-- io/vertx/workshop/quote 
+|   |                    |-- GeneratorConfigVerticle.java
+|   |                    |-- MarketDataVerticle.java
+|   |                    `-- RestQuoteAPIVerticle.java
+|   `-- test
+|       |-- java
+|       |   `-- io/vertx/workshop/quote 
+|       |                |-- GeneratorConfigVerticleTest.java
+|       |                `-- MarketDataVerticleTest.java
+|       `-- resources 
+`-- target
+```
 
 >**NOTE:** To generate a similar project skeleton you can visit the [Vert.x Starter](http://start.vertx.io/) webpage.
 
