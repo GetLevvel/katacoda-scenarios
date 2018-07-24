@@ -1,3 +1,5 @@
+**Summary**
+
 In this scenario, you covered
 
 * how we can use the event bus to implement asynchronous RPC (RPC done right)

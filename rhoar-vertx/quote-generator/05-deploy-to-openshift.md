@@ -1,6 +1,8 @@
+**Deploy to OpenShift**
+
 Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x microservice:
 
-**1. Create a ConfigMap**
+**Create a ConfigMap**
 
 A config map is a Kubernetes entity storing the configuration of an application. The application configuration is in src/kubernetes/config.json. We are going to create a config map from this file. In a terminal, execute:
 
@@ -33,7 +35,7 @@ For that, we have defined additional config in ``quote-generator/src/main/fabric
 
 You can also see that this file contains the JAVA options we pass to the process.
 
-**2. Start the quote generator**
+**Start the quote generator**
 
 Red Hat OpenShift Application Runtimes includes a powerful maven plugin that can take an
 existing Eclipse Vert.x application and generate the necessary Kubernetes configuration.
@@ -50,7 +52,7 @@ To verify that everything is started, run the following command and wait for it 
 
 `oc rollout status -w dc/quote-generator`{{execute}}
 
-**2. Access the application running on OpenShift**
+**Access the application running on OpenShift**
 
  Click on the
 [route URL](http://quote-generator-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
@@ -93,7 +95,7 @@ You should now see an HTML page that looks like this:
 }
 ```
 
-**3. Build and Deploy the dashboard**
+**Build and Deploy the dashboard**
 
 `cd /root/code/micro-trader-dashboard`{{execute}}
 

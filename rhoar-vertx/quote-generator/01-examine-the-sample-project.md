@@ -1,7 +1,7 @@
 The sample project shows the components of a basic Vert.x project laid out in different
 subdirectories according to Maven best practices.
 
-**1. Examine the Quote Generator project structure.**
+**Examine the Quote Generator project structure.**
 
 Switch to the ``quote-generator`` project
 

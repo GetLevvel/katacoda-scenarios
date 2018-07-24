@@ -9,7 +9,7 @@ In this example we are using streams (Flowable). Streams are an important part o
 
 Let’s do that…​.
 
-**1. Task - Implementing a Handler to receive events**
+**Implementing a Handler to receive events**
 
 The first action is about observing the stream of market messages. This is done using ``vertx.eventBus().<JsonObject>consumer(GeneratorConfigVerticle.ADDRESS).toFlowable()``. We now have the stream of messages, but we need to extract the JSON body and populate the quotes map. Implement the missing logic that extracts the body of the message (with the body() method), and then put name → quote in the quotes map.
 
@@ -33,7 +33,7 @@ Populate the quotes map:
 })
 </pre>
 
-**2. Task - Implementing a Handler to handle HTTP requests**
+**Implementing a Handler to handle HTTP requests**
 
 Now that you have the quotes, let’s use them to handle HTTP requests. The code already creates the HTTP server and provides the stream of HTTP requests. The stream emits an item for every HTTP request received by the server. So, you need to handle the request and write the response.
 

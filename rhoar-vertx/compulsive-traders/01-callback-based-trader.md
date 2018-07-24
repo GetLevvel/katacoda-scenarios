@@ -1,4 +1,14 @@
-**Task - The callback-based trader**
+**Initialize katacoda environment**
+
+You may have noticed a script running in the terminal. This is getting the lab ready up to this scenario i.e. it is 
+1. Cloning the source code
+2. Initialize the OpenShift environment
+3. Build and deploy the quote-generator scenario
+4. Build and deploy the portfolio-service sceanrio
+5. Build and deploy the micro-trader-dashboard
+
+
+**The callback-based trader**
 
 Let’s start with the callback trader. This trader is developed using the raw Vert.x API and so callbacks. But wait…​ who wants to write callback-hell code? To ease the readability of the code, we are going to use Vert.x ``Future``. A ``Future`` is a structure encapsulating a deferred result (or failure). Unlike regular Java Future, Vert.x ``Futures`` are non-blocking (no ``get`` and ``join`` methods). You needs to listen for the ``Future`` completion by attaching a ``Handler`` indicating the result (success or failure). ``Futures`` provide a nice and simple way to structure your code, but that’s not all. It also provides high-level operators such as ``CompositeFuture.all`` indicating the completion of a set of Futures.
 

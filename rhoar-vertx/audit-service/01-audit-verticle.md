@@ -1,4 +1,14 @@
-**3. Task - Composing methods returning Single.**
+**Initialize katacoda environment**
+
+You may have noticed a script running in the terminal. This is getting the lab ready up to this scenario i.e. it is 
+1. Cloning the source code
+2. Initialize the OpenShift environment
+3. Build and deploy the quote-generator scenario
+4. Build and deploy the portfolio-service sceanrio
+5. Build and deploy the compulsive-traders sceanrio
+6. Build and deploy the micro-trader-dashboard
+
+**Composing methods returning Single.**
 
 Open the ``io.vertx.workshop.audit.impl.AuditVerticle`` class:
 

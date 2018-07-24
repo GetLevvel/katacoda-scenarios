@@ -1,3 +1,5 @@
+**Summary**
+
 In this scenario, you covered:
 
 * how to consume an event bus service

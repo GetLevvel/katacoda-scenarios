@@ -1,3 +1,5 @@
+**The RX Java 2 trader**
+
 In this task, we re-implement the very same logic but using a different programming style. We are going to use Rx Java 2. 
 
 Open the ``io.vertx.workshop.trader.impl.RXCompulsiveTraderVerticle`` class. 

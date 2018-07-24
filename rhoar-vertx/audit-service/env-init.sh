@@ -12,6 +12,7 @@ cd ${UI_PATH} && cp -R /root/vertx-kubernetes-workshop/* ./
 unalias cp
 cp -rf quote-generator/src/main/solution/* quote-generator/src/main/java
 cp -rf portfolio-service/src/main/solution/* portfolio-service/src/main/java
+cp -rf compulsive-traders/src/main/solution/* compulsive-traders/src/main/java
 
 # Launch OpenShift environment
 ~/.launch.sh

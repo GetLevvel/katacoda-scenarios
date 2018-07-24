@@ -1,3 +1,5 @@
+**Deploy to OpenShift**
+
 First, we need a database.
 
 Deploy the database in OpenShift using:

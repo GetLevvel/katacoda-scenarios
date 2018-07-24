@@ -1,4 +1,4 @@
-** Task - Configure HTTP server and expose Readiness**
+**Configure HTTP server and expose Readiness**
 
 ome of the method we used in the previous section are not totally functional ;-). Let’s fix this. Look at the configureTheHTTPServer method. In this method we are going to use a new Vert.x Component: Vert.x Web. Vert.x Web is a Vert.x extension to build modern web application. Here we are going to use a Router which let us implement REST APIs easily (à la Hapi or ExpressJS). So:
 

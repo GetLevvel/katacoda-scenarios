@@ -1,6 +1,6 @@
 # Verticle
 
-**1. Understanding the Application**
+**Understanding the Application**
 
 Let's open the ``GeneratorConfigVerticle`` class by clicking on the link below and look at the `start` method
 

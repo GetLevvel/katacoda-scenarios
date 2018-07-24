@@ -1,4 +1,4 @@
-**Test our changes**
+**Deploy to OpenShift**
 
 To test, we can deploy our traders service to OpenShift using
 

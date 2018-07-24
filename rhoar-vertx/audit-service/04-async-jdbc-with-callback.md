@@ -1,4 +1,4 @@
-**Task - Async JDBC with a callback-based composition**
+**Async JDBC with a callback-based composition**
 
 You may ask why we do such kind of composition. Let’s implement a method without any composition operator (just using callbacks). The retrieveOperations method is called when a HTTP request arrives and should return a JSON object containing the last 10 operations. So, in other words:
 

@@ -2,9 +2,9 @@ The law is the law. The Sarbanes–Oxley Act requires you to keep a track of eve
  
 In this chapter we are going to cover: * advanced asynchronous orchestration * asynchronous JDBC * Vert.x Web to build REST API * Managing secrets with OpenShift
 
-**1. Accessing data asynchronously**
+**Accessing data asynchronously**
 
-As said previously, Vert.x is asynchronous and you must never block the event loop. And you know what’s definitely blocking ? Database accesses and more particularly JDBC! Fortunately, Vert.x provides a JDBC client that is asynchronous.
+As said previously, Vert.x is asynchronous and you must never block the event loop. And you know what’s definitely blocking? Database accesses and more particularly JDBC! Fortunately, Vert.x provides a JDBC client that is asynchronous.
 
 The principle is simple (and is applied to all clients accessing blocking systems):
 
@@ -15,7 +15,7 @@ However, interactions with databases are rarely a single operation, but a compos
 3. Create some tables
 4. Close the connection
 
-**2. The Audit service**
+**The Audit service**
 
 The Audit service:
 

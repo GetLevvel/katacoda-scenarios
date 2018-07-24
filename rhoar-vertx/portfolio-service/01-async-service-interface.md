@@ -1,3 +1,11 @@
+**Initialize katacoda environment**
+
+You may have noticed a script running in the terminal. This is getting the lab ready up to this scenario i.e. it is 
+1. Cloning the source code
+2. Initialize the OpenShift environment
+3. Build and deploy the quote-generator scenario
+4. Build and deploy the micro-trader-dashboard
+
 **Async service interface**
 
 To create an async RPC service, or event bus service, or service proxies, you first need a Java interface declaring the async methods. 

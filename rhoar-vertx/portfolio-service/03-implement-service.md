@@ -8,7 +8,7 @@ It’s nice to have an async interface for our service, but it’s time to imple
 
 * ``evaluate`` computing the current value of the portfolio
 
-**1. Task - Creating AsyncResult instances**
+**Creating AsyncResult instances**
 
 As we have seen above, our async service have Handler<AsyncResult<Portfolio>> parameter. So when we implement this service, we would need to call the Handler with an instance of AsyncResult. To see how this works, let’s implement the getPortfolio method:
 
@@ -41,7 +41,7 @@ So, how does this work with our async RPC service, let’s look at this sequence
 
 ![Architecture](../../assets/middleware/rhoar-getting-started-vertx/portfolio-sequence.png)
 
-**2. Task - Sending event on the event bus**
+**Sending event on the event bus**
 It’s time to see how to send messages on the event bus. You access the event bus using vertx.eventBus(). From this object you can:
 
 * ``send`` : send a message in point to point mode
@@ -75,7 +75,7 @@ Let’s have a deeper look:
 * it gets the EventBus instance and call publish on it. The first parameter is the address on which the message is sent
 * the body is a JsonObject containing the different information on the action (buy or sell, the quote (another json object), the date…​
 
-**3. Task - Coordinating async methods and consuming HTTP endpoints - Portfolio value evaluation**
+**Coordinating async methods and consuming HTTP endpoints - Portfolio value evaluation**
 
 The last method to implement is the ``evaluate`` method. This method computes the current value of the portfolio. However, for this it needs to access the "current" value of the stock (so the last quote). It is going to consume the HTTP endpoint we have implemented in the quote generator. For this, we are going to:
 
