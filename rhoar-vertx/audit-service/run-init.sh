@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ssh root@host01 "git clone https://github.com/tarunaz/vertx-microservices-workshop.git"
+ssh root@${HOSTNAME} "git clone https://github.com/tarunaz/vertx-microservices-workshop.git"
