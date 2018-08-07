@@ -15,6 +15,8 @@ Build and deploy the project using the following command, which will use the mav
 
 `cd /root/code/portfolio-service`{{execute}}
 
+`mvn clean install`{{execute}}
+
 `mvn fabric8:deploy`{{execute}}
 
 The build and deploy may take a minute or two. Wait for it to complete. You should see a **BUILD SUCCESS** at the
@@ -27,15 +29,7 @@ To verify that everything is started, run the following command and wait for it 
 
 There you go, the portfolio service is started. It discovers the ``quotes`` service and is ready to be used.
 
-**2. Access the applicationt**
-
- Click on the
-[route URL](http://portfolio-vertx-micro-trader.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
-to access the sample UI.
-
-> You can also access the application through the link on the OpenShift Web Console Overview page.
-
-**3. Access the dashboard**
+**2. Access the dashboard**
 
 Go back to the dashboard, and you should see some new services and the cash should have been set in the top left corner.
 
