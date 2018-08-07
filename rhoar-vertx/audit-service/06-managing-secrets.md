@@ -1,10 +1,10 @@
-**Managing Secrets**
+## Managing Secrets
 
 But wait…​ we have hardcoded the database credentials in our code. This is not optimal. OpenShift provides a way to manage secrets.
 
 Let’s first create a Secret entity using:
 
-``oc create -f src/kubernetes/database-secret.yaml``{{execute}}
+`oc create -f src/kubernetes/database-secret.yaml`{{execute}}
 
 You can open the specified file and see how this object is structured. Basically it’s a set of key/value pairs.
 
@@ -18,7 +18,7 @@ For sake of simplicity we are going to use the first approach.
 
 So, we first need to bind the secret with our deployment. 
 
-Open ``src/main/fabric8/deployment.yml``{{open}} and copy the following content (or uncomment the commented part):
+Open `src/main/fabric8/deployment.yml`{{open}} and copy the following content (or uncomment the commented part):
 
 ```yaml
 spec:
@@ -55,7 +55,7 @@ spec:
 
 Notice the 3 last env variables retrieving values from the audit-database-config secret.
 
-Now, we need to update our code. Open io.vertx.workshop.audit.impl.AuditVerticle and replace the content of the ``getDatabaseConfiguration`` method with:
+Now, we need to update our code. Open `io.vertx.workshop.audit.impl.AuditVerticle` and replace the content of the `getDatabaseConfiguration` method with:
 
 ```java
 return new JsonObject()
@@ -67,6 +67,6 @@ return new JsonObject()
 
 And redeploy your service using: 
 
-``mvn fabric8:deploy``{{execute}}
+`mvn clean compile fabric8:deploy`{{execute}}
 
 Voilà! we have externalize the credentials from the application.

@@ -1,4 +1,4 @@
-**Summary**
+## Summary
 
 In this scenario, you learned a bit more about what Reactive Systems and Reactive programming are and why it's useful when building Microservices. 
 

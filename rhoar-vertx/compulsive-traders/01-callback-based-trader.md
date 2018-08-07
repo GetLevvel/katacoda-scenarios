@@ -1,22 +1,12 @@
-**Initialize katacoda environment**
+## The callback-based trader
 
-You may have noticed a script running in the terminal. This is getting the lab ready up to this scenario i.e. it is 
-1. Cloning the source code
-2. Initialize the OpenShift environment
-3. Build and deploy the quote-generator scenario
-4. Build and deploy the portfolio-service sceanrio
-5. Build and deploy the micro-trader-dashboard
-
-
-**The callback-based trader**
-
-Let’s start with the callback trader. This trader is developed using the raw Vert.x API and so callbacks. But wait…​ who wants to write callback-hell code? To ease the readability of the code, we are going to use Vert.x ``Future``. A ``Future`` is a structure encapsulating a deferred result (or failure). Unlike regular Java Future, Vert.x ``Futures`` are non-blocking (no ``get`` and ``join`` methods). You needs to listen for the ``Future`` completion by attaching a ``Handler`` indicating the result (success or failure). ``Futures`` provide a nice and simple way to structure your code, but that’s not all. It also provides high-level operators such as ``CompositeFuture.all`` indicating the completion of a set of Futures.
+Let’s start with the callback trader. This trader is developed using the raw Vert.x API and so callbacks. To ease the readability of the code, we are going to use Vert.x `Future`. A `Future` is a structure encapsulating a deferred result (or failure). Unlike regular Java Future, Vert.x `Futures` are non-blocking (no `get` and `join` methods). You needs to listen for the `Future` completion by attaching a `Handler` indicating the result (success or failure). `Futures` provide a nice and simple way to structure your code, but that’s not all. It also provides high-level operators such as `CompositeFuture.all` indicating the completion of a set of Futures.
 
 Future objects are created using Future.future(). To be notified of the completion, you need to attach a Handler<AsyncResult>> using the Future.setHandler method.
 
-Open the ``io.vertx.workshop.trader.impl.CallbackTraderVerticle`` class and fill in the code to complete TODOs 1 and 2.
+Open the `io.vertx.workshop.trader.impl.CallbackTraderVerticle` class and fill in the code to complete TODOs 1 and 2.
 
-``compulsive-traders/src/main/java/io/vertx/workshop/trader/impl/CallbackTraderVerticle.java``{{open}} 
+`compulsive-traders/src/main/java/io/vertx/workshop/trader/impl/CallbackTraderVerticle.java`{{open}} 
 
 The trader needs the Portfolio service and the market service (the message source sending the market data). We cannot start the trading logic before having retrieved both of them. Use a CompositeFuture to be notified when both are completed (or one fails). A CompositeFuture is a Future, so attach a Handler to it that call the initialize method.
 

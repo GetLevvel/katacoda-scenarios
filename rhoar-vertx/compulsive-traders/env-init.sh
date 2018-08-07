@@ -36,4 +36,4 @@ mvn fabric8:deploy
 cd ${UI_PATH}/micro-trader-dashboard
 mvn fabric8:deploy
 
-#clear # To clean up Katacoda terminal noise
+clear # To clean up Katacoda terminal noise

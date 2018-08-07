@@ -1,6 +1,6 @@
-**Using Async JDBC**
+## Using Async JDBC
 
-In the ``start`` method, we are calling ``initializeDatabase``. This method is also not very functional at this point. Let’s look at this method using another type of action composition. This method:
+In the `start` method, we are calling `initializeDatabase`. This method is also not very functional at this point. Let’s look at this method using another type of action composition. This method:
 
 * get a connection to the database
 * drop the table
@@ -15,9 +15,9 @@ Single<X> chain = input.flatMap(function1);
 
 So to use the composition pattern, we just need a set of Functions and a Single that would trigger the chain.
 
-Look at the `initializeDatabase` method in the ``AuditVerticle`` class
+Look at the `initializeDatabase` method in the `AuditVerticle` class
 
-Add the below content to the matching ``// TODO: retrieveConnection`` statement in the ``initializeDatabase`` method (or use the `Copy to Editor` button):
+Add the below content to the matching `// TODO: retrieveConnection` statement in the `initializeDatabase` method (or use the `Copy to Editor` button):
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: retrieveConnection">
 Single<SQLConnection> connectionRetrieved = jdbc.rxGetConnection();
@@ -29,7 +29,7 @@ Then, we need compose the Single with the flatMap operator that is taking a SQLC
 2. the rxBatch executes the batch gives us the single returns of the operation
 3. finally we close the connection with doAfterTerminate
 
-So, insert into the matching ``// TODO: executeBatch`` statement in the ``initializeDatabase`` method
+So, insert into the matching `// TODO: executeBatch` statement in the `initializeDatabase` method
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: executeBatch">
 connectionRetrieved
@@ -55,7 +55,7 @@ connectionRetrieved
 
 The previous statement return a Single<List<Integer>> but we need a Single<JDBCClient>. Append .map(x → jdbc) and return the result:
 
-So, insert into the matching ``// TODO: returnResult`` statement in the ``initializeDatabase`` method
+So, insert into the matching `// TODO: returnResult` statement in the `initializeDatabase` method
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: returnResult">
 .map(list -> client);

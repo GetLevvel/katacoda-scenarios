@@ -1,4 +1,4 @@
-**Async JDBC with a callback-based composition**
+## Async JDBC with a callback-based composition
 
 You may ask why we do such kind of composition. Let’s implement a method without any composition operator (just using callbacks). The retrieveOperations method is called when a HTTP request arrives and should return a JSON object containing the last 10 operations. So, in other words:
 
@@ -8,9 +8,9 @@ You may ask why we do such kind of composition. Let’s implement a method witho
 4. Write the list in the HTTP response
 5. Close the database
 
-The step (1) and (2) are asynchronous. (5) is asynchronous too, but we don’t have to wait for the completion. In this code, don’t use composition (that’s the purpose of this exercise). In retrieveOperations, write the required code using Handlers / Callbacks.
+The step (1) and (2) are asynchronous. (5) is asynchronous too, but we don’t have to wait for the completion. In this code, don’t use composition (that’s the purpose of this exercise). In `retrieveOperations`, write the required code using Handlers / Callbacks.
 
-Add the below content to the matching ``// TODO`` statement in the ``retrieveOperations`` method of the ``AuditVerticle`` class (or use the `Copy to Editor` button):
+Add the below content to the matching `// TODO: retrieveOperations` statement in the `retrieveOperations` method of the `AuditVerticle` class (or use the `Copy to Editor` button):
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: retrieveOperations">
  // 1. Get the connection

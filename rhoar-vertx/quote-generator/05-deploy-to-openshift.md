@@ -1,16 +1,16 @@
-**Deploy to OpenShift**
+## Deploy to OpenShift
 
 Now that you've logged into OpenShift, let's deploy our new micro-trader Vert.x microservice:
 
-**Create a ConfigMap**
+**1. Create a ConfigMap**
 
 A config map is a Kubernetes entity storing the configuration of an application. The application configuration is in src/kubernetes/config.json. We are going to create a config map from this file. In a terminal, execute:
 
-``oc create configmap app-config --from-file=src/kubernetes/config.json``{{execute}}
+`oc create configmap app-config --from-file=src/kubernetes/config.json`{{execute}}
 
 To check that the config map has been created correctly, execute:
 
-``oc get configmap -o yaml``{{execute}}
+`oc get configmap -o yaml`{{execute}}
 
 It should display the Kubernetes entity and in the data entry our json content.
 
@@ -35,7 +35,7 @@ For that, we have defined additional config in ``quote-generator/src/main/fabric
 
 You can also see that this file contains the JAVA options we pass to the process.
 
-**Start the quote generator**
+**2. Start the quote generator**
 
 Red Hat OpenShift Application Runtimes includes a powerful maven plugin that can take an
 existing Eclipse Vert.x application and generate the necessary Kubernetes configuration.
@@ -52,7 +52,7 @@ To verify that everything is started, run the following command and wait for it 
 
 `oc rollout status -w dc/quote-generator`{{execute}}
 
-**Access the application running on OpenShift**
+**3. Access the application running on OpenShift**
 
  Click on the
 [route URL](http://quote-generator-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
@@ -95,16 +95,35 @@ You should now see an HTML page that looks like this:
 }
 ```
 
-**Build and Deploy the dashboard**
+**4. Build and Deploy the dashboard**
 
 `cd /root/code/micro-trader-dashboard`{{execute}}
 
-`mvn fabric8:deploy`{{execute}}
+`mvn clean compile fabric8:deploy`{{execute}}
 
-Click on the
+In the OpenShift web console, wait until the pod is ready and click on the associated route. Append "/admin" and you should see the dashboard. If you go into the trader tab, the graph should display the evolution of the market.
+
+Alternatively, click on the
 [route URL](http://micro-trader-dashboard-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
 to access the sample UI.
 
+**5. You are not a financial expert ?**
+So maybe you are not used to the financial world and words…​ Neither am I, and this is a overly simplified version. Let’s define the important fields:
+
+* `name` : the company name
+
+* `symbol` : short name
+
+* `shares` : the number of stock that can be bought
+
+* `open` : the stock price when the session opened
+
+* `ask` : the price of the stock when you buy them (seller price)
+
+* `bid` : the price of the stock when you sell them (buyer price)
+
+You can check Wikipedia for more details.
+
 ## Congratulations!
 
-You have deployed the quote-generator as a microservice. In the next component, we are going to implement an event bus service. 
+You have deployed the quote-generator as a microservice. In the next component, we are going to implement an event bus service (the portfolio microservice). 

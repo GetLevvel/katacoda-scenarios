@@ -1,31 +1,10 @@
 In this scenario, you will learn more about Reactive Microservices using [Eclipse Vert.x](https://vertx.io), one of the runtimes included in [Red Hat OpenShift Application Runtimes](https://developers.redhat.com/products/rhoar).
 
-This scenario is the first one in a list of scenarios that will walk you through building a Reactive application using Vert.x illustrating what Vert.x is. These scenarios offer an intro-level, hands-on session with Vert.x, from the first line of code, to making services, to consuming them and finally to assembling everything in a consistent reactive system. It illustrates what reactive systems are, what reactive programming is, and how to build applications based on reactive microservices (and the s is important).
-
-What you are going to learn:
-
-* What Vert.x is and how to use its asynchronous non-blocking development model
-* How to develop microservices with Vert.x with several types of services, and service discovery
-* What verticles are and how to use them
-* How to use the Vert.x event bus to send and receive messages
-* How to expose HTTP endpoints with Vert.x, and also how to consume them
-* How to compose asynchronous actions
-* How to use several languages in the same application
-* How to use databases with Vert.x
-* How to manage failures with async results, futures, exception handlers and circuit breakers
-* How to use Vert.x with RxJava
-
-And many more…​
-
-This first scenario will focus on creating the first service called the quote-generator. In the subsequent scenarios, you will create other services and a whole application at the end that is:
-
-* based on Vert.x
-* distributed
-* built as a reactive system
+This scenario is the first one in a list of scenarios that will walk you through building a Reactive application using Vert.x illustrating what Vert.x is. These scenarios offer an intermediate, hands-on session with Vert.x, from the first line of code, to making services, to consuming them and finally to assembling everything in a consistent reactive system. It illustrates what reactive systems are, what reactive programming is, and how to build applications based on reactive microservices (and the s is important).
 
 ## The Micro-Trader Application
 
-The application that is being developed is called the ``Micro-Trader`` and is composed of multiple microservices as seen below. It is a fake financial app, where we will be making (virtual) money. The application is composed of the following microservices:
+The Vert.x application that is being developed is called the ``Micro-Trader`` and is composed of multiple microservices as seen below. It is a fake financial app, where we will be making (virtual) money. The application is composed of the following microservices:
 
 * The quote generator - this is an absolutely unrealistic simulator that generates the quotes for 3 fictional companies MacroHard, Divinator, and Black Coat. The market data is published on the Vert.x event bus. It also publishes an HTTP endpoint to get the current value of the quote.
 * The traders - these are a set of components that receives quotes from the quote generator and decides whether or not to buy or sell a particular share. To make this decision, they rely on another component called the portfolio service.
@@ -40,13 +19,18 @@ Let’s have a look at the architecture:
 The application uses several types of services:
 
 * HTTP endpoint (i.e. REST API) - this service is located using an HTTP URL.
-* Service proxies - these are asynchronous services exposed on the event bus using an RPC interaction mechanism, the service is located using an (event bus) address.
+* gRPC - gRPC is a secure and fast RPC framework built on top of HTTP/2
 * Message sources - these are components publishing messages on the event bus, the service is located using an (event bus) address.
+
+All the components are going to be deployed in the same Kubernetes namespace (project), and will form a cluster.
 
 The dashboard presents the available services, the value of each company’s quotes, the latest set of operations made by our traders and the current state of our portfolio. It also shows the state of the different circuit breakers.
 
 ![Architecture](../../assets/middleware/rhoar-getting-started-vertx/dashboard.png)
 
+## The first microservice - the quote generator
+
+In this scenario, you are going to create the first microservice - the quote generator. In each subsequent scenario, you will create a microservice (from the set above) that will together form the Micro-Trader Application based on Vert.x.
 
 ## What is Eclipse Vert.x?
 

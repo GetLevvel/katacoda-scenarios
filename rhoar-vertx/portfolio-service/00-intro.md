@@ -1,4 +1,16 @@
-In this scenario, you will create the portfolio microservice
+## Event bus services - Porfolio service
+
+In this scenario, we are going to implement an event bus service. A `Portfolio` stores the owned shares and the available cash.
+
+**1. Initialize katacoda environment**
+
+All the scenarios in this lab are sequential and build on each other. The portfolio microservice being developed in this scenario is dependant on the quote generator microservice that should have been built and running on the OpenShift Container Platform already. That is what the script running in the terminal is doing. It is: 
+1. Cloning the source code
+2. Initialize the OpenShift environment
+3. Build and deploy the quote-generator scenario
+4. Build and deploy the micro-trader-dashboard
+
+**2. Introduction - RPC and Async RPC**
 
 Microservices are not only about REST. They can be exposed using any types of interactions, and Remote Procedure Calls is one of them. With RPC, a component can effectively send a request to another component by doing a local procedure call, which results in the request being packaged in a message and sent to the callee. Likewise, the result is sent back and returned to the caller component as the result of the procedure call:
 
