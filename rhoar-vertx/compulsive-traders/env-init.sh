@@ -8,6 +8,9 @@ OCP_PROJECT=vertx-kubernetes-workshop # OpenShift project name
 git clone -q https://github.com/tarunaz/vertx-kubernetes-workshop.git
 cd ${UI_PATH} && cp -R /root/vertx-kubernetes-workshop/* ./
 
+# Install the parent pom
+mvn install -N
+
 # Copy quote-generator solution from previous scenario into src/
 unalias cp
 cp -rf quote-generator/src/main/solution/* quote-generator/src/main/java
