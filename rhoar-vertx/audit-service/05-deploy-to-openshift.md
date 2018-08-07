@@ -12,6 +12,6 @@ It creates a new database service named `audit-database` with the given credenti
 
 Now, we can deploy our audit service:
 
-`mvn clean compile fabric8:deploy`{{execute}}
+`mvn fabric8:deploy`{{execute}}
 
 Refresh the dashboard, and you should see the operations in the top right corner!

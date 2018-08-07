@@ -15,7 +15,7 @@ Build and deploy the project using the following command, which will use the mav
 
 `cd /root/code/portfolio-service`{{execute}}
 
-`mvn clean compile fabric8:deploy`{{execute}}
+`mvn fabric8:deploy`{{execute}}
 
 The build and deploy may take a minute or two. Wait for it to complete. You should see a **BUILD SUCCESS** at the
 end of the build output.

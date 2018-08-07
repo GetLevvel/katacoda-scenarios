@@ -99,7 +99,7 @@ You should now see an HTML page that looks like this:
 
 `cd /root/code/micro-trader-dashboard`{{execute}}
 
-`mvn clean compile fabric8:deploy`{{execute}}
+`mvn fabric8:deploy`{{execute}}
 
 In the OpenShift web console, wait until the pod is ready and click on the associated route. Append "/admin" and you should see the dashboard. If you go into the trader tab, the graph should display the evolution of the market.
 
