@@ -31,6 +31,7 @@ mvn fabric8:deploy
 
 # Deploy portfolio-service
 cd ${UI_PATH}/portfolio-service
+mvn clean install
 mvn fabric8:deploy
 
 # Deploy compulsive-traders
