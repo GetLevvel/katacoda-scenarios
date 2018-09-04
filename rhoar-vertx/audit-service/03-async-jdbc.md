@@ -46,11 +46,11 @@ connectionRetrieved
         batch.add(CREATE_TABLE_STATEMENT);
 
         // We compose with a statement batch
-        Single<List<Integer>> next = conn.rxBatch(batch);
+        Single<List> next = conn.rxBatch(batch);
 
         // Whatever the result, if the connection has been retrieved, close it
         return next.doAfterTerminate(conn::close);
-    });
+    })
 </pre>
 
 The previous statement return a Single<List<Integer>> but we need a Single<JDBCClient>. Append .map(x → jdbc) and return the result:
