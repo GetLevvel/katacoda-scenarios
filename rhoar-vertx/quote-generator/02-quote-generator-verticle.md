@@ -6,7 +6,7 @@ As you may have noticed, the code is structured in 3 `verticles`, but what are t
 
 Let's open the `GeneratorConfigVerticle` class by clicking on the link below and look at the `start` method
 
-`quote-generator/src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java`{{open}}
+`src/main/java/io/vertx/workshop/quote/GeneratorConfigVerticle.java`{{open}}
 
 This method retrieves the configuration, instantiates the verticles and publishes the services in the service discovery.
 
