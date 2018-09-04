@@ -7,5 +7,5 @@ UI_PATH=/root/code
 git clone -q https://github.com/tarunaz/vertx-kubernetes-workshop.git
 cd ${UI_PATH} && cp -R /root/vertx-kubernetes-workshop/* ./
 
-#clear # To clean up Katacoda terminal noise
+clear # To clean up Katacoda terminal noise
 ~/.launch.sh
