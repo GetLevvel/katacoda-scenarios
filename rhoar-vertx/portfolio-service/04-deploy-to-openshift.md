@@ -27,13 +27,19 @@ To verify that everything is started, run the following command and wait for it 
 
 There you go, the portfolio service is started. It discovers the ``quotes`` service and is ready to be used.
 
-**2. Access the dashboard**
+**2. Access the Micro-trader dashboard running on OpenShift**
 
-Go back to the dashboard, and you should see some new services and the cash should have been set in the top left corner.
+Click on the "OpenShift Console" tab next to the "Local Web Browser" tab.
 
-Click on the
+![OpenShift Console Tab](../../assets/middleware/rhoar-getting-started-vertx/openshift-console-tab.png)
+
+Log in using `developer/developer` for username and password. You should see the newly created project called `“vertx-kubernetes-workshop"`. Click on it. You should see three pods running, one each for the quote-generator and micro-trader-dashboard created previously and a new one for the portfolio-service that you created in this scenario.
+
+Click on the route for the `micro-trader-dashboard`. Append `“/admin”` at the end of the route and you should see the dashboard. You should see some new services and if you click on the “Trader” tab on the left, cash should have been set in the top left corner.
+
+Alternatively, click on the
 [route URL](http://micro-trader-dashboard-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
-to access the sample UI.
+to access the dashboard.
 
 The dashboard is consuming the portfolio service using the async RPC mechanism. A client for JavaScript is generated at compile time, and use SockJS to communicate. Behind the hood there is a bridge between the event bus and SockJS.
 

@@ -54,11 +54,11 @@ To verify that everything is started, run the following command and wait for it 
 
 **3. Access the application running on OpenShift**
 
- Click on the
+Click on the
 [route URL](http://quote-generator-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com)
 to access the sample UI.
 
-> You can also access the application through the link on the OpenShift Web Console Overview page. Remember to add /admin at the end of the ROUTE url.
+> You can also access the application through the link for the quote-generator route on the OpenShift Web Console Overview page.
 
 You should now see an HTML page that looks like this:
 
@@ -95,13 +95,13 @@ You should now see an HTML page that looks like this:
 }
 ```
 
-**4. Build and Deploy the dashboard**
+**4. Build and Deploy the micro-trader-dashboard**
 
 `cd /root/code/micro-trader-dashboard`{{execute}}
 
 `mvn fabric8:deploy`{{execute}}
 
-In the OpenShift web console, wait until the pod is ready and click on the associated route. Append "/admin" and you should see the dashboard. If you go into the trader tab, the graph should display the evolution of the market.
+In the OpenShift web console, wait until the pod is ready and click on the associated route. Append "/admin" at the end of the URL and you should see the dashboard. If you go into the trader tab, the graph should display the evolution of the market.
 
 Alternatively, click on the
 [route URL](http://micro-trader-dashboard-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
