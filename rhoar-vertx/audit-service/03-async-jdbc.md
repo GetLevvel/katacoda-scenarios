@@ -20,7 +20,7 @@ Look at the `initializeDatabase` method in the `AuditVerticle` class
 Add the below content to the matching `// TODO: retrieveConnection` statement in the `initializeDatabase` method (or use the `Copy to Editor` button):
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: retrieveConnection">
-Single<SQLConnection> connectionRetrieved = jdbc.rxGetConnection();
+Single&lt;SQLConnection&gt; connectionRetrieved = jdbc.rxGetConnection();
 </pre>
 
 Then, we need compose the Single with the flatMap operator that is taking a SQLConnection as parameter and returns a Single containing the result of the database initialization:
