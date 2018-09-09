@@ -32,7 +32,7 @@ Then, we need compose the Single with the flatMap operator that is taking a SQLC
 So, insert into the matching `// TODO: executeBatch` statement in the `initializeDatabase` method
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/audit/impl/AuditVerticle.java" data-target="insert" data-marker="// TODO: executeBatch">
-connectionRetrieved
+return connectionRetrieved
     .flatMap(conn -> {
         // When the connection is retrieved
 
