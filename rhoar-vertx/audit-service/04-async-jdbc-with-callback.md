@@ -23,7 +23,7 @@ Add the below content to the matching `// TODO: retrieveOperations` statement in
          connection.query(SELECT_STATEMENT, result -> {
              // 3. When done, iterate over the result to build a list
              ResultSet set = result.result();
-             List<JsonObject> operations = set.getRows().stream()
+             List&lt;JsonObject&gt; operations = set.getRows().stream()
                  .map(json -> new JsonObject(json.getString("operation")))
                  .collect(Collectors.toList());
              // 5. write this list into the response
