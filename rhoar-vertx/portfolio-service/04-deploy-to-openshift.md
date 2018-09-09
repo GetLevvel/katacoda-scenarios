@@ -27,7 +27,7 @@ To verify that everything is started, run the following command and wait for it 
 
 There you go, the portfolio service is started. It discovers the ``quotes`` service and is ready to be used.
 
-**2. Access the Micro-trader dashboard running on OpenShift**
+**2. Access the Micro-trader dashboard**
 
 Click on the "OpenShift Console" tab next to the "Local Web Browser" tab.
 

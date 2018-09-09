@@ -11,8 +11,8 @@ Open the `io.vertx.workshop.trader.impl.CallbackTraderVerticle` class and fill i
 The trader needs the Portfolio service and the market service (the message source sending the market data). We cannot start the trading logic before having retrieved both of them. Use a CompositeFuture to be notified when both are completed (or one fails). A CompositeFuture is a Future, so attach a Handler to it that call the initialize method.
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/CallbackTraderVerticle.java" data-target="insert" data-marker="// TODO 1">
-Future<PortfolioService> retrieveThePortfolioService = getPortfolioService(discovery.result());
-Future<MessageConsumer<JsonObject>> retrieveTheMarket = getMarketSource(discovery.result());
+Future&lt;PortfolioService&gt; retrieveThePortfolioService = getPortfolioService(discovery.result());
+Future&lt;MessageConsumer&lt;JsonObject&gt;&gt; retrieveTheMarket = getMarketSource(discovery.result());
 </pre>
 
 <pre class="file" data-filename="src/main/java/io/vertx/workshop/trader/impl/CallbackTraderVerticle.java" data-target="insert" data-marker="// TODO 2">

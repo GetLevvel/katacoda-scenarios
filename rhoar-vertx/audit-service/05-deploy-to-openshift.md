@@ -2,7 +2,7 @@
 
 First, we need a database.
 
-Deploy the database in OpenShift using:
+**1. Deploy the database**
 
 `cd /root/code/audit-service`{{execute}}
 
@@ -14,7 +14,7 @@ Now, we can deploy our audit service:
 
 `mvn fabric8:deploy`{{execute}}
 
-**2. Access the Micro-trader dashboard running on OpenShift**
+**2. Access the Micro-trader dashboard**
 
 Click on the "OpenShift Console" tab next to the "Local Web Browser" tab.
 
