@@ -22,9 +22,9 @@ Replace the matching  `// TODO: retrieveSingles` block with code below
 Single&lt;JDBCClient&gt; databaseReady = jdbc
     .flatMap(client -> initializeDatabase(client, true));
 Single&lt;HttpServer&gt; httpServerReady = configureTheHTTPServer();
-Single&lt;MessageConsumer&lt;JsonObjec&gt;&gt; messageConsumerReady = retrieveThePortfolioMessageSource();
+Single&lt;MessageConsumer&lt;JsonObject&gt;&gt; messageConsumerReady = retrieveThePortfolioMessageSource();
 
-Single&lt;MessageConsumer&lt;JsonObjec&gt;&gt; readySingle = Single.zip(databaseReady, httpServerReady,
+Single&lt;MessageConsumer&lt;JsonObject&gt;&gt; readySingle = Single.zip(databaseReady, httpServerReady,
     messageConsumerReady, (db, http, consumer) -> consumer);
 </pre>
 
