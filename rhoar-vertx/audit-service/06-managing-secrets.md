@@ -18,7 +18,7 @@ For sake of simplicity we are going to use the first approach.
 
 So, we first need to bind the secret with our deployment. 
 
-Open `src/main/fabric8/deployment.yml`{{open}} and copy the following content (or uncomment the commented part):
+Open `audit-service/src/main/fabric8/deployment.yml`{{open}} and copy the following content (or uncomment the commented part):
 
 ```yaml
 spec:
@@ -66,6 +66,8 @@ return new JsonObject()
 ```
 
 And redeploy your service using: 
+
+`mvn fabric8:undeploy`{{execute}}
 
 `mvn fabric8:deploy`{{execute}}
 
