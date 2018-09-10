@@ -103,7 +103,7 @@ You should now see an HTML page that looks like this:
 
 In the OpenShift web console, wait until the pod is ready and click on the associated route. Append "/admin" at the end of the URL and you should see the dashboard. If you go into the trader tab, the graph should display the evolution of the market.
 
-Alternatively, click on the
+Alternatively, you can click on the
 [route URL](http://micro-trader-dashboard-vertx-kubernetes-workshop.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/admin)
 to access the sample UI.
 
