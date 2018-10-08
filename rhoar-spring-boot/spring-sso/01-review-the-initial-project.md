@@ -1,6 +1,7 @@
 # Review the base structure of the application
 
-For your convenience, this scenario has been created with a base project using the Java programming language and the Apache Maven build tool.
+For your convenience, this scenario has been created with a base project using the Java programming language and the Apache Maven build tool. The base project contains an application 
+with unprotected resources.
 
 This project already includes everything you need. Start by reviewing the base project's content by executing a ``tree``{{execute}} in your terminal.
 
@@ -14,6 +15,9 @@ The output should look something like this:
     │   ├── fabric8
     │   │   ├── deployment.yml
     │   │   └── route.yml
+    │   │   └── credentials-secret.yml
+    │   │   └── keycloak.json
+    │   │   └── postgresql.json
     │   ├── java
     │   │   └── com
     │   │       └── example
@@ -21,14 +25,15 @@ The output should look something like this:
     |	|			└──service
     |	|           	└── Fruit.java
     |	|               └── FruitController.java
+    |	|               └── FruitRepository.java
     │   └── resources
     │       └── static
     │           └── index.html
+ 	│       └── templates
+    │           └── error.html
+    │           └── home.html
     └── test
         └── java
-            └── com
-                └── example
-                    └── ApplicationTests.java
 ```
 
 
@@ -77,18 +82,21 @@ Run the application by executing the following command:
 
 >**NOTE:** The Katacoda terminal window is like your local terminal. Everything that you run here you should be able to execute on your local computer as long as you have `Java SDK 1.8` and `Maven` installed. In later steps, we will also use the `oc` command line tool for OpenShift commands.
 
-**3. Verify the application**
+**2. Verify the application**
 
-To begin with click on the **Local Web Browser** tab in the console frame of this browser window which will open another tab or window of your browser pointing to port 8080 on your client. Or use [this](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/) link.
+You will eventually see a output similar to `Started Application in 4.497 seconds (JVM running for 9.785)`. Open the application by clicking on the **Local Web Browser** tab or clicking [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/).
 
-You should now see an HTML page with the `Welcome to Spring Boot` welcome message. If you see this then you've successfully set up the application! If not check the logs in the terminal. Spring Boot adds a couple helper layers to catch common errors and print helpful messages to the console so check for those first.
+You should now see an HTML page with the `Welcome to Spring Boot` welcome message. If you see this then you've successfully set up the application! If not check the logs in the terminal. Spring Boot adds helper layers to catch common errors and print helpful messages to the console.
+
+*Notice you didn't need to login?*
+
 
 **4. Stop the application**
 
-Before moving on, click in the terminal window and then press **CTRL-C** to stop the running application!
+Before moving on, click in the terminal window and then press `ctrl-c`.
+
 
 ## Congratulations
 
 You have now successfully executed the first step in this scenario. In the next step we will 
 
-TODO

@@ -1,3 +1,7 @@
+# Deploy and Configure Keycloak
+
+In this step you will deploy and configure Keycloak. 
+
 **1. Login to the OpenShift Container Platform**
 
 To login, we will use the `oc` command and then specify a username and password like this:
@@ -16,18 +20,22 @@ Next we create a template for PostgeSQL
 You should see `template "postgresql-for-keycloak" created` as output.
 
 Next we create an application for PostgeSQL
-``oc new-app postgresql-for-keycloak -n dev``{{execute}}
+``oc new-app postgresql-for-keycloak``{{execute}}
 
-You should see `Deploying template "dev/postgresql-for-keycloak" to project dev
 
-     postgresql-for-keycloak
-     ---------
-     PostgreSQL on OpenShift for Keycloak
+
+You should see the following output:
+
+`Deploying template "dev/postgresql-for-keycloak" to project dev`
+	
+	`postgresql-for-keycloak
+	---------
+	PostgreSQL on OpenShift for Keycloak`
 
 --> Creating resources ...
     service "postgres" created
     pod "postgres" created
---> Success` as output.'
+--> Success`
 
 
 Next we create a template for Keycloak
@@ -39,7 +47,8 @@ Next we create an application for Keycloak
 ``oc new-app keycloak-server``{{execute}}
 
 
-You should see `Deploying template "dev/keycloak-server" to project dev
+You should see the following output:
+``Deploying template "dev/keycloak-server" to project dev
 
      keycloak-server
      ---------
@@ -49,8 +58,7 @@ You should see `Deploying template "dev/keycloak-server" to project dev
     deploymentconfig "keycloak-server" created
     service "keycloak" created
     route "keycloak" created
---> Success'
-
+--> Success``
 
 
 
