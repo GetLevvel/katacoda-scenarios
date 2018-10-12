@@ -22,8 +22,6 @@ You should see `template "postgresql-for-keycloak" created` as output.
 Next we create an application for PostgeSQL
 ``oc new-app postgresql-for-keycloak``{{execute}}
 
-
-
 You should see the following output:
 
 `Deploying template "dev/postgresql-for-keycloak" to project dev`

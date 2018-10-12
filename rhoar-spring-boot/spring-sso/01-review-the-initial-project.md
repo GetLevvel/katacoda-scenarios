@@ -41,23 +41,9 @@ Except for the `fabric8` directory and the `index.html`, this matches what you w
 
 One thing that differs slightly is the ``pom.xml``{{open}} file.
 
-As you review the content, you will notice that there are a couple **TODO** comments. **Do not remove them!** These comments are used as markers for later exercises in this scenario. 
+As you review the content, you will notice that there are a couple of **TODO** comments. **Do not remove them!** These comments are used as markers for later exercises in this scenario. 
 
-Notice that the Keycloak adapter BOM (Bill of materials ) and Keycloak Adapter dependency has already been configured. We use this BOM to make sure we are using the dependency versions supported by Red Hat.
-
-```xml
-<dependencyManagement>
-	<dependencies>
-      <dependency>
-		<groupId>org.keycloak.bom</groupId> 
-        <artifactId>keycloak-adapter-bom</artifactId> 
-        <version>${version.org.keycloak.bom.keycloak-adapter-bom>}</version> 
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-</dependencyManagement>
-```
+Notice that the Keycloak Adapter dependency has already been configured.
 
 ```xml
   ...
