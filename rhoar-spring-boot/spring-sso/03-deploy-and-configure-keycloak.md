@@ -31,8 +31,8 @@ You should see the following output:
 	PostgreSQL on OpenShift for Keycloak`
 
 --> Creating resources ...
-    service "postgres" created
-    pod "postgres" created
+    service "postgres-keycloak" created
+    pod "postgres-keycloak" created
 --> Success`
 
 
@@ -53,10 +53,13 @@ You should see the following output:
      Keycloak
 
 --> Creating resources ...
+    secret "realm-secret" created
     deploymentconfig "keycloak-server" created
     service "keycloak" created
     route "keycloak" created
 --> Success``
+
+**NOTE:** The "realm-secret" contains realm.json that is used internally by keycloak to configure the Realm.
 
 
 
