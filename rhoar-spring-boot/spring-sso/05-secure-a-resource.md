@@ -6,21 +6,11 @@ Spring MVC is a framework around the Model/View/Controller pattern which provide
 
 To make these models available to our application we need to create a Spring Controller. Controllers are the **C** in the MVC pattern which mediate between our views and our internal models / business logic. Here we need to create a Spring `@Controller` annotated Java class. For this you need to click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/WebController.java``{{open}}
 
-Then, copy the below content into the file (or use the `Copy to Editor` button):
+Open the `WebController.java` in the editor and review the contents: 
 
-<pre class="file" data-filename="src/main/java/com/example/service/WebController.java" data-target="replace">
-package com.example.service;
+`src/main/java/com/example/service/WebController.java`{{open}}
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.beans.factory.annotation.Autowired;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.ServletException;
-import java.security.Principal;
-import org.keycloak.common.util.KeycloakUriBuilder;
-import org.keycloak.constants.ServiceUrlConstants;
-
+```java
 @Controller
 public class WebController {
 	
@@ -52,7 +42,7 @@ public class WebController {
         return "external";
     }
 }
-</pre>
+```
 
 The `@Controller` annotation is a Spring annotation which marks the annotated class as, you guessed it, a Controller. Spring Boot will search for these annotations (and others) at startup and automatically wire them up to the Servlet Container for use. 
 
@@ -84,7 +74,7 @@ The configure method is used here to secure specific endpoints. In this case, `.
 
 Run the application by executing the below command:
 
-``mvn spring-boot:run``{{execute}}
+``mvn spring-boot:run -DskipTests``{{execute}}
 
 >**NOTE:** The `spring-boot-crud-booster` [here](https://github.com/snowdrop/spring-boot-crud-booster) has test cases for REST that you can review if interested. 
 

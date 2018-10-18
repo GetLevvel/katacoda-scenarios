@@ -15,9 +15,13 @@ Spring Boot provides a nice feature for health checks called Actuator. Actuator 
 
 **2. Deploy the application to OpenShift**
 
-Run the following command to deploy the application to OpenShift
+Run the following command to get the Route URL exposed by Keycloak
+ 
+``SSO_URL=$(oc get route keycloak -o jsonpath='https://{.spec.host}/auth')``{{execute}}
+ 
+Now eploy the application to OpenShift, passing in the Keycloak auth URL as a System property
 
-``mvn package fabric8:deploy -Popenshift``{{execute}}
+``mvn package fabric8:deploy -Popenshift -DKEYCLOAK_AUTH_SERVER_URL=${SSO_URL}``{{execute}}
 
 There's a lot that happens here so lets break it down:
 
@@ -27,7 +31,7 @@ For the deployment to OpenShift we are using the [Fabric8](https://fabric8.io/) 
 
 This step may take some time to do the Maven build and the OpenShift deployment. After the build completes you can verify that everything is started by running the following command:
 
-``oc rollout status dc/rhoar-training``{{execute}}
+``oc rollout status dc/rhoar-training-sso``{{execute}}
 
 You should see output in the console similar to `replication controller "rhoar-training" successfully rolled out`. Then you can either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/fruits). You should see the same page as before only this time it's coming from the application hosted on OpenShift!
 
