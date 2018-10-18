@@ -61,7 +61,9 @@ As we develop the application we want to be able to test and verify our change a
 
 Run the application by executing the following command:
 
-``mvn spring-boot:run -DskipTests``{{execute}}
+``mvn spring-boot:run -DskipTests -Psolution``{{execute}}
+
+Click on the `Web browser link` and you should see the unsecured view of the spring-boot application.
 
 >**NOTE:** The Katacoda terminal window is like your local terminal. Everything that you run here you should be able to execute on your local computer as long as you have `Java SDK 1.8` and `Maven` installed. In later steps, we will also use the `oc` command line tool for OpenShift commands.
 

@@ -21,7 +21,7 @@ Run the following command to get the Route URL exposed by Keycloak
  
 Now eploy the application to OpenShift, passing in the Keycloak auth URL as a System property
 
-``mvn package fabric8:deploy -Popenshift -DKEYCLOAK_AUTH_SERVER_URL=${SSO_URL}``{{execute}}
+``mvn package fabric8:deploy -DKEYCLOAK_AUTH_SERVER_URL=${SSO_URL} -Popenshift``{{execute}}
 
 There's a lot that happens here so lets break it down:
 
@@ -33,7 +33,9 @@ This step may take some time to do the Maven build and the OpenShift deployment.
 
 ``oc rollout status dc/rhoar-training-sso``{{execute}}
 
-You should see output in the console similar to `replication controller "rhoar-training" successfully rolled out`. Then you can either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/fruits). You should see the same page as before only this time it's coming from the application hosted on OpenShift!
+You should see output in the console similar to `replication controller "rhoar-training-sso" successfully rolled out`. Then you can either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/fruits). You should see the same page as before only this time it's coming from the application hosted on OpenShift!
+
+Click on the `Secured Resource` link and you should be directed to keycloak for login.  Enter `user1` as the username and `password` as the password and you should be directed to the secured view of the application. Clicking the `logout` link will bring you back to the unsecured view of the application.
 
 ## Congratulations
 

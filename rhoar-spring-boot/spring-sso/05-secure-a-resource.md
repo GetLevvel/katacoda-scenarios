@@ -4,10 +4,55 @@ Spring MVC is a framework around the Model/View/Controller pattern which provide
 
 **1. Add a Controller**
 
-To make these models available to our application we need to create a Spring Controller. Controllers are the **C** in the MVC pattern which mediate between our views and our internal models / business logic. Here we need to create a Spring `@Controller` annotated Java class.
+To make these models available to our application we need to create a Spring Controller. Controllers are the **C** in the MVC pattern which mediate between our views and our internal models / business logic. Here we need to create a Spring `@Controller` annotated Java class. For this you need to click on the following link which will open an empty file in the editor: ``src/main/java/com/example/service/WebController.java``{{open}}
 
-pen the `WebController.java` in the editor and review the contents: 
-`src/main/java/com/example/service/WebController.java`{{open}}
+Then copy the below content into the file (or use the `Copy to Editor` button):
+
+<pre class="file" data-filename="src/main/java/com/example/service/WebController.java" data-target="replace">
+package com.example.service;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.ServletException;
+import java.security.Principal;
+import org.keycloak.common.util.KeycloakUriBuilder;
+import org.keycloak.constants.ServiceUrlConstants;
+
+@Controller
+public class WebController {
+	
+	private @Autowired HttpServletRequest request;
+
+    @GetMapping(path = "/")
+    public String handleExternal() {
+        return "external";
+    }
+
+    @GetMapping(path = "/secured")
+    public String handleSecured(Principal principal, Model model) {
+        model.addAttribute("username", principal.getName());
+		
+	    String keyCloakAuthUrl = System.getenv("KEYCLOAK_AUTH_SERVER_URL");
+	    String hostname = "http://" + System.getenv("HOSTNAME") + ":8080/external";
+		
+        String logoutUri = KeycloakUriBuilder.fromUri(keyCloakAuthUrl).
+            path(ServiceUrlConstants.TOKEN_SERVICE_LOGOUT_PATH).
+		    queryParam("redirect_uri", hostname).build("quickstart").toString();
+	   		
+        model.addAttribute("logout",  logoutUri);
+        return "secured";
+    }
+    
+    @GetMapping(value = "/logout")
+    public String handleLogout() throws ServletException {
+        request.logout();
+        return "external";
+    }
+}
+</pre>
 
 The `@Controller` annotation is a Spring annotation which marks the annotated class as, you guessed it, a Controller. Spring Boot will search for these annotations (and others) at startup and automatically wire them up to the Servlet Container for use. 
 
