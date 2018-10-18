@@ -9,31 +9,28 @@ The output should look something like this:
 
 ```sh
 .
+├── config
+│   └── realm.json
 ├── pom.xml
 └── src
-    ├── main
-    │   ├── fabric8
-    │   │   ├── deployment.yml
-    │   │   └── route.yml
-    │   │   └── credentials-secret.yml
-    │   │   └── keycloak.json
-    │   │   └── postgresql.json
-    │   ├── java
-    │   │   └── com
-    │   │       └── example
-    │   │           └── Application.java
-    |	|			└──service
-    |	|           	└── Fruit.java
-    |	|               └── FruitController.java
-    |	|               └── FruitRepository.java
-    │   └── resources
-    │       └── static
-    │           └── index.html
- 	│       └── templates
-    │           └── error.html
-    │           └── home.html
-    └── test
-        └── java
+    └── main
+        ├── fabric8
+        │   ├── deployment.yml
+        │   ├── keycloak.json
+        │   ├── postgresql.json
+        │   └── route.yml
+        ├── java
+        │   └── com
+        │       └── example
+        │           ├── Application.java
+        │           └── service
+        │               ├── SecurityConfig.java
+        │               └── WebController.java
+        └── resources
+            └── templates
+                ├── external.html
+                ├── layout.html
+                └── secured.html
 ```
 
 
