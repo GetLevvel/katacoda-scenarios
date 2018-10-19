@@ -35,10 +35,10 @@ This step may take some time to do the Maven build and the OpenShift deployment.
 
 You should see output in the console similar to `replication controller "rhoar-training-sso" successfully rolled out`. Then you can either go to the OpenShift web console and click on the route or click [here](http://rhoar-training-dev.[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/fruits). You should see the same page as before only this time it's coming from the application hosted on OpenShift!
 
-Click on the `Secured Resource` link and you should be directed to keycloak for login.  Enter `user1` as the username and `password` as the password and you should be directed to the secured view of the application. Clicking the `logout` link will bring you back to the unsecured view of the application.
+Now click on the `click here` link under `Secured Resource` and you should now be directed to `Keycloak` for login. Remember this page was not loading before when we had still not setup Keycloak. Enter `user1` as the username and `password` as the password and you should now be authenticated to the `secured` view of the application. Enter any other username and password and authentication with Keycloak will fail. Clicking the `logout` link will bring you back to the unsecured view of the application.
 
 ## Congratulations
 
-You have now learned how to deploy a Spring Boot MVC application to OpenShift Container Platform. 
+You have now learned how to deploy a Spring Boot MVC application to OpenShift Container Platform and have it authenticate via Keycloak
 
 Click Summary for more details and suggested next steps.

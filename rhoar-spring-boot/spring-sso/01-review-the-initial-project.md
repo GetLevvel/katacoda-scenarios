@@ -71,9 +71,9 @@ Click on the `Web browser link` and you should see the unsecured view of the spr
 
 You will eventually see a output similar to `Started Application in 4.497 seconds (JVM running for 9.785)`. Open the application by clicking on the **Local Web Browser** tab or clicking [here](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/).
 
-You should now see an HTML page with the `Welcome to Spring Boot` welcome message. If you see this then you've successfully set up the application! If not check the logs in the terminal. Spring Boot adds helper layers to catch common errors and print helpful messages to the console.
+You should now see an HTML page with the `SSO with KeyCloak` welcome message. If you see this then you've successfully set up the application! If not check the logs in the terminal. Spring Boot adds helper layers to catch common errors and print helpful messages to the console.
 
-*Notice you didn't need to login?*
+Now click on the `click here` link under **Secured Resource**. The page will not load because there isn't an instance of *Keycloak* running yet. We will configure *Keycloak* in the next section and set it up so that the secured resource can be accessed after logging in through Keycloak.
 
 
 **4. Stop the application**
