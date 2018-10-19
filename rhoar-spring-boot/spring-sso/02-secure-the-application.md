@@ -4,7 +4,7 @@ To secure the application we need to configure the integration between the appli
 
 **1. Configuring the application**
 
-To configure the integration between the application and Keycloak add the following to the `src/main/resources/application.properties`{{open}}
+To configure the integration between the application and Keycloak add the following to the `src/main/resources/application-openshift.properties`{{open}}
 
 ```java
 keycloak.auth-server-url=${KEYCLOAK_AUTH_SERVER_URL}
