@@ -79,39 +79,6 @@ http.authorizeRequests()
 
 The configure method is used here to secure specific endpoints. In this case, `.antMatchers("/secured*").hasRole("user")` requires that access to the `“/secured”` route will only be authorized if the one requesting it has authenticated with `Keycloak` and has the role `“user”`.
 
-
-**3. Test the service from a web browser locally**
-
-Run the application by executing the below command:
-
-``mvn spring-boot:run -DskipTests``{{execute}}
-
->**NOTE:** The `spring-boot-crud-booster` [here](https://github.com/snowdrop/spring-boot-crud-booster) has test cases for REST that you can review if interested. 
-
-In the interest of time, we will skip creating test cases for the service and instead test it directly in our web browser.
-
-When the console reports that Spring is up and running access the web page by using [this link](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits). The Local Browser tab will not work as it does not point to the correct URI.
-
-While the application should come up the `Save` button should not work yet. We'll make that work next.
-
-Press **CTRL+C** to stop the application.
-
-**4. Add the POST Handler**
-
-Now we'll add the `@PostMapping` method which will handle input from the Add Fruit form. Open ``src/main/java/com/example/service/FruitController.java``{{open}} and then copy the below content into the file at the TODO (or use the `Copy to Editor` button):
-
-<pre class="file" data-filename="rc/main/java/com/example/service/FruitController.java" data-target="insert" data-marker="// TODO POST mapping here">
-@PostMapping
-    public String createFruit(@ModelAttribute Fruit fruit) {
-        fruits.add(fruit);
-        return "redirect:/fruits";
-    }
-</pre>
-
-Now re-run the application by executing the ``mvn spring-boot:run``{{execute}} command again. When the console reports that Spring is up and running access the web page by using [this link](https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/fruits).
-
-If you add a Fruit name to the text box and click save it should now appear on the right side list.
-
 ## Congratulations
 
-You have now learned how to how to create simple Spring MVC Controllers and how to connect your Models to the views using a Controller. In the next section we'll review the View we've created for you.
+You have now learned how to how to create simple Spring MVC Controller and how to connect your Model to the View using a Controller. In the next section we'll review the Views we've created for you.
