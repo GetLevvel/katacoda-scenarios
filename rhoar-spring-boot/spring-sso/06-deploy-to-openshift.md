@@ -17,7 +17,7 @@ Spring Boot provides a nice feature for health checks called Actuator. Actuator 
 
 Run the following command to get the Route URL exposed by Keycloak
  
-``SSO_URL=$(oc get route keycloak -o jsonpath='https://{.spec.host}/auth')``{{execute}}
+``SSO_URL=$(oc get route keycloak -o jsonpath='http://{.spec.host}/auth')``{{execute}}
  
 Now eploy the application to OpenShift, passing in the Keycloak auth URL as a System property
 
